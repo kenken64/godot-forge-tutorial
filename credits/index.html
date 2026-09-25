@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Build an accessible scrolling game credits sequence with generated game-scene art." />
+    <script src="/brand-storage.js"></script>
+    <link rel="stylesheet" href="/toast.css" />
+    <link rel="stylesheet" href="/module-reset.css" />
+    <link rel="stylesheet" href="/credits/styles.css" />
+    <script src="/toast.js" defer></script>
+    <script src="/module-reset.js" defer></script>
+    <script src="/credits/app.js" defer></script>
+    <title>Game Credits · Godot Forge</title>
+  </head>
+  <body data-module="credits">
+    <div class="credits-shell">
+      <header class="module-header">
+        <a href="/" id="back-link">← GODOT FORGE / LEARNING PATH</a>
+        <span id="chapter-label">CHAPTER 13 / GAME CREDITS</span>
+        <div class="language-toggle" id="languages" role="group" aria-label="Language">
+          <button type="button" data-locale="en">EN</button><button type="button" data-locale="zh">中文</button><button type="button" data-locale="ms">BM</button>
+        </div>
+      </header>
+
+      <main>
+        <section class="intro">
+          <p class="eyebrow" id="intro-eyebrow">THE PEOPLE BEHIND THE GROVE</p>
+          <div class="intro-row"><div><h1 id="page-title">Game Credits</h1><p id="intro-copy">Give every contributor a moment in the spotlight.</p></div><span class="sequence-status" id="sequence-status">CREDITS ROLLING</span></div>
+        </section>
+
+        <section class="credits-stage" aria-label="Interactive game credits sequence">
+          <article class="credits-panel">
+            <div class="panel-heading"><span id="contributors-label">THE PEOPLE</span><span>01 — 07</span></div>
+            <div class="credits-window" id="credits-window" tabindex="0" aria-label="Scrolling contributor names and roles">
+              <div class="credits-roll" id="credits-roll">
+                <p class="roll-kicker" id="roll-kicker">A GODOT FORGE ORIGINAL</p>
+                <h2 id="roll-title">The Grove Remembers</h2>
+                <p class="roll-thanks" id="roll-thanks">A little world, made by many hands.</p>
+                <div id="contributor-list" class="contributor-list"></div>
+                <p class="roll-dedication" id="roll-dedication">For everyone who kept exploring.</p>
+                <p class="roll-end" id="roll-end">THANK YOU FOR PLAYING</p>
+              </div>
+            </div>
+            <div class="credits-controls">
+              <button type="button" class="primary-button" id="play-pause">PAUSE ROLL</button>
+              <button type="button" class="secondary-button" id="restart-roll">RESTART</button>
+              <button type="button" class="text-button" id="skip-roll">SKIP TO END</button>
+            </div>
+            <p class="accessibility-note" id="accessibility-note">Motion respects your device setting. You can pause, restart, or skip the roll.</p>
+          </article>
+
+          <article class="gallery-panel">
+            <div class="panel-heading"><span id="screenshots-label">MOMENTS FROM THE GAME</span><span id="gallery-index">01 / 06</span></div>
+            <figure class="gallery-frame">
+              <img id="game-screenshot" src="https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/credits/images/grove-bridge.webp" alt="The explorer crosses an ancient bridge above a forest waterfall." />
+              <div class="gallery-vignette" aria-hidden="true"></div>
+              <figcaption><span class="caption-marker" aria-hidden="true"></span><span id="screenshot-caption">The old bridge, above the mist.</span></figcaption>
+            </figure>
+            <div class="gallery-footer"><span id="gallery-note">A random scene returns every few seconds.</span><button type="button" id="next-screenshot" aria-label="Show another game screenshot">NEXT SCENE ↗</button></div>
+          </article>
+        </section>
+
+        <section class="prompt-section" aria-labelledby="prompts-title">
+          <div class="prompt-intro"><p class="eyebrow" id="prompt-eyebrow">MADE WITH A PROMPT</p><h2 id="prompts-title">See how this credits sequence is described.</h2><p id="prompt-copy">The people and roles are fictional. The game screenshots were generated for this lesson.</p></div>
+          <div class="prompt-grid">
+            <article class="prompt-card"><div class="prompt-heading"><h3 id="credits-prompt-title">Scrolling credits and screenshot gallery</h3><button type="button" class="copy-prompt" data-prompt="credits" id="copy-credits-prompt">COPY</button></div><pre id="credits-prompt" class="prompt-text"></pre></article>
+            <article class="prompt-card"><div class="prompt-heading"><h3 id="image-prompt-title">Generated game screenshots</h3><button type="button" class="copy-prompt" data-prompt="images" id="copy-image-prompt">COPY</button></div><pre id="image-prompt" class="prompt-text"></pre></article>
+          </div>
+        </section>
+
+        <section class="completion-row"><p id="completion-status" role="status">Watch the credits roll to the end, or choose Skip to End to complete this module.</p><button type="button" class="primary-button" id="complete-module" disabled>COMPLETE MODULE</button></section>
+      </main>
+    </div>
+  </body>
+</html>

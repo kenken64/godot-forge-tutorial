@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Play a shared-screen coin run with one keyboard player and one gamepad player." />
+    <title>Local Co-op · Godot Forge</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/toast.css" />
+    <link rel="stylesheet" href="/module-reset.css" />
+    <link rel="stylesheet" href="/local-coop/styles.css" />
+    <script src="/brand-storage.js"></script>
+    <script src="/toast.js" defer></script>
+    <script src="/module-reset.js" defer></script>
+    <script src="/local-coop/app.js" defer></script>
+  </head>
+  <body data-module="local-coop">
+    <div class="coop-shell">
+      <header class="module-header">
+        <a class="back-link" href="/" data-i18n="back">← GODOT FORGE / LEARNING PATH</a>
+        <span class="chapter-label" data-i18n="chapter">CHAPTER 17 / LOCAL CO-OP</span>
+        <div class="language-toggle" role="group" aria-label="Language" data-i18n-aria="language">
+          <button type="button" data-locale="en" aria-pressed="true">EN</button>
+          <button type="button" data-locale="zh" aria-pressed="false">中文</button>
+          <button type="button" data-locale="ms" aria-pressed="false">BM</button>
+        </div>
+      </header>
+      <main>
+        <section class="intro" aria-labelledby="page-title">
+          <p class="eyebrow" data-i18n="eyebrow">SHARED SCREEN / TWO CONTROLLERS</p>
+          <h1 id="page-title" data-i18n="title">Two heroes. One forest.</h1>
+          <p data-i18n="intro">Player 1 uses the keyboard. Player 2 uses a gamepad. Gather the coins together and watch each player's total grow separately.</p>
+        </section>
+        <section class="game-section" aria-labelledby="run-title">
+          <div class="section-heading"><div><p class="eyebrow" data-i18n="runEyebrow">PLAYABLE CO-OP RUN</p><h2 id="run-title" data-i18n="runTitle">Share the path, share the goal.</h2></div><span id="controller-status" class="controller-status" role="status" aria-live="polite">CONNECT A GAMEPAD FOR PLAYER 2</span></div>
+          <div class="arena">
+            <canvas id="coop-stage" width="960" height="540" tabindex="0" role="application" aria-describedby="controls-help" aria-label="Two players in a forest. Player 1 uses the keyboard and Player 2 uses a gamepad to collect coins." data-i18n-aria="canvasLabel">Two explorers collecting coins in a forest.</canvas>
+            <div class="player-hud player-hud--one" aria-live="polite"><span class="player-swatch" aria-hidden="true"></span><div><span data-i18n="playerOne">P1 · KEYBOARD</span><strong><img src="https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/game-achievement/images/gold-coin.webp" alt="" /><span id="p1-coins">0</span></strong></div></div>
+            <div class="player-hud player-hud--two" aria-live="polite"><span class="player-swatch" aria-hidden="true"></span><div><span data-i18n="playerTwo">P2 · GAMEPAD</span><strong><img src="https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/game-achievement/images/gold-coin.webp" alt="" /><span id="p2-coins">0</span></strong></div></div>
+          </div>
+          <div class="run-footer"><p id="game-status" role="status" aria-live="polite">Connect a gamepad, then collect the coins together.</p><strong id="team-count">0 / 12</strong></div>
+          <div class="progress-track" aria-hidden="true"><span id="team-progress"></span></div>
+          <div class="control-grid" id="controls-help">
+            <div><span class="control-marker control-marker--one">P1</span><p data-i18n="keyboardControls">Keyboard: A / D or ← / → to move · W, ↑ or Space to jump</p></div>
+            <div><span class="control-marker control-marker--two">P2</span><p data-i18n="gamepadControls">Gamepad: left stick or D-pad to move · A / bottom button to jump</p></div>
+          </div>
+          <div class="completion-row"><p id="completion-status" data-i18n="completionHint">Collect all 12 coins together to complete the module.</p><button id="complete-module" type="button" disabled data-i18n="complete">COMPLETE MODULE</button></div>
+        </section>
+        <section class="lesson-section" aria-labelledby="lesson-title"><p class="eyebrow" data-i18n="lessonEyebrow">HOW LOCAL CO-OP WORKS</p><h2 id="lesson-title" data-i18n="lessonTitle">One world, two input streams.</h2><div class="lesson-grid"><p data-i18n="lessonOne">Both players stay on the same screen. The keyboard only moves Player 1; the first connected gamepad only moves Player 2.</p><p data-i18n="lessonTwo">A coin belongs to the player who touches it first. The team total and both personal counters are saved for your next visit.</p></div><p class="art-credit" data-i18n="artCredit">Forest, coin, and explorer art reused from the earlier Godot Forge game modules. Player 2 wears a blue tunic and amber cloak.</p></section>
+        <section class="prompt-section" aria-labelledby="prompts-title">
+          <p class="eyebrow" data-i18n="promptsEyebrow">BUILD PROMPT / SOURCE ART</p>
+          <h2 id="prompts-title" data-i18n="promptsTitle">Prompts behind the co-op scene</h2>
+          <p class="prompt-intro" data-i18n="promptsIntro">Open a card to read the co-op build prompt or the original art prompts for the assets reused here.</p>
+          <div class="prompt-grid">
+            <details class="prompt-card"><summary data-i18n="buildPromptTitle">Co-op gameplay build prompt</summary><pre id="build-prompt">Create a browser-based shared-screen 2D forest coin-collection lesson. Show two explorers at once, with Player 1 controlled only by A/D or arrow keys plus W/Up/Space to jump, and Player 2 controlled only by the first connected gamepad using the left stick or D-pad plus the bottom face button to jump. Keep the full playfield visible to both players. Give the players distinct clothing palettes and visible P1/P2 labels. Place a separate coin counter at the top left for Player 1 and top right for Player 2. Award each coin once to the first player who touches it. Show a shared team total, reconnect feedback, and completion when every coin is collected. Save coin ownership and player positions in a module checkpoint, and support a module-specific reset. Keep text outside the canvas where practical and make the page responsive and accessible.</pre></details>
+            <details class="prompt-card"><summary data-i18n="forestPromptTitle">Forest arena source art prompt</summary><pre id="forest-prompt">Use case: stylized-concept
+Asset type: wide background for a playable side-view 2D forest collection game
+Primary request: A beautiful enchanted woodland clearing with layered emerald trees, distant soft mountains, mossy stone ruins, tiny warm fireflies, and a broad level grassy path across the lower quarter of the scene. The path is clear and readable for a character running and collecting items. Rich but uncluttered pixel-art-inspired game illustration, matching a young hooded forest explorer with a teal scarf. Warm late-afternoon sun shafts and teal forest shadows. Full-bleed landscape composition that crops gracefully to a 16:9 game canvas.
+Constraints: no characters, coins, hearts, badges, icons, game interface, text, letters, numbers, logos, or watermark. No floating platforms. The walkable path must span the full width.</pre></details>
+            <details class="prompt-card"><summary data-i18n="explorerPromptTitle">Explorer sprite source art prompt</summary><pre id="explorer-prompt">Use GPT Image 2.5 Sunburst to create a transparent-background 2D pixel-art side-scroller player sprite sheet: one brave forest explorer with short brown hair, a teal-green tunic, purple scarf, leather boots, and a clearly visible steel sword held in the right hand. Exact 8 columns × 7 rows, 56 equal 256×256 cells, one complete centered character per cell, consistent scale, baseline, proportions and orientation facing right. Rows in order: idle (one standing pose repeated across all eight cells), walk (eight distinct alternating footfall poses with crossed legs), run (eight faster poses), sword attack (four clear readable sword-swing poses; sword must be visible and part of the character in every attack frame), jump (four poses), hurt (four poses), death (four poses). Keep the complete body and sword inside each cell with generous transparent padding. Crisp readable pixel clusters, polished hand-crafted game art, consistent forest-adventure palette. True transparent alpha; no background, scenery, grid lines, text, labels, watermark, cropped objects, or extra characters.</pre></details>
+            <details class="prompt-card"><summary data-i18n="coinPromptTitle">Gold coin source art prompt</summary><pre id="coin-prompt">Use case: stylized-concept
+Asset type: transparent gold pickup sprite for a 2D forest game
+Primary request: Exactly one chunky collectible gold coin, facing the viewer, with a luminous raised five-point star emblem, a beveled golden rim, warm amber highlights, and a crisp polished pixel-art-inspired game-sprite finish. Strong circular silhouette, readable when rendered at 34 pixels.
+Composition: centered object with generous transparent padding on every side.
+Constraints: genuinely transparent alpha background; no scenery, floor, shadow, extra coins, text, numerals, watermark, frame, or UI.</pre></details>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

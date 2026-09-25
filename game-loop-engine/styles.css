@@ -1,0 +1,58 @@
+:root{color-scheme:dark;--bg:#101d18;--panel:#182a22;--panel-2:#20362b;--ink:#edf5e9;--muted:#9eb1a5;--line:#385246;--lime:#c4f265;--violet:#9c8cff;--gold:#ffd66b;--icon-sheet:url('https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/game-settings/images/forest-hud-icons.png')}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:radial-gradient(circle at 75% 10%,#1c3528 0,transparent 30%),var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+button{font:inherit;cursor:pointer}
+a{color:inherit}
+.loop-shell{width:min(1160px,calc(100% - 40px));margin:0 auto;padding-bottom:72px}
+.module-header{display:flex;align-items:center;justify-content:space-between;gap:15px;min-height:65px;border-bottom:1px solid var(--line);color:var(--muted);font:11px ui-monospace,SFMono-Regular,monospace;letter-spacing:.06em}
+.back-link{text-decoration:none;color:var(--lime)}
+.language-toggle{display:flex;gap:3px}
+.language-toggle button{border:1px solid transparent;background:transparent;color:var(--muted);padding:7px 9px;font:inherit}
+.language-toggle button[aria-pressed="true"]{border-color:var(--lime);color:var(--lime)}
+.intro{max-width:1000px;padding:50px 0 32px}
+.eyebrow{margin:0 0 8px;color:var(--lime);font:12px/1.4 ui-monospace,SFMono-Regular,monospace;letter-spacing:.13em}
+h1,h2,h3,p{margin-top:0}
+h1{margin-bottom:12px;font-size:clamp(38px,6vw,76px);line-height:1.02;letter-spacing:-.045em}
+.intro>p:last-child{max-width:850px;color:var(--muted);font-size:clamp(17px,2vw,21px)}
+.learning-section,.demo-section{margin-top:18px}
+.section-heading{margin-bottom:18px}
+.section-heading h2{margin:0;font-size:clamp(24px,3vw,34px)}
+.learning-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.learning-grid article{min-width:0;padding:19px;border:1px solid var(--line);background:var(--panel)}
+.learning-grid article>span{color:var(--violet);font:11px ui-monospace,SFMono-Regular,monospace;letter-spacing:.05em}
+.learning-grid h3{margin:13px 0 7px;font-size:18px}
+.learning-grid p{margin:0;color:var(--muted);font-size:14px}
+.prompt-section{margin-top:38px}
+.prompt-section .section-heading>p:last-child{max-width:780px;margin:8px 0 0;color:var(--muted)}
+.prompt-card{min-width:0;border:1px solid var(--line);background:var(--panel)}
+.prompt-card-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px;border-bottom:1px solid var(--line)}
+.prompt-card-heading h3{margin:5px 0 0;font-size:16px}
+.prompt-badge{color:var(--violet);font:10px ui-monospace,SFMono-Regular,monospace;letter-spacing:.045em}
+.prompt-card-heading button{flex:0 0 auto;padding:8px 10px;border:1px solid var(--line);background:var(--panel-2);color:var(--lime);font:10px ui-monospace,SFMono-Regular,monospace}
+.prompt-text{min-height:100px;max-height:250px;overflow:auto;margin:0;padding:15px 16px;color:var(--muted);font:12px/1.65 ui-monospace,SFMono-Regular,monospace;white-space:pre-wrap;overflow-wrap:anywhere}
+.demo-section{padding-top:24px}
+.demo-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:16px}
+.restart-button,.continue-button{min-height:42px;padding:9px 14px;border:1px solid var(--line);background:var(--panel);color:var(--ink);font:11px ui-monospace,SFMono-Regular,monospace;letter-spacing:.04em}
+.restart-button:hover,.continue-button:hover{border-color:var(--lime)}
+.game-card{overflow:hidden;border:1px solid var(--line);background:var(--panel)}
+.playfield{position:relative;isolation:isolate;width:100%;aspect-ratio:5/3;min-height:360px;max-height:650px;overflow:hidden;background:#14251d}
+#game-stage{position:absolute;inset:0;z-index:0;display:flex;align-items:center;justify-content:center;overflow:hidden}
+#game-stage canvas{display:block;width:100%;height:100%;touch-action:none}
+.game-hud{position:absolute;z-index:3;top:clamp(12px,2vw,22px);left:clamp(12px,2vw,22px);right:clamp(12px,2vw,22px);display:flex;align-items:flex-start;justify-content:space-between;gap:12px;pointer-events:none}
+.quest-widget,.goal-widget{display:flex;align-items:center;gap:9px;border:1px solid #618052;background:rgba(15,31,24,.9);box-shadow:0 4px 18px #0a140f77;backdrop-filter:blur(6px);padding:8px 12px}
+.quest-coin{width:26px;height:26px;background-image:var(--icon-sheet);background-size:400% 400%;background-position:33.333% 33.333%;image-rendering:pixelated}
+.quest-widget>span:not(.quest-coin),.goal-widget{color:#e8f3dc;font:10px ui-monospace,SFMono-Regular,monospace;letter-spacing:.06em}
+.quest-widget>strong{min-width:5ch;color:var(--gold);font:700 16px ui-monospace,SFMono-Regular,monospace;text-align:right}
+.goal-widget{color:var(--lime)}
+.control-hint{position:absolute;z-index:3;right:16px;bottom:12px;margin:0;color:#e4ecd9;font:10px ui-monospace,SFMono-Regular,monospace;letter-spacing:.04em;text-shadow:0 2px 4px #000}
+.level-overlay{position:absolute;z-index:5;inset:0;display:grid;place-items:center;padding:18px;background:rgba(6,15,11,.35);backdrop-filter:blur(2px)}
+.level-panel{width:min(430px,100%);padding:clamp(22px,4vw,34px);border:1px solid #bbdc72;background:linear-gradient(155deg,#243c2b,#14231bcc 75%);box-shadow:0 18px 65px #0009;text-align:center}
+.level-panel .eyebrow{color:var(--gold)}
+.level-panel h3{margin:4px 0 10px;font-size:clamp(30px,5vw,44px);line-height:1.05}
+.level-panel p:not(.eyebrow){color:var(--muted)}
+.continue-button{min-width:170px;border-color:var(--lime);background:var(--lime);color:#142119}
+.completion-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px;color:var(--muted);font-size:13px}
+.completion-row p{margin:0}
+.completion-row span{color:var(--lime);font:10px ui-monospace,SFMono-Regular,monospace}
+@media(max-width:720px){.loop-shell{width:min(100% - 24px,1160px)}.module-header{flex-wrap:wrap;padding:10px 0}.learning-grid{grid-template-columns:1fr}.intro{padding-top:35px}.playfield{min-height:360px}.goal-widget{max-width:45%;font-size:9px}.quest-widget{gap:6px;padding:7px}.quest-widget>span:not(.quest-coin){font-size:9px}.control-hint{left:10px;right:10px;text-align:center;font-size:8px}.completion-row{align-items:flex-start;flex-direction:column}}

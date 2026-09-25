@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Create a pixel-art final-boss recap and a branching, dialogue-led ending cutscene." />
+    <script src="/brand-storage.js"></script>
+    <link rel="stylesheet" href="/toast.css" />
+    <link rel="stylesheet" href="/module-reset.css" />
+    <link rel="stylesheet" href="/game-ending-cutscene/styles.css" />
+    <script src="/toast.js" defer></script>
+    <script src="/module-reset.js" defer></script>
+    <script src="/game-ending-cutscene/app.js" defer></script>
+    <title>Game Ending Cutscene · Godot Forge</title>
+  </head>
+  <body data-module="game-ending-cutscene">
+    <div class="ending-shell">
+      <header class="module-header">
+        <a href="/" id="back-link">← GODOT FORGE / LEARNING PATH</a>
+        <span id="chapter-label">CHAPTER 12 / ENDING CUTSCENE</span>
+        <div class="language-toggle" id="languages" role="group" aria-label="Language">
+          <button type="button" data-locale="en">EN</button><button type="button" data-locale="zh">中文</button><button type="button" data-locale="ms">BM</button>
+        </div>
+      </header>
+
+      <main>
+        <section class="intro">
+          <p class="eyebrow" id="intro-eyebrow">THE FINAL CHOICE</p>
+          <h1 id="page-title">Every ending starts with a choice.</h1>
+          <p id="intro-copy">First, see how the last battle ended. Then decide what the hero does with the heartseed.</p>
+        </section>
+
+        <section class="cutscene-card" aria-label="Playable ending cutscene">
+          <div class="cutscene-meta"><span id="scene-label">FINAL BATTLE / RECAP</span><span class="pixel-tag">GODOT FORGE ORIGINAL</span></div>
+          <div class="cutscene-screen" id="cutscene-screen" data-mode="comic">
+            <img id="scene-image" src="https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/game-ending-cutscene/images/final-boss-comic.webp" alt="A four-panel pixel-art recap of the explorer defeating the tree guardian." />
+            <div class="screen-shade" aria-hidden="true"></div>
+            <div class="screen-heading" id="screen-heading">THE LAST BATTLE</div>
+            <div class="comic-caption" id="comic-caption">The guardian falls. The heartseed remains.</div>
+            <section class="dialogue-box" id="dialogue-box" hidden aria-live="polite">
+              <div class="speaker-portrait" id="speaker-portrait" data-speaker="guardian" role="img" aria-label="Portrait of the grove guardian"></div>
+              <div class="dialogue-copy"><p id="speaker-name">THE GROVE ECHO</p><p id="dialogue-line"></p></div>
+              <button type="button" class="advance-button" id="advance-dialogue" aria-label="Continue dialogue">▼</button>
+            </section>
+            <section class="ending-card" id="ending-card" hidden aria-live="polite">
+              <p class="eyebrow" id="ending-eyebrow">ENDING UNLOCKED</p><h2 id="ending-title"></h2><p id="ending-description"></p>
+              <button type="button" class="secondary-button" id="replay-ending">REPLAY THE FINALE</button>
+            </section>
+            <div class="choice-panel" id="choice-panel" hidden aria-label="Choose the ending">
+              <p id="choice-question">What will you do with the heartseed?</p>
+              <button type="button" data-ending="awaken" id="choose-awaken"><span>01</span><b>AWAKEN THE GROVE</b></button>
+              <button type="button" data-ending="dormant" id="choose-dormant"><span>02</span><b>KEEP IT DORMANT</b></button>
+            </div>
+            <button type="button" class="comic-continue" id="continue-to-ending">CONTINUE TO THE ENDING ↗</button>
+          </div>
+          <div class="cutscene-controls">
+            <button type="button" class="secondary-button" id="skip-dialogue" hidden>SKIP DIALOGUE</button>
+            <button type="button" class="secondary-button" id="restart-cutscene">RESTART CUTSCENE</button>
+            <button type="button" class="primary-button" id="complete-module" disabled>COMPLETE MODULE</button>
+          </div>
+          <p class="cutscene-status" id="cutscene-status" role="status">Read the comic recap, then continue to the final choice.</p>
+        </section>
+
+        <section class="prompt-section" aria-labelledby="prompts-title">
+          <div class="prompt-intro"><p class="eyebrow" id="prompt-eyebrow">ARTWORK PROMPTS / GPT IMAGE 2.5 BURST</p><h2 id="prompts-title">Every cutscene image has a prompt.</h2><p id="prompts-intro">Read or copy the exact asset prompts. Each prompt is available in English, Chinese and Malay.</p></div>
+          <div id="asset-prompts" class="asset-prompts"></div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

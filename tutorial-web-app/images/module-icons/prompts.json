@@ -1,0 +1,132 @@
+{
+  "generator": "Built-in GPT Image tool",
+  "notes": "One generated asset per module. Original PNGs retained in originals; optimized WebP assets are served statically with no runtime AI calls.",
+  "icons": [
+    {
+      "slug": "character-creation",
+      "prompt": "Use case: stylized-concept. Asset type: a single square game-development course module icon for Godot Forge. Subject: a heroic adventurer's helmet and shoulders, with a small luminous lime-green creation spark, representing CHARACTER CREATION. Style: premium hand-painted fantasy game inventory icon, crisp sculpted silhouette, restrained dimensional shading, dark emerald and charcoal materials, warm ivory edge highlights, lime green light and a small violet accent, polished but not photorealistic or cute. Composition: one centered compact emblem, generous 14% empty padding on every edge, readable at 88 pixels. Scene/backdrop: genuinely transparent background. No words, letters, numbers, logos, borders, circular badge, scenery or watermark. One icon only, not a sheet.",
+      "source": "/Users/kennethphang/.codex/generated_images/01a0c1e8-9457-7470-a43e-fa6e95abf14e/exec-d5f8ca4a-0947-497c-be5d-506054cc1a3f.png",
+      "file": "character-creation.webp"
+    },
+    {
+      "slug": "game-assets-creation",
+      "prompt": "Use case: stylized-concept. Asset type: a single square game-development course module icon for Godot Forge. Subject: a compact floating arrangement of three grass-topped stone platform tiles and one luminous crystal, representing reusable GAME ASSETS. Style: premium hand-painted fantasy game inventory icon, crisp sculpted silhouette, restrained dimensional shading, dark emerald and charcoal materials, warm ivory edge highlights, lime green light and a small violet accent, polished but not photorealistic or cute. Composition: one centered compact emblem, generous 14% empty padding on every edge, readable at 88 pixels. Scene/backdrop: genuinely transparent background. No words, letters, numbers, logos, borders, circular badge, scenery or watermark. One icon only, not a sheet.",
+      "source": "/Users/kennethphang/.codex/generated_images/01a0c1e8-9457-7470-a43e-fa6e95abf14e/exec-64688290-0368-479a-9fcd-2b3c3d9e6aef.png",
+      "file": "game-assets-creation.webp"
+    },
+    {
+      "slug": "boss-creation",
+      "prompt": "Use case: stylized-concept. Asset type: a single square game-development course module icon for Godot Forge. Subject: a formidable horned boss crown with a dark armored skull mask and glowing violet eyes, fierce and imposing, representing BOSS CREATION. Style: premium hand-painted fantasy game inventory icon, crisp sculpted silhouette, restrained dimensional shading, dark emerald and charcoal materials, warm ivory edge highlights, lime green light and a small violet accent, polished but not photorealistic or cute. Composition: one centered compact emblem, generous 14% empty padding on every edge, readable at 88 pixels. Scene/backdrop: genuinely transparent background. No words, letters, numbers, logos, borders, circular badge, scenery or watermark. One icon only, not a sheet.",
+      "source": "/Users/kennethphang/.codex/generated_images/01a0c1e8-9457-7470-a43e-fa6e95abf14e/exec-4672fb68-a98a-4033-83de-6cd78d9f2662.png",
+      "file": "boss-creation.webp"
+    },
+    {
+      "slug": "storyline-engine",
+      "prompt": "Use case: stylized-concept. Asset type: a single square game-development course module icon for Godot Forge. Subject: an open enchanted storybook with three small branching light paths rising from its pages, representing BRANCHING STORY. Style: premium hand-painted fantasy game inventory icon, crisp sculpted silhouette, restrained dimensional shading, dark emerald and charcoal materials, warm ivory edge highlights, lime green light and a small violet accent, polished but not photorealistic or cute. Composition: one centered compact emblem, generous 14% empty padding on every edge, readable at 88 pixels. Scene/backdrop: genuinely transparent background. No words, letters, numbers, logos, borders, circular badge, scenery or watermark. One icon only, not a sheet.",
+      "source": "/Users/kennethphang/.codex/generated_images/01a0c1e8-9457-7470-a43e-fa6e95abf14e/exec-0ab4805a-9fb3-4fa0-90e5-69f1c8cf5628.png",
+      "file": "storyline-engine.webp"
+    },
+    {
+      "slug": "parallax-tiling-map",
+      "prompt": "Use case: stylized-concept. Asset type: a single square game-development course module icon for Godot Forge. Subject: three visibly separated miniature landscape layers of grass-topped stone platforms, pine trees and distant mountains, representing PARALLAX MAP LAYERS. Style: premium hand-painted fantasy game inventory icon, crisp sculpted silhouette, restrained dimensional shading, dark emerald and charcoal materials, warm ivory edge highlights, lime green light and a small violet accent, polished but not photorealistic or cute. Composition: one centered compact emblem, generous 14% empty padding on every edge, readable at 88 pixels. Scene/backdrop: genuinely transparent background. No words, letters, numbers, logos, borders, circular badge, scenery or watermark. One icon only, not a sheet.",
+      "source": "/Users/kennethphang/.codex/generated_images/01a0c1e8-9457-7470-a43e-fa6e95abf14e/exec-152cb752-4d02-4694-b74d-6aa481782420.png",
+      "file": "parallax-tiling-map.webp"
+    },
+    {
+      "slug": "items-spawning",
+      "prompt": "Use case: stylized-concept. Asset type: a single square game-development course module icon for Godot Forge. Subject: a jewel-topped treasure chest opening with two bright collectible crystals appearing above it, representing ITEM SPAWNING. Style: premium hand-painted fantasy game inventory icon, crisp sculpted silhouette, restrained dimensional shading, dark emerald and charcoal materials, warm ivory edge highlights, lime green light and a small violet accent, polished but not photorealistic or cute. Composition: one centered compact emblem, generous 14% empty padding on every edge, readable at 88 pixels. Scene/backdrop: genuinely transparent background. No words, letters, numbers, logos, borders, circular badge, scenery or watermark. One icon only, not a sheet.",
+      "source": "/Users/kennethphang/.codex/generated_images/01a0c1e8-9457-7470-a43e-fa6e95abf14e/exec-951a6978-8062-4865-b664-f74ca754faf0.png",
+      "file": "items-spawning.webp"
+    },
+    {
+      "slug": "enemies-ai",
+      "prompt": "Use case: stylized-concept. Asset type: a single square game-development course module icon for Godot Forge. Primary request: represent ENEMIES AND AI with one menacing armored goblin-like enemy head beside a compact glowing decision-tree node symbol, clearly communicating hostile NPC behavior and artificial intelligence. Scene/backdrop: genuinely transparent background. Style/medium: premium hand-painted fantasy game inventory icon matching the existing Godot Forge module icon family; crisp sculpted silhouette, dark emerald and charcoal materials, fine gold trim, restrained dimensional shading, warm ivory edge highlights, lime-green light and a small violet accent; polished but not photorealistic or cute. Composition/framing: one centered compact emblem with the enemy and decision nodes visually integrated, generous 14% empty padding on every edge, readable at 88 pixels. Constraints: no words, letters, numbers, logos, border, circular badge, scenery, extra characters, blood, gore, or watermark; one icon only, not a sheet.",
+      "source": "originals/enemies-ai.png",
+      "file": "enemies-ai.webp"
+    },
+    {
+      "slug": "game-loop-engine",
+      "prompt": "Use case: stylized-concept. Asset type: a single square game-development course module icon for Godot Forge. Subject: an intricate clockwork gear with a lime crystal core and two curved metallic arrows forming a continuous update loop, representing GAME LOOP ENGINE. Style: premium hand-painted fantasy game inventory icon, crisp sculpted silhouette, restrained dimensional shading, dark emerald and charcoal materials, warm ivory edge highlights, lime green light and a small violet accent, polished but not photorealistic or cute. Composition: one centered compact emblem, generous 14% empty padding on every edge, readable at 88 pixels. Scene/backdrop: genuinely transparent background. No words, letters, numbers, logos, borders, circular badge, scenery or watermark. One icon only, not a sheet.",
+      "source": "/Users/kennethphang/.codex/generated_images/01a0c1e8-9457-7470-a43e-fa6e95abf14e/exec-d4a0cbca-dca4-4f01-84c8-9af3d8ba3a37.png",
+      "file": "game-loop-engine.webp"
+    },
+    {
+      "slug": "game-controls",
+      "prompt": "Use case: stylized-concept. Asset type: a single square game-development course module icon for Godot Forge. Subject: a compact beautifully crafted game controller with a directional pad, two analog sticks and four luminous buttons, representing GAMEPAD CONTROLS. Style: premium hand-painted fantasy game inventory icon, crisp sculpted silhouette, restrained dimensional shading, dark emerald and charcoal materials, warm ivory edge highlights, lime green light and a small violet accent, polished but not photorealistic or cute. Composition: one centered compact emblem, generous 14% empty padding on every edge, readable at 88 pixels. Scene/backdrop: genuinely transparent background. No words, letters, numbers, logos, borders, circular badge, scenery or watermark. One icon only, not a sheet.",
+      "source": "/Users/kennethphang/.codex/generated_images/01a0c1e8-9457-7470-a43e-fa6e95abf14e/exec-f0252c7f-d3c3-4a2a-9544-cdc6d360dfe4.png",
+      "file": "game-controls.webp"
+    },
+    {
+      "slug": "game-settings",
+      "prompt": "Use case: stylized-concept. Asset type: a single square game-development course module icon for Godot Forge. Subject: a compact sculpted gear beside three adjustable vertical sliders, representing GAME SETTINGS. Style: premium hand-painted fantasy game inventory icon, crisp sculpted silhouette, restrained dimensional shading, dark emerald and charcoal materials, warm ivory edge highlights, lime green light and a small violet accent, polished but not photorealistic or cute. Composition: one centered compact emblem, generous 14% empty padding on every edge, readable at 88 pixels. Scene/backdrop: genuinely transparent background. No words, letters, numbers, logos, borders, circular badge, scenery or watermark. One icon only, not a sheet.",
+      "source": "/Users/kennethphang/.codex/generated_images/01a0c1e8-9457-7470-a43e-fa6e95abf14e/exec-fdc7ff64-4968-46f0-a57e-37b46b88d93c.png",
+      "file": "game-settings.webp"
+    },
+    {
+      "slug": "game-physics",
+      "prompt": "Use case: stylized-concept. Asset type: a single square game-development course module icon for Godot Forge. Subject: a polished luminous ball bouncing along a short curved motion arc above a small stone platform, representing GRAVITY AND GAME PHYSICS. Style: premium hand-painted fantasy game inventory icon, crisp sculpted silhouette, restrained dimensional shading, dark emerald and charcoal materials, warm ivory edge highlights, lime green light and a small violet accent, polished but not photorealistic or cute. Composition: one centered compact emblem, generous 14% empty padding on every edge, readable at 88 pixels. Scene/backdrop: genuinely transparent background. No words, letters, numbers, logos, borders, circular badge, scenery or watermark. One icon only, not a sheet.",
+      "source": "/Users/kennethphang/.codex/generated_images/01a0c1e8-9457-7470-a43e-fa6e95abf14e/exec-a4582ba8-f4fd-4b39-8d57-6883142d44ef.png",
+      "file": "game-physics.webp"
+    },
+    {
+      "slug": "game-ending-cutscene",
+      "prompt": "Use case: stylized-concept. Asset type: a single square game-development course module icon for Godot Forge. Subject: a cinematic clapperboard with a glowing triangular play symbol and a short curling film strip, representing ENDING CUTSCENE. Style: premium hand-painted fantasy game inventory icon, crisp sculpted silhouette, restrained dimensional shading, dark emerald and charcoal materials, warm ivory edge highlights, lime green light and a small violet accent, polished but not photorealistic or cute. Composition: one centered compact emblem, generous 14% empty padding on every edge, readable at 88 pixels. Scene/backdrop: genuinely transparent background. No words, letters, numbers, logos, borders, circular badge, scenery or watermark. One icon only, not a sheet.",
+      "source": "/Users/kennethphang/.codex/generated_images/01a0c1e8-9457-7470-a43e-fa6e95abf14e/exec-1bad7190-a8f6-41b1-a453-3ea95d26f981.png",
+      "file": "game-ending-cutscene.webp"
+    },
+    {
+      "slug": "credits",
+      "prompt": "Use case: stylized-concept. Asset type: a single square game-development course module icon for Godot Forge. Subject: a partly unrolled ivory parchment with a feather quill and small celebratory star, no writing on the parchment, representing GAME CREDITS. Style: premium hand-painted fantasy game inventory icon, crisp sculpted silhouette, restrained dimensional shading, dark emerald and charcoal materials, warm ivory edge highlights, lime green light and a small violet accent, polished but not photorealistic or cute. Composition: one centered compact emblem, generous 14% empty padding on every edge, readable at 88 pixels. Scene/backdrop: genuinely transparent background. No words, letters, numbers, logos, borders, circular badge, scenery or watermark. One icon only, not a sheet.",
+      "source": "/Users/kennethphang/.codex/generated_images/01a0c1e8-9457-7470-a43e-fa6e95abf14e/exec-74045331-bf1e-480d-a47a-36e11f905a9a.png",
+      "file": "credits.webp"
+    },
+    {
+      "slug": "marketplace-system",
+      "prompt": "Use case: stylized-concept. Asset type: a single square game-development course module icon for Godot Forge. Subject: a small enchanted merchant stall with a striped emerald awning and two gold coins, representing IN-GAME MARKETPLACE. Style: premium hand-painted fantasy game inventory icon, crisp sculpted silhouette, restrained dimensional shading, dark emerald and charcoal materials, warm ivory edge highlights, lime green light and a small violet accent, polished but not photorealistic or cute. Composition: one centered compact emblem, generous 14% empty padding on every edge, readable at 88 pixels. Scene/backdrop: genuinely transparent background. No words, letters, numbers, logos, borders, circular badge, scenery or watermark. One icon only, not a sheet.",
+      "source": "/Users/kennethphang/.codex/generated_images/01a0c1e8-9457-7470-a43e-fa6e95abf14e/exec-84170af4-48bb-48da-b586-5f9bb4ed9275.png",
+      "file": "marketplace-system.webp"
+    },
+    {
+      "slug": "game-achievement",
+      "prompt": "Use case: stylized-concept. Asset type: a single square game-development course module icon for Godot Forge. Subject: one ornate golden achievement medal mounted on a compact dark emerald shield, with a luminous lime-green five-point star in the medal center and restrained violet gem accent, representing GAME ACHIEVEMENTS and milestone rewards. Style: premium hand-painted fantasy game inventory icon matching the existing Godot Forge module icon family; crisp sculpted silhouette, fine gold and charcoal material details, restrained dimensional shading, warm ivory edge highlights, polished but not photorealistic or cute. Composition: one centered compact emblem, generous 14% empty padding on every edge, readable at 88 pixels. Scene/backdrop: genuinely transparent background. Constraints: no words, letters, numbers, logos, borders, circular badge, scenery, extra emblems, or watermark. One icon only, not a sheet.",
+      "source": "originals/game-achievement.png",
+      "file": "game-achievement.webp"
+    },
+    {
+      "slug": "game-leaderboard",
+      "prompt": "Use case: stylized-concept. Asset type: a single square game-development course module icon for Godot Forge. Subject: a compact three-step victory podium with clearly different heights, a small golden laurel wreath around the tallest center step and a luminous lime-green crystal at its peak, representing GAME LEADERBOARDS and ranked scores. Style: premium hand-painted fantasy game inventory icon matching the existing Godot Forge module icon family; crisp sculpted silhouette, dark emerald and charcoal stone materials, fine gold trim, restrained dimensional shading, warm ivory edge highlights and a small violet accent, polished but not photorealistic or cute. Composition: one centered compact emblem, generous 14% empty padding on every edge, readable at 88 pixels. Scene/backdrop: genuinely transparent background. Constraints: no text, letters, numbers, logos, borders, circular badge, scenery, people, extra podiums, or watermark. One icon only, not a sheet.",
+      "source": "originals/game-leaderboard.png",
+      "file": "game-leaderboard.webp"
+    },
+    {
+      "slug": "local-coop",
+      "prompt": "Use case: stylized-concept. Asset type: a single square transparent bitmap module icon for the Godot Forge game-development course landing page. Input image: the existing gamepad icon is a style reference only; match its polished hand-painted fantasy game-inventory icon rendering, sculpted dark emerald and charcoal surfaces, fine warm ivory edge highlights, restrained dimensional shading, luminous lime accents, and small violet details. Primary request: create a distinctly new LOCAL CO-OP icon, not a variation of the reference controller. Subject: two compact matching fantasy game controllers angled slightly toward each other, clearly side-by-side as a cooperative pair, with two distinct glowing player indicators (one lime green, one violet) and a subtle shared-screen/link motif between them. Composition: centered, balanced, bold recognizable silhouette at small 88-pixel display size, generous transparent padding around all edges. Constraints: genuinely transparent background; exactly two controllers; no text, letters, numbers, logos, border, circle badge, scenery, extra objects, or watermark; one icon only.",
+      "source": "originals/local-coop.png",
+      "file": "local-coop.webp"
+    },
+    {
+      "slug": "multiplayer-game",
+      "prompt": "Use case: stylized-concept. Asset type: a single square transparent bitmap module icon for the Godot Forge game-development course landing page. Input image: the existing gamepad icon is a style reference only; match its polished hand-painted fantasy game-inventory icon rendering, sculpted dark emerald and charcoal surfaces, fine warm ivory edge highlights, restrained dimensional shading, luminous lime accents, and small violet details. Primary request: create a distinctly new ONLINE MULTIPLAYER icon, visually different from a local co-op pair. Subject: three separate compact emerald-and-violet fantasy player tokens or small shield-shaped avatars arranged in a triangular network, connected by fine luminous lime links to a single small central network node; make the three players and their shared online connection immediately legible. Composition: centered, balanced, bold recognizable silhouette at small 88-pixel display size, generous transparent padding around all edges. Constraints: genuinely transparent background; exactly three player tokens and one central connection node; no game controllers, text, letters, numbers, logos, border, circle badge, scenery, extra objects, or watermark; one icon only.",
+      "source": "originals/multiplayer-game.png",
+      "file": "multiplayer-game.webp"
+    },
+    {
+      "slug": "final-game",
+      "prompt": "Use case: stylized-concept. Asset type: a single square game-development course module icon for Godot Forge. Subject: a polished golden victory trophy with a luminous lime crystal and a small gamepad motif, representing COMPLETED FINAL GAME. Style: premium hand-painted fantasy game inventory icon, crisp sculpted silhouette, restrained dimensional shading, dark emerald and charcoal materials, warm ivory edge highlights, lime green light and a small violet accent, polished but not photorealistic or cute. Composition: one centered compact emblem, generous 14% empty padding on every edge, readable at 88 pixels. Scene/backdrop: genuinely transparent background. No words, letters, numbers, logos, borders, circular badge, scenery or watermark. One icon only, not a sheet.",
+      "source": "/Users/kennethphang/.codex/generated_images/01a0c1e8-9457-7470-a43e-fa6e95abf14e/exec-5a99d202-53b0-434a-96ef-614ab25c7564.png",
+      "file": "final-game.webp"
+    },
+    {
+      "slug": "math-stem-physics-quiz",
+      "prompt": "Use case: stylized-concept. Asset type: a single square game-development course module icon for Godot Forge. Subject: a compact open exercise notebook with a geometric triangle and an atom symbol rising above it, representing MATH STEM AND PHYSICS QUIZ. Style: premium hand-painted fantasy game inventory icon, crisp sculpted silhouette, restrained dimensional shading, dark emerald and charcoal materials, warm ivory edge highlights, lime green light and a small violet accent, polished but not photorealistic or cute. Composition: one centered compact emblem, generous 14% empty padding on every edge, readable at 88 pixels. Scene/backdrop: genuinely transparent background. No words, letters, numbers, logos, borders, circular badge, scenery or watermark. One icon only, not a sheet.",
+      "source": "/Users/kennethphang/.codex/generated_images/01a0c1e8-9457-7470-a43e-fa6e95abf14e/exec-6614909a-3679-428f-97d4-0c5510eab8e8.png",
+      "file": "math-stem-physics-quiz.webp"
+    },
+    {
+      "slug": "setup-godot-with-ai",
+      "prompt": "Use case: stylized-concept. Asset type: a single square game-development course module icon for Godot Forge. Subject: a compact dark emerald game-editor window with one tiny grass-topped 2D platform inside, a sculpted brass configuration gear at its lower corner, and a small luminous violet AI spark assisting above the window, representing SETUP GODOT WITH AI. Style: premium hand-painted fantasy game inventory icon matching the existing Godot Forge module icon family; crisp sculpted silhouette, charcoal and emerald materials, fine gold trim, warm ivory edge highlights and lime-green light, polished but not photorealistic or cute. Composition: one centered compact emblem, generous 14% empty padding on every edge, readable at 88 pixels. Scene/backdrop: genuinely transparent background. Constraints: no words, letters, numbers, logos, recognizable Godot logo, borders, circular badge, scenery, people, or watermark. One icon only, not a sheet.",
+      "source": "originals/setup-godot-with-ai.png",
+      "file": "setup-godot-with-ai.webp"
+    }
+  ]
+}

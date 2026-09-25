@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <script src="/brand-storage.js"></script>
+    <link rel="stylesheet" href="/toast.css" />
+    <script src="/toast.js" defer></script>
+    <link rel="stylesheet" href="/module-reset.css" />
+    <script src="/module-reset.js" defer></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Design an unforgettable 2D game boss with guided image generation." />
+    <title>Boss Creation · Godot Forge</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../character-creation/styles.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <div class="module-shell">
+      <header class="module-header"><a class="back-link" href="/">← GODOT FORGE / LEARNING PATH</a><span class="chapter-label">CHAPTER 03 / BOSS CREATION</span><a class="home-mark" href="/" aria-label="Godot Forge home">✦</a></header>
+      <main>
+        <section class="module-intro"><div><p class="eyebrow">BOSS DESIGN LAB</p><h1>Make the fight<br /><em>unforgettable.</em></h1><p class="intro-copy">Turn a dangerous idea into a boss with an iconic silhouette, readable phases, and a game-ready animation sheet.</p></div><div class="intro-note"><span class="status-dot"></span><span>CODEX DIRECTION / GPT IMAGE SPRITE SHEET</span></div></section>
+        <section class="creative-brief-card"><div class="card-header"><span><i class="live-dot"></i><span>START WITH A THREAT</span></span><span>BOSS LAB</span></div><div class="creative-brief-body"><label for="creative-prompt">Describe the boss you imagine</label><textarea id="creative-prompt" maxlength="1800" placeholder="An exiled storm king in shattered gold armour, carrying a bell that calls lightning…"></textarea><div class="template-row"><label for="boss-template">Quick test template</label><select id="boss-template"><option value="">— Choose a boss archetype —</option><option value="storm">Storm king</option><option value="void">Void matriarch</option><option value="iron">Iron colossus</option></select><button id="load-template" class="small-action" type="button">LOAD TEMPLATE</button></div></div></section>
+        <div class="boss-workspace"><section class="chat-card"><div class="card-header"><span><i class="live-dot"></i><span>BOSS GUIDE</span></span><span id="step-count">01 / 06</span></div><div id="chat-log" class="chat-log" aria-live="polite"></div><form id="answer-form" class="answer-form"><div id="choice-list" class="choice-list"></div><div class="answer-row"><input id="answer-input" type="text" maxlength="500" placeholder="Type your answer..." /><button class="send-button" type="submit">↗</button></div></form></section><section class="profile-card boss-direction-card"><div class="card-header"><span>BOSS DIRECTION</span><span id="direction-status" class="profile-status">WAITING</span></div><p id="direction-empty" class="profile-empty">Complete the guide, then forge the boss direction.</p><div id="boss-direction" class="boss-direction"></div><div class="prompt-output-card"><div class="prompt-output-header"><span>GENERATION PROMPT</span><button id="copy-prompt" type="button">COPY</button></div><p id="generated-prompt" class="generated-prompt">Your boss prompt will appear here.</p></div><button id="build-direction" class="primary-action" type="button" disabled>FORGE BOSS DIRECTION</button></section></div>
+        <section id="production-workspace" class="production-workspace" hidden><div class="production-heading"><div><p class="eyebrow">BOSS SPRITE SHEET</p><h2>Make an entrance.</h2></div><p>Transparent 8 × 7 atlas: steady idle, eight-frame walk and run, plus four-frame attack, hurt, death, and enrage. Separate guided passes keep movement and combat readable.</p></div><div class="boss-output"><div class="boss-preview-wrap"><img id="boss-preview" alt="Generated boss sprite sheet" hidden /><canvas id="boss-animation-preview" width="256" height="256" aria-label="Animated boss sprite preview" hidden></canvas><p id="boss-placeholder">Forge the direction, then generate the boss sprite sheet.</p></div><div class="boss-actions"><p id="generation-status" role="status"></p><label class="boss-animation-label" for="boss-animation-select" hidden>ANIMATION</label><select id="boss-animation-select" hidden></select><button id="play-boss-animation" class="small-action" type="button" hidden>PAUSE</button><button id="generate-boss" class="primary-action" type="button">GENERATE BOSS SPRITE SHEET</button><a id="download-boss" class="small-action" hidden download>DOWNLOAD PNG</a><button id="save-boss-to-final-game" class="small-action" type="button" hidden>SAVE TO FINAL GAME</button><button id="complete-module" class="small-action" type="button">MARK MODULE COMPLETE</button></div></div><section class="library-card"><div class="card-header"><span>BOSS SPRITE SHEET LIBRARY</span><span id="library-count">0 FILES</span></div><div id="boss-library" class="boss-library"><p class="profile-empty">No boss sprite sheets yet.</p></div></section></section>
+      </main>
+    </div>
+  </body>
+</html>

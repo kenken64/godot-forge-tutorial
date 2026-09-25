@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Collect ten gold coins and a heart to score points and reveal an animated leaderboard." />
+    <title>Leaderboards · Godot Forge</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/toast.css" />
+    <link rel="stylesheet" href="/module-reset.css" />
+    <link rel="stylesheet" href="/game-leaderboard/styles.css" />
+    <script src="/brand-storage.js"></script>
+    <script src="/toast.js" defer></script>
+    <script src="/module-reset.js" defer></script>
+    <script src="/game-leaderboard/app.js" defer></script>
+  </head>
+  <body data-module="game-leaderboard">
+    <div class="leaderboard-shell">
+      <header class="module-header">
+        <a class="back-link" href="/" data-i18n="back">← GODOT FORGE / LEARNING PATH</a>
+        <span class="chapter-label" data-i18n="chapter">CHAPTER 16 / LEADERBOARDS</span>
+        <div class="language-toggle" role="group" aria-label="Language" data-i18n-aria="language">
+          <button type="button" data-locale="en" aria-pressed="true">EN</button><button type="button" data-locale="zh" aria-pressed="false">中文</button><button type="button" data-locale="ms" aria-pressed="false">BM</button>
+        </div>
+      </header>
+      <main>
+        <section class="intro" aria-labelledby="page-title">
+          <p class="eyebrow" data-i18n="eyebrow">PLAYABLE SYSTEM / SCORING</p>
+          <h1 id="page-title" data-i18n="title">Climb the board.</h1>
+          <p data-i18n="intro">Collect all 10 gold coins and the heart. Every pickup adds points; a finished run reveals your place on the animated leaderboard.</p>
+        </section>
+        <div class="module-tabs" role="tablist" aria-label="Leaderboard module views" data-i18n-aria="tabsLabel">
+          <button id="tab-play" type="button" role="tab" aria-selected="true" aria-controls="play-panel" data-tab="play" data-i18n="playTab">SCORE RUN</button>
+          <button id="tab-board" type="button" role="tab" aria-selected="false" aria-controls="board-panel" data-tab="board"><span data-i18n="boardTab">LEADERBOARD</span> <span id="tab-board-score">—</span></button>
+        </div>
+        <section id="play-panel" class="tab-panel" role="tabpanel" aria-labelledby="tab-play">
+          <div class="play-layout">
+            <div class="game-column">
+              <div class="game-topline"><span data-i18n="arenaEyebrow">DUSK RUN / SCORE CHALLENGE</span><span class="image-model">ART: GPT IMAGE 2.5 SUNBURST</span></div>
+              <div class="arena">
+                <canvas id="leaderboard-stage" width="960" height="520" tabindex="0" role="application" aria-describedby="controls-help" aria-label="Move through the forest with left and right arrows or A and D, collect ten gold coins and one heart for points. Space or up jumps." data-i18n-aria="canvasLabel">A forest score run with an explorer, coins, and a heart.</canvas>
+                <div class="game-hud" aria-label="Score run progress" data-i18n-aria="hudLabel">
+                  <div class="hud-pill"><img src="https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/game-achievement/images/gold-coin.webp" alt="" /><span data-i18n="goldLabel">GOLD</span><strong id="gold-count">0 / 10</strong></div>
+                  <div class="hud-pill"><img src="https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/game-achievement/images/heart-pickup.webp" alt="" /><span data-i18n="heartLabel">HEART</span><strong id="heart-count">0 / 1</strong></div>
+                  <div class="hud-pill score-pill"><span data-i18n="scoreLabel">SCORE</span><strong id="score-count">0</strong></div>
+                </div>
+                <div class="unlock-reveal" id="unlock-reveal" role="status" aria-live="assertive" hidden><div class="reveal-ring"></div><div class="reveal-ring ring-two"></div><img src="https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/game-leaderboard/images/leaderboard-crest.webp" alt="" /><div class="reveal-copy"><span data-i18n="unlockedLabel">LEADERBOARD UNLOCKED</span><strong id="reveal-title" data-i18n="revealTitle">150 points!</strong><p data-i18n="revealDetail">Your result is joining the ranking.</p></div></div>
+              </div>
+              <div class="game-footer"><p id="game-status" role="status" aria-live="polite">Move right and collect every pickup.</p><span id="world-progress">0%</span></div>
+              <div class="mobile-controls" aria-label="Touch game controls" data-i18n-aria="touchControlsLabel"><button type="button" data-control="left" aria-label="Move left" data-i18n-aria="leftControl">←</button><button type="button" data-control="right" aria-label="Move right" data-i18n-aria="rightControl">→</button><button type="button" data-control="jump" aria-label="Jump" data-i18n-aria="jumpControl">↑ <span data-i18n="jumpLabel">JUMP</span></button></div>
+              <p class="controls-help" id="controls-help" data-i18n="controlsHelp">← → or A / D to move · Space / ↑ to jump · touch buttons work too.</p>
+            </div>
+            <aside class="mission-panel" aria-labelledby="mission-title">
+              <p class="eyebrow" data-i18n="missionEyebrow">SCORING RULES</p><h2 id="mission-title" data-i18n="missionTitle">Every pickup counts.</h2>
+              <div class="mission-item"><img src="https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/game-achievement/images/gold-coin.webp" alt="" /><div><strong data-i18n="goldMission">10 gold coins</strong><p data-i18n="goldMissionCopy">+10 points each · 100 points total</p></div></div>
+              <div class="mission-item"><img src="https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/game-achievement/images/heart-pickup.webp" alt="" /><div><strong data-i18n="heartMission">1 heart</strong><p data-i18n="heartMissionCopy">+50 points · finish with 150</p></div></div>
+              <div class="mission-progress"><span data-i18n="runLabel">RUN PROGRESS</span><strong id="pickup-count">0 / 11</strong><div class="progress-track"><span id="run-progress"></span></div></div>
+              <button id="view-board" class="secondary-button" type="button" data-i18n="viewBoard">VIEW LEADERBOARD →</button>
+            </aside>
+          </div>
+          <div class="completion-row"><p id="completion-status" data-i18n="completionHint">Collect all 11 pickups to reveal the leaderboard.</p><button id="complete-module" type="button" disabled data-i18n="complete">COMPLETE MODULE</button></div>
+        </section>
+        <section id="board-panel" class="tab-panel" role="tabpanel" aria-labelledby="tab-board" hidden>
+          <div class="section-heading"><div><p class="eyebrow" data-i18n="boardEyebrow">PRACTICE RANKING</p><h2 data-i18n="boardTitle">Leaderboard</h2><p data-i18n="boardIntro">Finish the run to reveal your result among three demo rivals.</p></div><strong id="board-total">—</strong></div>
+          <div class="leaderboard-card is-locked" id="leaderboard-card" aria-label="Leaderboard locked" data-i18n-aria="boardLockedAria">
+            <div class="board-hero"><img id="board-crest" src="https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/game-leaderboard/images/leaderboard-crest.webp" alt="" /><div><span id="board-state" class="board-state" data-i18n="locked">LOCKED</span><h3 id="board-message" data-i18n="lockedTitle">Your result is waiting.</h3><p id="board-detail" data-i18n="lockedDetail">Collect 10 gold and the heart to bring this leaderboard into color.</p></div></div>
+            <div class="ranking-head"><span data-i18n="rankLabel">RANK</span><span data-i18n="playerLabel">PLAYER</span><span data-i18n="pointsLabel">POINTS</span></div>
+            <div id="ranking-list" class="ranking-list" role="list" aria-label="Practice ranking" data-i18n-aria="rankingLabel">
+              <div class="rank-row" role="listitem"><span>#1</span><strong>Fenn</strong><span>120</span></div>
+              <div class="rank-row" role="listitem"><span>#2</span><strong>Mira</strong><span>100</span></div>
+              <div class="rank-row" role="listitem"><span>#3</span><strong>Ash</strong><span>80</span></div>
+            </div>
+          </div>
+          <p class="board-note" data-i18n="boardNote">Demo rivals make this a local practice ranking. Your saved result belongs to this browser's learner profile.</p>
+          <button id="back-to-play" class="primary-button" type="button" data-i18n="backToPlay">← BACK TO THE RUN</button>
+        </section>
+        <section class="lesson-section" aria-labelledby="lesson-title"><p class="eyebrow" data-i18n="lessonEyebrow">HOW IT WORKS</p><h2 id="lesson-title" data-i18n="lessonTitle">A clear rule makes a fair ranking.</h2><div class="lesson-grid"><p data-i18n="ruleCopy">A gold coin is worth 10 points. The heart is worth 50. The finished score is always 150.</p><p data-i18n="saveCopy">Each unique pickup is saved once. The result and its color return when the page reloads.</p></div><p class="art-credit" data-i18n="artCredit">Arena and leaderboard crest generated with GPT Image 2.5 Sunburst. Coin, heart, and explorer reuse Sunburst game art.</p><div class="prompt-collection"><details class="prompt-card"><summary data-i18n="arenaPrompt">Dusk Arena prompt</summary><pre>Use case: stylized-concept
+Asset type: wide background for a playable side-view 2D forest leaderboard challenge
+Primary request: A beautiful enchanted woodland sprint course at dusk, with layered deep teal trees, distant violet hills, subtle lantern-like fireflies, mossy stone arches, and one broad level grassy path spanning the entire lower quarter. Clear silhouette and quiet negative space behind a small running character and item pickups. Premium polished pixel-art-inspired game illustration that belongs beside a young hooded forest explorer with a teal scarf. Cinematic amber light near the horizon, soft turquoise moonlight above.
+Composition: full-bleed landscape, useful when cropped to a 16:9 game canvas; the path must span the whole width.
+Constraints: no characters, coins, hearts, trophy, leaderboard, badges, icons, game interface, text, letters, numbers, logos, watermarks, or floating platforms.</pre></details><details class="prompt-card"><summary data-i18n="crestPrompt">Leaderboard Crest prompt</summary><pre>Use case: stylized-concept
+Asset type: transparent full-color leaderboard crest for a fantasy forest 2D game
+Primary request: Exactly one premium competitive trophy emblem: a radiant gold cup with a small emerald inset, short symmetrical laurel branches, and a few tiny warm star glints. Bold readable silhouette with crisp layered metalwork and a polished pixel-art-inspired game icon style. This is the earned full-color version; the interface will render it in grayscale until the score challenge is complete. Readable at 120 pixels.
+Composition: one centered trophy emblem with generous transparent padding on every side.
+Constraints: genuinely transparent alpha background; no scene, floor, shadow, podium, extra trophies, coin, heart, text, numerals, letters, watermark, UI panel, or external frame.</pre></details></div></section>
+      </main>
+    </div>
+  </body>
+</html>

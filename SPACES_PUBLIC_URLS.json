@@ -1,0 +1,1062 @@
+{
+  "bucket": "godot-forge",
+  "region": "sgp1",
+  "prefix": "2d-game-development",
+  "assets": [
+    {
+      "localPath": "character-creation/data/HHGFqJwWoAA_aF-.webp",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/character-creation/data/HHGFqJwWoAA_aF-.webp",
+      "sizeBytes": 71676
+    },
+    {
+      "localPath": "character-creation/data/ember-sage-gait-v2.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/character-creation/data/ember-sage-gait-v2.png",
+      "sizeBytes": 1351102
+    },
+    {
+      "localPath": "character-creation/data/ember-sage-sprite-sheet-fixed.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/character-creation/data/ember-sage-sprite-sheet-fixed.png",
+      "sizeBytes": 2101263
+    },
+    {
+      "localPath": "character-creation/data/ember-sage-sprite-sheet-v2.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/character-creation/data/ember-sage-sprite-sheet-v2.png",
+      "sizeBytes": 2777168
+    },
+    {
+      "localPath": "character-creation/data/gait-pose-guide.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/character-creation/data/gait-pose-guide.png",
+      "sizeBytes": 55882
+    },
+    {
+      "localPath": "character-creation/data/moon-scout-gait-v2.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/character-creation/data/moon-scout-gait-v2.png",
+      "sizeBytes": 1378161
+    },
+    {
+      "localPath": "character-creation/data/moon-scout-sprite-sheet-fixed.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/character-creation/data/moon-scout-sprite-sheet-fixed.png",
+      "sizeBytes": 2436519
+    },
+    {
+      "localPath": "character-creation/data/moon-scout-sprite-sheet-v2.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/character-creation/data/moon-scout-sprite-sheet-v2.png",
+      "sizeBytes": 3210968
+    },
+    {
+      "localPath": "character-creation/data/storm-warden-gait-v2.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/character-creation/data/storm-warden-gait-v2.png",
+      "sizeBytes": 1150847
+    },
+    {
+      "localPath": "character-creation/data/storm-warden-reference-chroma.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/character-creation/data/storm-warden-reference-chroma.png",
+      "sizeBytes": 1467145
+    },
+    {
+      "localPath": "character-creation/data/storm-warden-reference.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/character-creation/data/storm-warden-reference.png",
+      "sizeBytes": 1145423
+    },
+    {
+      "localPath": "character-creation/data/storm-warden-sprite-sheet-fixed.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/character-creation/data/storm-warden-sprite-sheet-fixed.png",
+      "sizeBytes": 2152403
+    },
+    {
+      "localPath": "character-creation/data/storm-warden-sprite-sheet-v2.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/character-creation/data/storm-warden-sprite-sheet-v2.png",
+      "sizeBytes": 2615037
+    },
+    {
+      "localPath": "character-creation/data/storm-warden-sprite-sheet.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/character-creation/data/storm-warden-sprite-sheet.png",
+      "sizeBytes": 2029175
+    },
+    {
+      "localPath": "credits/images/boar-charge.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/credits/images/boar-charge.png",
+      "sizeBytes": 2641299
+    },
+    {
+      "localPath": "credits/images/boar-charge.webp",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/credits/images/boar-charge.webp",
+      "sizeBytes": 233344
+    },
+    {
+      "localPath": "credits/images/canopy-leap.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/credits/images/canopy-leap.png",
+      "sizeBytes": 2830438
+    },
+    {
+      "localPath": "credits/images/canopy-leap.webp",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/credits/images/canopy-leap.webp",
+      "sizeBytes": 292548
+    },
+    {
+      "localPath": "credits/images/crystal-spring.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/credits/images/crystal-spring.png",
+      "sizeBytes": 2661636
+    },
+    {
+      "localPath": "credits/images/crystal-spring.webp",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/credits/images/crystal-spring.webp",
+      "sizeBytes": 233600
+    },
+    {
+      "localPath": "credits/images/grove-bridge.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/credits/images/grove-bridge.png",
+      "sizeBytes": 2807945
+    },
+    {
+      "localPath": "credits/images/grove-bridge.webp",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/credits/images/grove-bridge.webp",
+      "sizeBytes": 270820
+    },
+    {
+      "localPath": "credits/images/guardian-encounter.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/credits/images/guardian-encounter.png",
+      "sizeBytes": 2833752
+    },
+    {
+      "localPath": "credits/images/guardian-encounter.webp",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/credits/images/guardian-encounter.webp",
+      "sizeBytes": 262946
+    },
+    {
+      "localPath": "credits/images/heart-tree.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/credits/images/heart-tree.png",
+      "sizeBytes": 2731699
+    },
+    {
+      "localPath": "credits/images/heart-tree.webp",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/credits/images/heart-tree.webp",
+      "sizeBytes": 251972
+    },
+    {
+      "localPath": "enemies-ai/images/mossback-boar.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/enemies-ai/images/mossback-boar.png",
+      "sizeBytes": 1675684
+    },
+    {
+      "localPath": "enemies-ai/images/thornling.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/enemies-ai/images/thornling.png",
+      "sizeBytes": 1701372
+    },
+    {
+      "localPath": "game-achievement/images/forest-arena.webp",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/game-achievement/images/forest-arena.webp",
+      "sizeBytes": 307080
+    },
+    {
+      "localPath": "game-achievement/images/gold-badge.webp",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/game-achievement/images/gold-badge.webp",
+      "sizeBytes": 64784
+    },
+    {
+      "localPath": "game-achievement/images/gold-coin.webp",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/game-achievement/images/gold-coin.webp",
+      "sizeBytes": 20524
+    },
+    {
+      "localPath": "game-achievement/images/heart-badge.webp",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/game-achievement/images/heart-badge.webp",
+      "sizeBytes": 78460
+    },
+    {
+      "localPath": "game-achievement/images/heart-pickup.webp",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/game-achievement/images/heart-pickup.webp",
+      "sizeBytes": 10228
+    },
+    {
+      "localPath": "game-controls/images/training-dummy.webp",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/game-controls/images/training-dummy.webp",
+      "sizeBytes": 51708
+    },
+    {
+      "localPath": "game-ending-cutscene/images/dialogue-portraits.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/game-ending-cutscene/images/dialogue-portraits.png",
+      "sizeBytes": 2475229
+    },
+    {
+      "localPath": "game-ending-cutscene/images/dialogue-portraits.webp",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/game-ending-cutscene/images/dialogue-portraits.webp",
+      "sizeBytes": 317968
+    },
+    {
+      "localPath": "game-ending-cutscene/images/ending-awaken.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/game-ending-cutscene/images/ending-awaken.png",
+      "sizeBytes": 2564555
+    },
+    {
+      "localPath": "game-ending-cutscene/images/ending-awaken.webp",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/game-ending-cutscene/images/ending-awaken.webp",
+      "sizeBytes": 343564
+    },
+    {
+      "localPath": "game-ending-cutscene/images/ending-dormant.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/game-ending-cutscene/images/ending-dormant.png",
+      "sizeBytes": 2116131
+    },
+    {
+      "localPath": "game-ending-cutscene/images/ending-dormant.webp",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/game-ending-cutscene/images/ending-dormant.webp",
+      "sizeBytes": 232538
+    },
+    {
+      "localPath": "game-ending-cutscene/images/final-boss-comic.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/game-ending-cutscene/images/final-boss-comic.png",
+      "sizeBytes": 2460307
+    },
+    {
+      "localPath": "game-ending-cutscene/images/final-boss-comic.webp",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/game-ending-cutscene/images/final-boss-comic.webp",
+      "sizeBytes": 319622
+    },
+    {
+      "localPath": "game-ending-cutscene/images/shrine-choice.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/game-ending-cutscene/images/shrine-choice.png",
+      "sizeBytes": 2044026
+    },
+    {
+      "localPath": "game-ending-cutscene/images/shrine-choice.webp",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/game-ending-cutscene/images/shrine-choice.webp",
+      "sizeBytes": 228268
+    },
+    {
+      "localPath": "game-leaderboard/images/dusk-arena.webp",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/game-leaderboard/images/dusk-arena.webp",
+      "sizeBytes": 234422
+    },
+    {
+      "localPath": "game-leaderboard/images/leaderboard-crest.webp",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/game-leaderboard/images/leaderboard-crest.webp",
+      "sizeBytes": 171900
+    },
+    {
+      "localPath": "game-physics/images/boulder.webp",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/game-physics/images/boulder.webp",
+      "sizeBytes": 83394
+    },
+    {
+      "localPath": "game-physics/images/forest-pool.webp",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/game-physics/images/forest-pool.webp",
+      "sizeBytes": 274006
+    },
+    {
+      "localPath": "game-physics/images/swimmer.webp",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/game-physics/images/swimmer.webp",
+      "sizeBytes": 62792
+    },
+    {
+      "localPath": "game-physics/images/water-splash.webp",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/game-physics/images/water-splash.webp",
+      "sizeBytes": 144138
+    },
+    {
+      "localPath": "game-settings/images/forest-hud-icons.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/game-settings/images/forest-hud-icons.png",
+      "sizeBytes": 1180114
+    },
+    {
+      "localPath": "items-spawning/images/forest-pickups.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/items-spawning/images/forest-pickups.png",
+      "sizeBytes": 660016
+    },
+    {
+      "localPath": "items-spawning/images/forest-sword-explorer.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/items-spawning/images/forest-sword-explorer.png",
+      "sizeBytes": 2738612
+    },
+    {
+      "localPath": "items-spawning/images/grove-brute-sprites.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/items-spawning/images/grove-brute-sprites.png",
+      "sizeBytes": 1272791
+    },
+    {
+      "localPath": "marketplace-system/images/emerald-ring.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/marketplace-system/images/emerald-ring.png",
+      "sizeBytes": 1171850
+    },
+    {
+      "localPath": "marketplace-system/images/emerald-ring.webp",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/marketplace-system/images/emerald-ring.webp",
+      "sizeBytes": 31458
+    },
+    {
+      "localPath": "marketplace-system/images/heartseed-necklace.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/marketplace-system/images/heartseed-necklace.png",
+      "sizeBytes": 758193
+    },
+    {
+      "localPath": "marketplace-system/images/heartseed-necklace.webp",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/marketplace-system/images/heartseed-necklace.webp",
+      "sizeBytes": 24398
+    },
+    {
+      "localPath": "marketplace-system/images/leafsteel-sword.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/marketplace-system/images/leafsteel-sword.png",
+      "sizeBytes": 830853
+    },
+    {
+      "localPath": "marketplace-system/images/leafsteel-sword.webp",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/marketplace-system/images/leafsteel-sword.webp",
+      "sizeBytes": 20812
+    },
+    {
+      "localPath": "marketplace-system/images/mossweave-armor.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/marketplace-system/images/mossweave-armor.png",
+      "sizeBytes": 1879999
+    },
+    {
+      "localPath": "marketplace-system/images/mossweave-armor.webp",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/marketplace-system/images/mossweave-armor.webp",
+      "sizeBytes": 42084
+    },
+    {
+      "localPath": "output/imagegen/parallax/explorer-jump-v1.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/output/imagegen/parallax/explorer-jump-v1.png",
+      "sizeBytes": 2141687
+    },
+    {
+      "localPath": "output/imagegen/parallax/explorer-walk-run-v1.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/output/imagegen/parallax/explorer-walk-run-v1.png",
+      "sizeBytes": 1674488
+    },
+    {
+      "localPath": "output/imagegen/parallax/explorer-walk-run-v2.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/output/imagegen/parallax/explorer-walk-run-v2.png",
+      "sizeBytes": 2246193
+    },
+    {
+      "localPath": "output/imagegen/parallax/parallax-far.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/output/imagegen/parallax/parallax-far.png",
+      "sizeBytes": 2602431
+    },
+    {
+      "localPath": "output/imagegen/parallax/parallax-midground.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/output/imagegen/parallax/parallax-midground.png",
+      "sizeBytes": 2060553
+    },
+    {
+      "localPath": "output/imagegen/parallax/practice-explorer.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/output/imagegen/parallax/practice-explorer.png",
+      "sizeBytes": 1095418
+    },
+    {
+      "localPath": "output/imagegen/parallax/practice-tiles-props.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/output/imagegen/parallax/practice-tiles-props.png",
+      "sizeBytes": 1659083
+    },
+    {
+      "localPath": "output/imagegen/physics-boulder.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/output/imagegen/physics-boulder.png",
+      "sizeBytes": 1596204
+    },
+    {
+      "localPath": "output/imagegen/physics-forest-pool.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/output/imagegen/physics-forest-pool.png",
+      "sizeBytes": 2608161
+    },
+    {
+      "localPath": "output/imagegen/physics-swimmer.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/output/imagegen/physics-swimmer.png",
+      "sizeBytes": 832167
+    },
+    {
+      "localPath": "output/imagegen/physics-water-splash.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/output/imagegen/physics-water-splash.png",
+      "sizeBytes": 1169551
+    },
+    {
+      "localPath": "output/imagegen/training-dummy.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/output/imagegen/training-dummy.png",
+      "sizeBytes": 1304100
+    },
+    {
+      "localPath": "parallax-tiling-map/images/originals/parallax-far.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/parallax-tiling-map/images/originals/parallax-far.png",
+      "sizeBytes": 2602431
+    },
+    {
+      "localPath": "parallax-tiling-map/images/originals/parallax-midground.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/parallax-tiling-map/images/originals/parallax-midground.png",
+      "sizeBytes": 2060553
+    },
+    {
+      "localPath": "parallax-tiling-map/images/originals/practice-explorer-jump.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/parallax-tiling-map/images/originals/practice-explorer-jump.png",
+      "sizeBytes": 2141687
+    },
+    {
+      "localPath": "parallax-tiling-map/images/originals/practice-explorer-motion-sheet-v2.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/parallax-tiling-map/images/originals/practice-explorer-motion-sheet-v2.png",
+      "sizeBytes": 529685
+    },
+    {
+      "localPath": "parallax-tiling-map/images/originals/practice-explorer-motion-sheet.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/parallax-tiling-map/images/originals/practice-explorer-motion-sheet.png",
+      "sizeBytes": 296257
+    },
+    {
+      "localPath": "parallax-tiling-map/images/originals/practice-explorer-walk-run.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/parallax-tiling-map/images/originals/practice-explorer-walk-run.png",
+      "sizeBytes": 2246193
+    },
+    {
+      "localPath": "parallax-tiling-map/images/originals/practice-explorer.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/parallax-tiling-map/images/originals/practice-explorer.png",
+      "sizeBytes": 1095418
+    },
+    {
+      "localPath": "parallax-tiling-map/images/originals/practice-tiles-props.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/parallax-tiling-map/images/originals/practice-tiles-props.png",
+      "sizeBytes": 1659083
+    },
+    {
+      "localPath": "parallax-tiling-map/images/parallax-far.webp",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/parallax-tiling-map/images/parallax-far.webp",
+      "sizeBytes": 181506
+    },
+    {
+      "localPath": "parallax-tiling-map/images/parallax-midground.webp",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/parallax-tiling-map/images/parallax-midground.webp",
+      "sizeBytes": 243292
+    },
+    {
+      "localPath": "parallax-tiling-map/images/practice-explorer-motion-v2.webp",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/parallax-tiling-map/images/practice-explorer-motion-v2.webp",
+      "sizeBytes": 221998
+    },
+    {
+      "localPath": "parallax-tiling-map/images/practice-explorer-motion.webp",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/parallax-tiling-map/images/practice-explorer-motion.webp",
+      "sizeBytes": 135150
+    },
+    {
+      "localPath": "parallax-tiling-map/images/practice-explorer.webp",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/parallax-tiling-map/images/practice-explorer.webp",
+      "sizeBytes": 13104
+    },
+    {
+      "localPath": "parallax-tiling-map/images/practice-tiles-props.webp",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/parallax-tiling-map/images/practice-tiles-props.webp",
+      "sizeBytes": 323602
+    },
+    {
+      "localPath": "storyline-engine/images/dialogue-bubble-key-v1.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/storyline-engine/images/dialogue-bubble-key-v1.png",
+      "sizeBytes": 1234289
+    },
+    {
+      "localPath": "storyline-engine/images/dialogue-bubble-stage.webp",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/storyline-engine/images/dialogue-bubble-stage.webp",
+      "sizeBytes": 23432
+    },
+    {
+      "localPath": "storyline-engine/images/dialogue-bubble-v1.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/storyline-engine/images/dialogue-bubble-v1.png",
+      "sizeBytes": 305797
+    },
+    {
+      "localPath": "storyline-engine/images/explorer-key-v1.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/storyline-engine/images/explorer-key-v1.png",
+      "sizeBytes": 994776
+    },
+    {
+      "localPath": "storyline-engine/images/explorer-stage.webp",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/storyline-engine/images/explorer-stage.webp",
+      "sizeBytes": 18630
+    },
+    {
+      "localPath": "storyline-engine/images/explorer-v1.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/storyline-engine/images/explorer-v1.png",
+      "sizeBytes": 410951
+    },
+    {
+      "localPath": "storyline-engine/images/grove-drought-stage.webp",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/storyline-engine/images/grove-drought-stage.webp",
+      "sizeBytes": 168696
+    },
+    {
+      "localPath": "storyline-engine/images/grove-drought-v1.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/storyline-engine/images/grove-drought-v1.png",
+      "sizeBytes": 3054958
+    },
+    {
+      "localPath": "storyline-engine/images/grove-flood-stage.webp",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/storyline-engine/images/grove-flood-stage.webp",
+      "sizeBytes": 180724
+    },
+    {
+      "localPath": "storyline-engine/images/grove-flood-v1.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/storyline-engine/images/grove-flood-v1.png",
+      "sizeBytes": 3097878
+    },
+    {
+      "localPath": "storyline-engine/images/grove-restored-stage.webp",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/storyline-engine/images/grove-restored-stage.webp",
+      "sizeBytes": 174192
+    },
+    {
+      "localPath": "storyline-engine/images/grove-restored-v1.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/storyline-engine/images/grove-restored-v1.png",
+      "sizeBytes": 2926175
+    },
+    {
+      "localPath": "storyline-engine/images/guardian-key-v1.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/storyline-engine/images/guardian-key-v1.png",
+      "sizeBytes": 1528244
+    },
+    {
+      "localPath": "storyline-engine/images/guardian-stage.webp",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/storyline-engine/images/guardian-stage.webp",
+      "sizeBytes": 40024
+    },
+    {
+      "localPath": "storyline-engine/images/guardian-v1.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/storyline-engine/images/guardian-v1.png",
+      "sizeBytes": 1109234
+    },
+    {
+      "localPath": "tmp/physics-desktop.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tmp/physics-desktop.png",
+      "sizeBytes": 1275114
+    },
+    {
+      "localPath": "tmp/physics-mobile.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tmp/physics-mobile.png",
+      "sizeBytes": 378358
+    },
+    {
+      "localPath": "tmp/physics-splash-stage.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tmp/physics-splash-stage.png",
+      "sizeBytes": 933672
+    },
+    {
+      "localPath": "tmp/physics-splash.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tmp/physics-splash.png",
+      "sizeBytes": 881475
+    },
+    {
+      "localPath": "tmp/physics-swimmer-ready.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tmp/physics-swimmer-ready.png",
+      "sizeBytes": 930877
+    },
+    {
+      "localPath": "tmp/physics-swimmer-splash.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tmp/physics-swimmer-splash.png",
+      "sizeBytes": 924171
+    },
+    {
+      "localPath": "tmp/swimmer-freestyle-forward.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tmp/swimmer-freestyle-forward.png",
+      "sizeBytes": 922427
+    },
+    {
+      "localPath": "tmp/swimmer-freestyle-recovery.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tmp/swimmer-freestyle-recovery.png",
+      "sizeBytes": 925374
+    },
+    {
+      "localPath": "tmp/swimmer-idle.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tmp/swimmer-idle.png",
+      "sizeBytes": 931115
+    },
+    {
+      "localPath": "tmp/swimmer-opposite-hands.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tmp/swimmer-opposite-hands.png",
+      "sizeBytes": 1314185
+    },
+    {
+      "localPath": "tmp/swimmer-stroke-full.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tmp/swimmer-stroke-full.png",
+      "sizeBytes": 925565
+    },
+    {
+      "localPath": "tmp/swimmer-stroke-half.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tmp/swimmer-stroke-half.png",
+      "sizeBytes": 922402
+    },
+    {
+      "localPath": "tutorial-web-app/images/module-icons/boss-creation.webp",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/images/module-icons/boss-creation.webp",
+      "sizeBytes": 26928
+    },
+    {
+      "localPath": "tutorial-web-app/images/module-icons/character-creation.webp",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/images/module-icons/character-creation.webp",
+      "sizeBytes": 20260
+    },
+    {
+      "localPath": "tutorial-web-app/images/module-icons/credits.webp",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/images/module-icons/credits.webp",
+      "sizeBytes": 19420
+    },
+    {
+      "localPath": "tutorial-web-app/images/module-icons/enemies-ai.webp",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/images/module-icons/enemies-ai.webp",
+      "sizeBytes": 20976
+    },
+    {
+      "localPath": "tutorial-web-app/images/module-icons/final-game.webp",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/images/module-icons/final-game.webp",
+      "sizeBytes": 22554
+    },
+    {
+      "localPath": "tutorial-web-app/images/module-icons/game-achievement.webp",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/images/module-icons/game-achievement.webp",
+      "sizeBytes": 18234
+    },
+    {
+      "localPath": "tutorial-web-app/images/module-icons/game-assets-creation.webp",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/images/module-icons/game-assets-creation.webp",
+      "sizeBytes": 25500
+    },
+    {
+      "localPath": "tutorial-web-app/images/module-icons/game-controls.webp",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/images/module-icons/game-controls.webp",
+      "sizeBytes": 16246
+    },
+    {
+      "localPath": "tutorial-web-app/images/module-icons/game-ending-cutscene.webp",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/images/module-icons/game-ending-cutscene.webp",
+      "sizeBytes": 18992
+    },
+    {
+      "localPath": "tutorial-web-app/images/module-icons/game-leaderboard.webp",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/images/module-icons/game-leaderboard.webp",
+      "sizeBytes": 16612
+    },
+    {
+      "localPath": "tutorial-web-app/images/module-icons/game-loop-engine.webp",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/images/module-icons/game-loop-engine.webp",
+      "sizeBytes": 25102
+    },
+    {
+      "localPath": "tutorial-web-app/images/module-icons/game-physics.webp",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/images/module-icons/game-physics.webp",
+      "sizeBytes": 17770
+    },
+    {
+      "localPath": "tutorial-web-app/images/module-icons/game-settings.webp",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/images/module-icons/game-settings.webp",
+      "sizeBytes": 16334
+    },
+    {
+      "localPath": "tutorial-web-app/images/module-icons/items-spawning.webp",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/images/module-icons/items-spawning.webp",
+      "sizeBytes": 15194
+    },
+    {
+      "localPath": "tutorial-web-app/images/module-icons/local-coop-multiplayer.webp",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/images/module-icons/local-coop-multiplayer.webp",
+      "sizeBytes": 19692
+    },
+    {
+      "localPath": "tutorial-web-app/images/module-icons/local-coop.webp",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/images/module-icons/local-coop.webp",
+      "sizeBytes": 34620
+    },
+    {
+      "localPath": "tutorial-web-app/images/module-icons/marketplace-system.webp",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/images/module-icons/marketplace-system.webp",
+      "sizeBytes": 21424
+    },
+    {
+      "localPath": "tutorial-web-app/images/module-icons/math-stem-physics-quiz.webp",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/images/module-icons/math-stem-physics-quiz.webp",
+      "sizeBytes": 19872
+    },
+    {
+      "localPath": "tutorial-web-app/images/module-icons/multiplayer-game.webp",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/images/module-icons/multiplayer-game.webp",
+      "sizeBytes": 29534
+    },
+    {
+      "localPath": "tutorial-web-app/images/module-icons/originals/boss-creation.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/images/module-icons/originals/boss-creation.png",
+      "sizeBytes": 1831956
+    },
+    {
+      "localPath": "tutorial-web-app/images/module-icons/originals/character-creation.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/images/module-icons/originals/character-creation.png",
+      "sizeBytes": 1432986
+    },
+    {
+      "localPath": "tutorial-web-app/images/module-icons/originals/credits.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/images/module-icons/originals/credits.png",
+      "sizeBytes": 1325203
+    },
+    {
+      "localPath": "tutorial-web-app/images/module-icons/originals/enemies-ai.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/images/module-icons/originals/enemies-ai.png",
+      "sizeBytes": 1486948
+    },
+    {
+      "localPath": "tutorial-web-app/images/module-icons/originals/final-game.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/images/module-icons/originals/final-game.png",
+      "sizeBytes": 1302281
+    },
+    {
+      "localPath": "tutorial-web-app/images/module-icons/originals/game-achievement.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/images/module-icons/originals/game-achievement.png",
+      "sizeBytes": 1388561
+    },
+    {
+      "localPath": "tutorial-web-app/images/module-icons/originals/game-assets-creation.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/images/module-icons/originals/game-assets-creation.png",
+      "sizeBytes": 1396141
+    },
+    {
+      "localPath": "tutorial-web-app/images/module-icons/originals/game-controls.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/images/module-icons/originals/game-controls.png",
+      "sizeBytes": 1244833
+    },
+    {
+      "localPath": "tutorial-web-app/images/module-icons/originals/game-ending-cutscene.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/images/module-icons/originals/game-ending-cutscene.png",
+      "sizeBytes": 1452533
+    },
+    {
+      "localPath": "tutorial-web-app/images/module-icons/originals/game-leaderboard.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/images/module-icons/originals/game-leaderboard.png",
+      "sizeBytes": 1098713
+    },
+    {
+      "localPath": "tutorial-web-app/images/module-icons/originals/game-loop-engine.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/images/module-icons/originals/game-loop-engine.png",
+      "sizeBytes": 1726795
+    },
+    {
+      "localPath": "tutorial-web-app/images/module-icons/originals/game-physics.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/images/module-icons/originals/game-physics.png",
+      "sizeBytes": 994074
+    },
+    {
+      "localPath": "tutorial-web-app/images/module-icons/originals/game-settings.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/images/module-icons/originals/game-settings.png",
+      "sizeBytes": 1208412
+    },
+    {
+      "localPath": "tutorial-web-app/images/module-icons/originals/items-spawning.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/images/module-icons/originals/items-spawning.png",
+      "sizeBytes": 1133229
+    },
+    {
+      "localPath": "tutorial-web-app/images/module-icons/originals/local-coop-multiplayer.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/images/module-icons/originals/local-coop-multiplayer.png",
+      "sizeBytes": 1168234
+    },
+    {
+      "localPath": "tutorial-web-app/images/module-icons/originals/local-coop.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/images/module-icons/originals/local-coop.png",
+      "sizeBytes": 1128778
+    },
+    {
+      "localPath": "tutorial-web-app/images/module-icons/originals/marketplace-system.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/images/module-icons/originals/marketplace-system.png",
+      "sizeBytes": 1376775
+    },
+    {
+      "localPath": "tutorial-web-app/images/module-icons/originals/math-stem-physics-quiz.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/images/module-icons/originals/math-stem-physics-quiz.png",
+      "sizeBytes": 1260811
+    },
+    {
+      "localPath": "tutorial-web-app/images/module-icons/originals/multiplayer-game.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/images/module-icons/originals/multiplayer-game.png",
+      "sizeBytes": 999326
+    },
+    {
+      "localPath": "tutorial-web-app/images/module-icons/originals/parallax-tiling-map.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/images/module-icons/originals/parallax-tiling-map.png",
+      "sizeBytes": 1025806
+    },
+    {
+      "localPath": "tutorial-web-app/images/module-icons/originals/setup-godot-with-ai.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/images/module-icons/originals/setup-godot-with-ai.png",
+      "sizeBytes": 1109276
+    },
+    {
+      "localPath": "tutorial-web-app/images/module-icons/originals/storyline-engine.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/images/module-icons/originals/storyline-engine.png",
+      "sizeBytes": 1114419
+    },
+    {
+      "localPath": "tutorial-web-app/images/module-icons/parallax-tiling-map.webp",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/images/module-icons/parallax-tiling-map.webp",
+      "sizeBytes": 15850
+    },
+    {
+      "localPath": "tutorial-web-app/images/module-icons/setup-godot-with-ai.webp",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/images/module-icons/setup-godot-with-ai.webp",
+      "sizeBytes": 16456
+    },
+    {
+      "localPath": "tutorial-web-app/images/module-icons/storyline-engine.webp",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/images/module-icons/storyline-engine.webp",
+      "sizeBytes": 17536
+    },
+    {
+      "localPath": "tutorial-web-app/storage/assets/08f93184-3806-4177-a887-1aec4882cf15.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/storage/assets/08f93184-3806-4177-a887-1aec4882cf15.png",
+      "sizeBytes": 1442594
+    },
+    {
+      "localPath": "tutorial-web-app/storage/assets/0a5ddea1-ee9f-429d-896a-13f40bae2328.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/storage/assets/0a5ddea1-ee9f-429d-896a-13f40bae2328.png",
+      "sizeBytes": 1180114
+    },
+    {
+      "localPath": "tutorial-web-app/storage/assets/0d2e9ae6-b34d-4a6f-bcbb-5d3db57a5750.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/storage/assets/0d2e9ae6-b34d-4a6f-bcbb-5d3db57a5750.png",
+      "sizeBytes": 1270684
+    },
+    {
+      "localPath": "tutorial-web-app/storage/assets/0f7b6ec9-b4e3-4bb0-96c8-f94ac672cfbe.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/storage/assets/0f7b6ec9-b4e3-4bb0-96c8-f94ac672cfbe.png",
+      "sizeBytes": 1249051
+    },
+    {
+      "localPath": "tutorial-web-app/storage/assets/12d7fa0f-e62d-4727-9637-d7a6901fea26.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/storage/assets/12d7fa0f-e62d-4727-9637-d7a6901fea26.png",
+      "sizeBytes": 1445014
+    },
+    {
+      "localPath": "tutorial-web-app/storage/assets/1a1f0b34-9e87-4859-9907-5b6ef81db5ca.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/storage/assets/1a1f0b34-9e87-4859-9907-5b6ef81db5ca.png",
+      "sizeBytes": 2359369
+    },
+    {
+      "localPath": "tutorial-web-app/storage/assets/1b887f2f-1463-49ed-8a6d-0c66dcdaccd8.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/storage/assets/1b887f2f-1463-49ed-8a6d-0c66dcdaccd8.png",
+      "sizeBytes": 324206
+    },
+    {
+      "localPath": "tutorial-web-app/storage/assets/29b7178c-c654-4fdd-8888-d728c159fdf4.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/storage/assets/29b7178c-c654-4fdd-8888-d728c159fdf4.png",
+      "sizeBytes": 2870149
+    },
+    {
+      "localPath": "tutorial-web-app/storage/assets/43ed6052-3388-4919-8a01-af056febb906-before-leg-fix.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/storage/assets/43ed6052-3388-4919-8a01-af056febb906-before-leg-fix.png",
+      "sizeBytes": 2755381
+    },
+    {
+      "localPath": "tutorial-web-app/storage/assets/43ed6052-3388-4919-8a01-af056febb906.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/storage/assets/43ed6052-3388-4919-8a01-af056febb906.png",
+      "sizeBytes": 2101263
+    },
+    {
+      "localPath": "tutorial-web-app/storage/assets/440a2120-dbd5-420d-a81f-29af8252a404-before-leg-fix.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/storage/assets/440a2120-dbd5-420d-a81f-29af8252a404-before-leg-fix.png",
+      "sizeBytes": 2813119
+    },
+    {
+      "localPath": "tutorial-web-app/storage/assets/440a2120-dbd5-420d-a81f-29af8252a404.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/storage/assets/440a2120-dbd5-420d-a81f-29af8252a404.png",
+      "sizeBytes": 2152403
+    },
+    {
+      "localPath": "tutorial-web-app/storage/assets/47794b6e-d780-4f73-a657-024d3940a627.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/storage/assets/47794b6e-d780-4f73-a657-024d3940a627.png",
+      "sizeBytes": 1466861
+    },
+    {
+      "localPath": "tutorial-web-app/storage/assets/5ad9076b-c0e0-45eb-bfc8-0fa853427e73.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/storage/assets/5ad9076b-c0e0-45eb-bfc8-0fa853427e73.png",
+      "sizeBytes": 1229731
+    },
+    {
+      "localPath": "tutorial-web-app/storage/assets/6033cc27-14ed-478e-97c0-49f77d612436.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/storage/assets/6033cc27-14ed-478e-97c0-49f77d612436.png",
+      "sizeBytes": 1701372
+    },
+    {
+      "localPath": "tutorial-web-app/storage/assets/6b6e74a1-7bf3-44e1-8b38-0a6f11e1d334.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/storage/assets/6b6e74a1-7bf3-44e1-8b38-0a6f11e1d334.png",
+      "sizeBytes": 2738612
+    },
+    {
+      "localPath": "tutorial-web-app/storage/assets/6df78641-3828-49f2-9f33-5cf8f4bdec1a.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/storage/assets/6df78641-3828-49f2-9f33-5cf8f4bdec1a.png",
+      "sizeBytes": 1675684
+    },
+    {
+      "localPath": "tutorial-web-app/storage/assets/73527ed2-7e3b-426e-b0c4-a3e7be83ed03.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/storage/assets/73527ed2-7e3b-426e-b0c4-a3e7be83ed03.png",
+      "sizeBytes": 2971475
+    },
+    {
+      "localPath": "tutorial-web-app/storage/assets/7482efd1-9738-4709-95e2-925f72e5e23c.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/storage/assets/7482efd1-9738-4709-95e2-925f72e5e23c.png",
+      "sizeBytes": 1196227
+    },
+    {
+      "localPath": "tutorial-web-app/storage/assets/77ad07f2-d60b-433a-b4c3-79840883d49e.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/storage/assets/77ad07f2-d60b-433a-b4c3-79840883d49e.png",
+      "sizeBytes": 3331385
+    },
+    {
+      "localPath": "tutorial-web-app/storage/assets/7fd75c12-1a99-4cb4-8a01-e663bf0319e1.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/storage/assets/7fd75c12-1a99-4cb4-8a01-e663bf0319e1.png",
+      "sizeBytes": 2766788
+    },
+    {
+      "localPath": "tutorial-web-app/storage/assets/8a3a5a75-a92a-4697-8153-3c2eb8560cb7.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/storage/assets/8a3a5a75-a92a-4697-8153-3c2eb8560cb7.png",
+      "sizeBytes": 1230617
+    },
+    {
+      "localPath": "tutorial-web-app/storage/assets/8c13118f-087c-4fc2-83e6-3462f38c5b1b.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/storage/assets/8c13118f-087c-4fc2-83e6-3462f38c5b1b.png",
+      "sizeBytes": 2334013
+    },
+    {
+      "localPath": "tutorial-web-app/storage/assets/9d71a2e3-2d0f-46c2-b6bb-028bb2ad9121.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/storage/assets/9d71a2e3-2d0f-46c2-b6bb-028bb2ad9121.png",
+      "sizeBytes": 1289761
+    },
+    {
+      "localPath": "tutorial-web-app/storage/assets/9e40a106-5ff6-489d-9b28-fc722b418194.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/storage/assets/9e40a106-5ff6-489d-9b28-fc722b418194.png",
+      "sizeBytes": 1703945
+    },
+    {
+      "localPath": "tutorial-web-app/storage/assets/a973b358-0497-46e2-bf04-76e27cc73d0c.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/storage/assets/a973b358-0497-46e2-bf04-76e27cc73d0c.png",
+      "sizeBytes": 1319240
+    },
+    {
+      "localPath": "tutorial-web-app/storage/assets/b4661507-79d5-4d10-9a6b-1ca19bdd32ce.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/storage/assets/b4661507-79d5-4d10-9a6b-1ca19bdd32ce.png",
+      "sizeBytes": 1448794
+    },
+    {
+      "localPath": "tutorial-web-app/storage/assets/bfd60a6d-b992-4a57-89db-b88ae36bb977.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/storage/assets/bfd60a6d-b992-4a57-89db-b88ae36bb977.png",
+      "sizeBytes": 1487047
+    },
+    {
+      "localPath": "tutorial-web-app/storage/assets/c3b8e836-bbda-45f4-ba2d-0bebadcfe303.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/storage/assets/c3b8e836-bbda-45f4-ba2d-0bebadcfe303.png",
+      "sizeBytes": 327593
+    },
+    {
+      "localPath": "tutorial-web-app/storage/assets/c5706f68-9ffb-46f7-9b86-e2256393d23f-before-animation-fix.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/storage/assets/c5706f68-9ffb-46f7-9b86-e2256393d23f-before-animation-fix.png",
+      "sizeBytes": 2783018
+    },
+    {
+      "localPath": "tutorial-web-app/storage/assets/c5706f68-9ffb-46f7-9b86-e2256393d23f-before-crossing-fix.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/storage/assets/c5706f68-9ffb-46f7-9b86-e2256393d23f-before-crossing-fix.png",
+      "sizeBytes": 2514910
+    },
+    {
+      "localPath": "tutorial-web-app/storage/assets/c5706f68-9ffb-46f7-9b86-e2256393d23f.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/storage/assets/c5706f68-9ffb-46f7-9b86-e2256393d23f.png",
+      "sizeBytes": 2436519
+    },
+    {
+      "localPath": "tutorial-web-app/storage/assets/c8b55773-61b6-44f4-8e93-208d809b5efd.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/storage/assets/c8b55773-61b6-44f4-8e93-208d809b5efd.png",
+      "sizeBytes": 1187773
+    },
+    {
+      "localPath": "tutorial-web-app/storage/assets/cd2e94e4-c95f-4762-887c-0b29e052d0df.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/storage/assets/cd2e94e4-c95f-4762-887c-0b29e052d0df.png",
+      "sizeBytes": 1330158
+    },
+    {
+      "localPath": "tutorial-web-app/storage/assets/ce5b5e21-e79b-4ba7-935e-4308a2b32cdc.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/storage/assets/ce5b5e21-e79b-4ba7-935e-4308a2b32cdc.png",
+      "sizeBytes": 2315319
+    },
+    {
+      "localPath": "tutorial-web-app/storage/assets/d420bbe6-3a61-4c3b-9967-c7eb7cce7818.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/storage/assets/d420bbe6-3a61-4c3b-9967-c7eb7cce7818.png",
+      "sizeBytes": 2636214
+    },
+    {
+      "localPath": "tutorial-web-app/storage/assets/da2313a9-c889-4f07-9415-28cc43abeb4c.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/storage/assets/da2313a9-c889-4f07-9415-28cc43abeb4c.png",
+      "sizeBytes": 250375
+    },
+    {
+      "localPath": "tutorial-web-app/storage/assets/dc22fed4-6c25-4575-b07d-384f14d428cf.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/storage/assets/dc22fed4-6c25-4575-b07d-384f14d428cf.png",
+      "sizeBytes": 2550615
+    },
+    {
+      "localPath": "tutorial-web-app/storage/assets/df4859d4-0174-44d7-8399-3e606b73ce6e.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/storage/assets/df4859d4-0174-44d7-8399-3e606b73ce6e.png",
+      "sizeBytes": 1390014
+    },
+    {
+      "localPath": "tutorial-web-app/storage/assets/ea1aa6bc-0ee0-455f-abe8-4fc86646cc8c.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/storage/assets/ea1aa6bc-0ee0-455f-abe8-4fc86646cc8c.png",
+      "sizeBytes": 3260292
+    },
+    {
+      "localPath": "tutorial-web-app/storage/assets/f00569ae-2386-4d2e-94d8-d31ae5fc8d68.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/storage/assets/f00569ae-2386-4d2e-94d8-d31ae5fc8d68.png",
+      "sizeBytes": 217687
+    },
+    {
+      "localPath": "tutorial-web-app/storage/story-voices/4cdd5c52204341c961b437229f0181b0508c1ff67da1089f33b00c9affdf7da5.mp3",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/storage/story-voices/4cdd5c52204341c961b437229f0181b0508c1ff67da1089f33b00c9affdf7da5.mp3",
+      "sizeBytes": 71424
+    },
+    {
+      "localPath": "tutorial-web-app/storage/story-voices/511468fb9ea4c5f4a92217c069fa3e29fb70c64224de0115ac5757bfb27b4106.mp3",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/storage/story-voices/511468fb9ea4c5f4a92217c069fa3e29fb70c64224de0115ac5757bfb27b4106.mp3",
+      "sizeBytes": 73728
+    },
+    {
+      "localPath": "tutorial-web-app/storage/story-voices/8dd096ca6deb37bee5c54e76a2aa1722639c667f0a99b7fceecb17d7c58e89a0.mp3",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/storage/story-voices/8dd096ca6deb37bee5c54e76a2aa1722639c667f0a99b7fceecb17d7c58e89a0.mp3",
+      "sizeBytes": 82560
+    },
+    {
+      "localPath": "tutorial-web-app/storage/story-voices/ab41c3c854019f70b6ee7c6c754e0c79ed07a96de14a3c4a5f352d1a139617bb.mp3",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/storage/story-voices/ab41c3c854019f70b6ee7c6c754e0c79ed07a96de14a3c4a5f352d1a139617bb.mp3",
+      "sizeBytes": 73728
+    },
+    {
+      "localPath": "tutorial-web-app/storage/story-voices/bd4e12c353d728c90e06110f6e07181d4b336672fdd4cbe3ec8300dc48788aa2.mp3",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/storage/story-voices/bd4e12c353d728c90e06110f6e07181d4b336672fdd4cbe3ec8300dc48788aa2.mp3",
+      "sizeBytes": 73728
+    },
+    {
+      "localPath": "tutorial-web-app/storage/story-voices/dfeeadd24e52c0b9d524578b14b5128cf22b92e92a3ffa9392905a5c5773c1e8.mp3",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/storage/story-voices/dfeeadd24e52c0b9d524578b14b5128cf22b92e92a3ffa9392905a5c5773c1e8.mp3",
+      "sizeBytes": 77568
+    },
+    {
+      "localPath": "tutorial-web-app/storage/story-voices/ff242ce514d3e121b99fe9a52fad18e3377a8280d3560b641b3099438f9d964b.mp3",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/storage/story-voices/ff242ce514d3e121b99fe9a52fad18e3377a8280d3560b641b3099438f9d964b.mp3",
+      "sizeBytes": 81792
+    },
+    {
+      "localPath": "tutorial-web-app/test-results/emberSage-movement.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/test-results/emberSage-movement.png",
+      "sizeBytes": 31880
+    },
+    {
+      "localPath": "tutorial-web-app/test-results/live-custom-walk-run.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/test-results/live-custom-walk-run.png",
+      "sizeBytes": 331746
+    },
+    {
+      "localPath": "tutorial-web-app/test-results/moonScout-movement.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/test-results/moonScout-movement.png",
+      "sizeBytes": 36991
+    },
+    {
+      "localPath": "tutorial-web-app/test-results/stormWarden-movement.png",
+      "publicUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/tutorial-web-app/test-results/stormWarden-movement.png",
+      "sizeBytes": 32972
+    }
+  ]
+}

@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <script src="/brand-storage.js"></script>
+    <link rel="stylesheet" href="/toast.css" />
+    <script src="/toast.js" defer></script>
+    <link rel="stylesheet" href="/module-reset.css" />
+    <script src="/module-reset.js" defer></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Create a 2D game character with a guided prompt chat." />
+    <title data-i18n="pageTitle">Character Creation — Godot Forge</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css?v=20260921-12" />
+  </head>
+  <body>
+    <div class="module-shell">
+      <header class="module-header">
+        <a class="back-link" href="/" data-i18n="backLink">← GODOT FORGE / LEARNING PATH</a>
+        <span class="chapter-label" data-i18n="chapterLabel">CHAPTER 01 / CHARACTER CREATION</span>
+        <div class="header-tools">
+          <div id="language-toggle" class="language-toggle" role="group" aria-label="Language" data-i18n-aria="language">
+            <button type="button" data-locale="en" data-i18n="localeEnglish" class="active">EN</button>
+            <button type="button" data-locale="zh" data-i18n="localeChinese">中文</button>
+            <button type="button" data-locale="ms" data-i18n="localeMalay">BM</button>
+          </div>
+          <a class="home-mark" href="/" aria-label="Godot Forge home">✦</a>
+        </div>
+      </header>
+
+      <main>
+        <section class="module-intro">
+          <div>
+            <p class="eyebrow" data-i18n="introEyebrow">A guided prompt chat for your first hero</p>
+            <h1><span data-i18n="titleFirst">Meet your</span><br /><em data-i18n="titleSecond">main character.</em></h1>
+            <p class="intro-copy" data-i18n="introCopy">Start with your own imagination. Codex will help shape it into a playable character, then we will turn the design into an animated sprite sheet.</p>
+          </div>
+          <div class="intro-note">
+            <span class="status-dot"></span>
+            <span data-i18n="introNote">PROMPT CHAT / CHARACTER LAB</span>
+          </div>
+        </section>
+
+        <section class="creative-brief-card">
+          <div class="card-header">
+            <span><i class="live-dot"></i><span data-i18n="creativeBriefTitle">START WITH YOUR IDEA</span></span>
+            <span data-i18n="proxyBadge">CODEX VIA PROXY</span>
+          </div>
+          <div class="creative-brief-body">
+            <label for="creative-prompt" data-i18n="creativePromptLabel">Describe the character you imagine</label>
+            <textarea id="creative-prompt" maxlength="1800" data-i18n-placeholder="creativePromptPlaceholder" placeholder="A tiny storm keeper who collects thunder in glass bottles..."></textarea>
+            <div class="template-row">
+              <label for="character-template" data-i18n="templateLabel">Quick test template</label>
+              <select id="character-template" aria-label="Quick test template" data-i18n-aria="templateAria"></select>
+              <button id="load-template" class="small-action" type="button" data-i18n="loadTemplate">LOAD TEMPLATE</button>
+              <button id="preview-template" class="small-action" type="button" data-i18n="previewTemplate" disabled>PREVIEW SAMPLE ANIMATION</button>
+              <span class="proxy-help" data-i18n="templateHelp">Prefills the guide so you can test character and sprite generation quickly.</span>
+            </div>
+          </div>
+        </section>
+
+        <div class="creation-workspace">
+          <section class="chat-card" aria-label="Character prompt chat" data-i18n-aria="chatAria">
+            <div class="card-header">
+              <span><i class="live-dot"></i><span data-i18n="guideTitle">CHARACTER GUIDE</span></span>
+              <span id="step-count">01 / 07</span>
+            </div>
+            <div id="chat-log" class="chat-log" aria-live="polite"></div>
+            <form id="answer-form" class="answer-form">
+              <div id="choice-list" class="choice-list"></div>
+              <div class="answer-row">
+                <input id="answer-input" type="text" autocomplete="off" maxlength="500" data-i18n-placeholder="answerPlaceholder" data-i18n-aria="answerAria" placeholder="Type your answer..." aria-label="Type your answer" />
+                <button id="send-button" class="send-button" type="submit"><span data-i18n="send">SEND</span> ↗</button>
+              </div>
+            </form>
+          </section>
+
+          <aside class="profile-card">
+            <div class="card-header">
+              <span data-i18n="profileTitle">CHARACTER PROFILE</span>
+              <span class="profile-status" data-i18n="draft">DRAFT</span>
+            </div>
+            <p id="profile-empty" class="profile-empty" data-i18n="profileEmpty">Your character will take shape here as you answer.</p>
+            <dl class="profile-fields">
+              <div><dt data-i18n="fieldRole">ROLE</dt><dd id="profile-role">—</dd></div>
+              <div><dt data-i18n="fieldName">NAME</dt><dd id="profile-name">—</dd></div>
+              <div><dt data-i18n="fieldFocusAttribute">FOCUS ATTRIBUTES</dt><dd id="profile-focusAttribute">—</dd></div>
+              <div><dt data-i18n="fieldWeapon">WEAPON</dt><dd id="profile-weapon">—</dd></div>
+              <div><dt data-i18n="fieldCombatStyle">COMBAT STYLE</dt><dd id="profile-combatStyle">—</dd></div>
+              <div><dt data-i18n="fieldWeakness">WEAKNESS / COST</dt><dd id="profile-weakness">—</dd></div>
+            </dl>
+            <div class="profile-actions">
+              <button id="build-character" class="primary-action" type="button" disabled data-i18n="buildCharacter">BUILD WITH CODEX</button>
+              <button id="save-character" class="save-button" type="button" disabled data-i18n="saveCharacter">SAVE CHARACTER</button>
+            </div>
+            <p id="save-status" class="save-status" role="status"></p>
+
+            <div id="generation-progress" class="generation-progress" role="status" aria-live="polite" aria-busy="true" hidden>
+              <div class="generation-progress-heading">
+                <span data-i18n="generationProgress">GENERATION IN PROGRESS</span>
+                <span id="generation-progress-stage">DESIGNING CHARACTER</span>
+              </div>
+              <div class="generation-progress-track" aria-hidden="true"><span></span></div>
+              <p id="generation-progress-detail" data-i18n="generationWait">Please wait while Codex and the image model finish.</p>
+            </div>
+
+            <div class="prompt-output-card">
+              <div class="prompt-output-header">
+                <span data-i18n="promptTitle">DESIGN PROMPT</span>
+                <button id="copy-prompt" type="button" data-i18n="copyPrompt">COPY</button>
+              </div>
+              <p id="generated-prompt" class="generated-prompt" data-i18n="promptEmpty">Complete the guide to generate a reusable character prompt.</p>
+            </div>
+          </aside>
+        </div>
+
+        <section id="production-workspace" class="production-workspace" hidden>
+          <div class="production-heading">
+            <div>
+              <p class="eyebrow" data-i18n="productionEyebrow">FROM IDEA TO MOTION</p>
+              <h2 data-i18n="productionTitle">Build the sprite sheet.</h2>
+            </div>
+            <button id="create-sprite" class="primary-action" type="button" disabled data-i18n="createSprite">CREATE SPRITE SHEET</button>
+          </div>
+
+          <div class="production-grid">
+            <article class="design-card">
+              <div class="card-header"><span data-i18n="codexDesignTitle">CODEX CHARACTER DESIGN</span><span id="design-status" class="profile-status" data-i18n="waiting">WAITING</span></div>
+              <div id="ai-design" class="ai-design empty-design" data-i18n="designEmpty">Build your character to see the visual and gameplay direction.</div>
+            </article>
+
+            <article class="sprite-card">
+              <div class="card-header"><span data-i18n="spriteSheetTitle">SPRITE SHEET</span><span id="sprite-status" class="profile-status" data-i18n="waiting">WAITING</span></div>
+              <div class="sprite-sheet-wrap"><canvas id="sprite-sheet-canvas" width="256" height="256" aria-label="Generated sprite sheet" data-i18n-aria="spriteSheetAria"></canvas></div>
+              <div class="animated-preview-wrap"><canvas id="sprite-preview-canvas" width="180" height="180" aria-label="Animated sprite preview" data-i18n-aria="spritePreviewAria"></canvas></div>
+              <div class="sprite-controls">
+                <label for="animation-select" data-i18n="animationLabel">Animation</label>
+                <select id="animation-select" aria-label="Animation" data-i18n-aria="animationAria"></select>
+                <button id="save-sprite" class="small-action" type="button" disabled data-i18n="saveSprite">SAVE PNG</button>
+                <button id="play-animation" class="small-action" type="button" data-i18n="pause">PAUSE</button>
+              </div>
+            </article>
+
+            <article class="movement-card">
+              <div class="card-header"><span data-i18n="movementTitle">CHARACTER MOVEMENT</span><span class="profile-status" data-i18n="keyboard">KEYBOARD CONTROLS</span></div>
+              <canvas id="movement-canvas" width="720" height="280" aria-label="Character movement preview" data-i18n-aria="movementAria"></canvas>
+              <div id="movement-keymap" class="movement-keymap" data-state="waiting" aria-label="Keyboard mapping" data-i18n-aria="keyboardMapAria">
+                <div class="movement-key" data-action="idle"><span data-i18n="idle">Idle</span><span class="movement-key-note" data-i18n="noKeys">NO MOVE KEY</span></div>
+                <div class="movement-key" data-action="left"><span data-i18n="moveLeft">Left</span><span class="movement-key-keys"><kbd>A</kbd><span>/</span><kbd>←</kbd></span></div>
+                <div class="movement-key" data-action="right"><span data-i18n="moveRight">Right</span><span class="movement-key-keys"><kbd>D</kbd><span>/</span><kbd>→</kbd></span></div>
+                <div class="movement-key" data-action="run"><span data-i18n="run">Run</span><span class="movement-key-keys"><kbd>SHIFT</kbd><span>+</span><span data-i18n="moveKeys">A / D / ← / →</span></span></div>
+                <div class="movement-key" data-action="jump"><span data-i18n="jump">Jump</span><span class="movement-key-keys"><kbd data-i18n="spaceKey">SPACE</kbd></span></div>
+                <div class="movement-key" data-action="attack"><span data-i18n="attack">Attack</span><span class="movement-key-keys"><kbd>J</kbd><span>/</span><kbd>F</kbd></span></div>
+                <div class="movement-key" data-action="death"><span data-i18n="death">Death</span><span class="movement-key-keys"><kbd>X</kbd></span></div>
+                <div class="movement-key" data-action="reset"><span data-i18n="resetIdle">Reset to Idle</span><span class="movement-key-keys"><kbd>I</kbd></span></div>
+              </div>
+              <div class="pose-controls" aria-label="Animation test controls" data-i18n-aria="poseControlsAria">
+                <button id="test-attack" class="small-action" type="button" data-i18n="testAttack">ATTACK</button>
+                <button id="test-death" class="small-action danger-action" type="button" data-i18n="testDeath">DIE</button>
+                <button id="reset-pose" class="small-action" type="button" data-i18n="resetPose">RESET</button>
+              </div>
+              <p class="movement-help" data-i18n="movementHelp">Release the movement keys to stand idle. Press I to return to Idle after an attack or defeat.</p>
+            </article>
+          </div>
+        </section>
+      </main>
+
+      <footer class="module-footer">
+        <span>GODOT FORGE / 2026</span>
+        <span data-i18n="footerMessage">BUILD THE HERO BEFORE THE WORLD</span>
+      </footer>
+    </div>
+    <script src="app.js?v=20260921-13"></script>
+  </body>
+</html>

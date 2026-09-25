@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Learn gamepad input with a live controller visualizer and customizable game controls." />
+    <title>Gamepad Controls · Godot Forge</title>
+    <script src="/brand-storage.js"></script>
+    <link rel="stylesheet" href="/toast.css" />
+    <link rel="stylesheet" href="/module-reset.css" />
+    <link rel="stylesheet" href="/game-controls/styles.css" />
+    <script src="/toast.js" defer></script>
+    <script src="/module-reset.js" defer></script>
+    <script src="/node_modules/phaser/dist/phaser.min.js" defer></script>
+    <script src="/game-controls/app.js" defer></script>
+    <script src="/game-controls/recommendation.js" defer></script>
+  </head>
+  <body data-module="game-controls">
+    <div class="controls-shell">
+      <header class="module-header">
+        <a href="/" class="back-link" id="back-link">← GODOT FORGE / LEARNING PATH</a>
+        <span id="chapter-label">CHAPTER 09 / GAMEPAD CONTROLS</span>
+        <div class="language-toggle" id="languages" role="group" aria-label="Language">
+          <button type="button" data-locale="en">EN</button><button type="button" data-locale="zh">中文</button><button type="button" data-locale="ms">BM</button>
+        </div>
+      </header>
+      <main>
+        <section class="intro">
+          <p class="eyebrow" id="intro-eyebrow">PLAYER INPUT / INTERACTIVE LAB</p>
+          <div class="intro-row"><div><h1 id="page-title">Make the controller yours.</h1><p id="intro-copy">Connect a gamepad to see live input, then customize the buttons for your game actions in Settings.</p></div><button type="button" class="settings-open" id="open-settings"><span aria-hidden="true">⚙</span><span id="settings-button-label">SETTINGS</span></button></div>
+        </section>
+        <section class="hardware-recommendation" aria-labelledby="gamepad-recommendation-title">
+          <div class="recommendation-copy">
+            <p class="eyebrow" id="gamepad-recommendation-eyebrow">OPTIONAL HARDWARE PICK</p>
+            <h2 id="gamepad-recommendation-title">A compact gamepad to try</h2>
+            <p id="gamepad-recommendation-copy">Recommended: 8BitDo Zero 2 Bluetooth Mini Gamepad. It is a very compact controller, so check the listing for device compatibility and current availability before purchasing.</p>
+            <small id="gamepad-recommendation-note">Amazon listing · Price and availability may vary by region.</small>
+          </div>
+          <a class="recommendation-link" id="gamepad-buy-link" href="https://www.amazon.com/dp/B081HML6MP?th=1" target="_blank" rel="noopener noreferrer">View on Amazon ↗</a>
+        </section>
+        <section class="learning-grid" aria-label="Learning goals">
+          <article><span id="learn-one-tag">01 / DETECT</span><h2 id="learn-one-title">Find the controller</h2><p id="learn-one-copy">The browser reports gamepad connection state and input each frame.</p></article>
+          <article><span id="learn-two-tag">02 / VISUALIZE</span><h2 id="learn-two-title">See every press</h2><p id="learn-two-copy">Pressed buttons and stick movement light up on the controller diagram.</p></article>
+          <article><span id="learn-three-tag">03 / REMAP</span><h2 id="learn-three-title">Choose your controls</h2><p id="learn-three-copy">Assign gamepad buttons to actions and save the mapping on this device.</p></article>
+        </section>
+        <section class="playtest-section" aria-labelledby="playtest-title">
+          <div class="section-heading"><div><p class="eyebrow" id="playtest-eyebrow">PLAYABLE MAPPING TEST</p><h2 id="playtest-title">Try every action in the grove.</h2><p class="section-intro" id="playtest-intro">Use your saved gamepad mapping, or the keyboard fallback, to move, jump, roll and attack the training dummy.</p></div><button type="button" class="secondary-button" id="restart-playtest">RESTART GAME</button></div>
+          <article class="practice-card">
+            <div class="practice-hud"><span id="practice-coins">CRYSTALS · 0 / 4</span><span id="practice-dummy">TRAINING DUMMY · 3 HP</span></div>
+            <div class="practice-stage" id="playtest-stage" aria-label="Playable gamepad test game"></div>
+            <div class="practice-footer"><p id="practice-message" role="status">Reach the dummy, collect crystals, and test each mapped move.</p><p id="keyboard-fallback">KEYBOARD · A/D OR ←/→ MOVE · SPACE JUMP · C/↓ ROLL · J ATTACK</p><p id="playtest-mapping-summary"></p><p id="dummy-art-credit">Training dummy art generated with GPT Image 2.5 Sunburst.</p></div>
+          </article>
+        </section>
+        <section class="prompt-section" aria-labelledby="prompts-title">
+          <div class="section-heading"><div><p class="eyebrow" id="prompts-eyebrow">PROMPTS FOR STUDENTS</p><h2 id="prompts-title">Prompts behind the controller test.</h2><p class="section-intro" id="prompts-intro">Read the implementation prompts and the generated training-dummy art prompt below.</p></div></div>
+          <div class="prompt-grid">
+            <article class="prompt-card"><div class="prompt-heading"><h3 id="control-prompt-title">Gamepad mapping and visualization</h3><button type="button" class="copy-prompt" data-prompt="controls" id="copy-controls-prompt">COPY PROMPT</button></div><pre id="controls-prompt" class="prompt-text"></pre></article>
+            <article class="prompt-card"><div class="prompt-heading"><h3 id="game-prompt-title">Playable controller test game</h3><button type="button" class="copy-prompt" data-prompt="game" id="copy-game-prompt">COPY PROMPT</button></div><pre id="game-prompt" class="prompt-text"></pre></article>
+            <article class="prompt-card"><div class="prompt-heading"><h3 id="dummy-prompt-title">Training dummy art prompt</h3><button type="button" class="copy-prompt" data-prompt="dummy" id="copy-dummy-prompt">COPY PROMPT</button></div><pre id="dummy-prompt" class="prompt-text">Use case: stylized-concept. Asset type: one stationary training-dummy sprite for a side-view 2D fantasy forest game. Exactly one sturdy wooden sparring dummy with a carved round head and clear circular target on its chest, rope-wrapped outstretched arms, metal rivets, and a heavy wooden base. Three-quarter side view facing left, full body visible, compact readable silhouette. Polished pixel-art-inspired painted game-sprite style matching a young woodland explorer. Warm oak and brass with subtle moss-green accents. Genuinely transparent alpha background. No scenery, floor, shadow, person, weapon, text, letters, numbers, logos, watermark, or extra objects.</pre></article>
+          </div>
+        </section>
+        <section class="lab-section" aria-labelledby="lab-title">
+          <div class="section-heading"><div><p class="eyebrow" id="lab-eyebrow">LIVE GAMEPAD VISUALIZER</p><h2 id="lab-title">Press a button to see it light up.</h2></div><div class="connection" id="connection" data-state="disconnected"><span class="connection-dot"></span><span id="connection-label">NO CONTROLLER CONNECTED</span></div></div>
+          <div class="lab-grid">
+            <article class="visualizer-card">
+              <div class="card-heading"><span id="controller-label">CONTROLLER 01</span><span id="mapping-state">DEFAULT MAPPING</span></div>
+              <div class="controller-wrap">
+                <svg class="controller" viewBox="0 0 760 360" role="img" aria-labelledby="controller-title controller-description">
+                  <title id="controller-title">Gamepad button visualizer</title>
+                  <desc id="controller-description">A game controller diagram. Press a physical controller button or click a diagram button to preview it.</desc>
+                  <defs><linearGradient id="shell" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#344b3f"/><stop offset="1" stop-color="#1a2b23"/></linearGradient></defs>
+                  <path class="controller-shell" d="M180 83 Q192 57 228 62 L324 78 Q380 88 436 78 L532 62 Q568 57 580 83 L634 232 Q647 270 621 286 Q596 300 572 272 L523 212 Q510 197 490 197 H270 Q250 197 237 212 L188 272 Q164 300 139 286 Q113 270 126 232 Z" />
+                  <path class="shell-detail" d="M278 120 Q380 148 482 120" />
+                  <g class="pad-control shoulder" data-index="4" role="button" tabindex="0" aria-label="Left bumper, button 5"><rect x="217" y="53" width="105" height="25" rx="12"/><text x="269" y="70">LB</text></g>
+                  <g class="pad-control shoulder" data-index="5" role="button" tabindex="0" aria-label="Right bumper, button 6"><rect x="438" y="53" width="105" height="25" rx="12"/><text x="490" y="70">RB</text></g>
+                  <g class="pad-control trigger" data-index="6" role="button" tabindex="0" aria-label="Left trigger, button 7"><rect x="202" y="87" width="91" height="17" rx="8"/><text x="247" y="100">LT</text></g>
+                  <g class="pad-control trigger" data-index="7" role="button" tabindex="0" aria-label="Right trigger, button 8"><rect x="467" y="87" width="91" height="17" rx="8"/><text x="512" y="100">RT</text></g>
+                  <g class="pad-control dpad" data-index="12" role="button" tabindex="0" aria-label="D-pad up, button 13"><rect x="215" y="143" width="34" height="34" rx="5"/><text x="232" y="166">▲</text></g>
+                  <g class="pad-control dpad" data-index="13" role="button" tabindex="0" aria-label="D-pad down, button 14"><rect x="215" y="211" width="34" height="34" rx="5"/><text x="232" y="234">▼</text></g>
+                  <g class="pad-control dpad" data-index="14" role="button" tabindex="0" aria-label="D-pad left, button 15"><rect x="181" y="177" width="34" height="34" rx="5"/><text x="198" y="200">◀</text></g>
+                  <g class="pad-control dpad" data-index="15" role="button" tabindex="0" aria-label="D-pad right, button 16"><rect x="249" y="177" width="34" height="34" rx="5"/><text x="266" y="200">▶</text></g>
+                  <g class="pad-control stick" data-index="10" role="button" tabindex="0" aria-label="Left stick press, button 11"><circle cx="327" cy="210" r="34"/><text x="327" y="215">L3</text></g>
+                  <g class="pad-control stick" data-index="11" role="button" tabindex="0" aria-label="Right stick press, button 12"><circle cx="433" cy="210" r="34"/><text x="433" y="215">R3</text></g>
+                  <g class="pad-control menu-button" data-index="8" role="button" tabindex="0" aria-label="Back, button 9"><rect x="349" y="132" width="25" height="14" rx="7"/><text x="361" y="128">BACK</text></g>
+                  <g class="pad-control menu-button" data-index="9" role="button" tabindex="0" aria-label="Start, button 10"><rect x="386" y="132" width="25" height="14" rx="7"/><text x="398" y="128">START</text></g>
+                  <g class="pad-control menu-button" data-index="16" role="button" tabindex="0" aria-label="Home or guide, button 17"><rect x="369" y="163" width="22" height="13" rx="7"/><text x="380" y="190">HOME</text></g>
+                  <g class="pad-control face-button" data-index="3" role="button" tabindex="0" aria-label="Y, button 4"><circle cx="532" cy="144" r="19"/><text x="532" y="150">Y</text></g>
+                  <g class="pad-control face-button" data-index="2" role="button" tabindex="0" aria-label="X, button 3"><circle cx="501" cy="175" r="19"/><text x="501" y="181">X</text></g>
+                  <g class="pad-control face-button" data-index="1" role="button" tabindex="0" aria-label="B, button 2"><circle cx="563" cy="175" r="19"/><text x="563" y="181">B</text></g>
+                  <g class="pad-control face-button" data-index="0" role="button" tabindex="0" aria-label="A, button 1"><circle cx="532" cy="206" r="19"/><text x="532" y="212">A</text></g>
+                  <g class="stick-axis" id="left-stick-axis"><circle cx="327" cy="210" r="9"/><path d="M327 210 L327 210"/></g>
+                  <g class="stick-axis" id="right-stick-axis"><circle cx="433" cy="210" r="9"/><path d="M433 210 L433 210"/></g>
+                </svg>
+              </div>
+              <div class="controller-footer"><span><i class="legend-dot pressed-dot"></i><span id="legend-pressed">PRESSED</span></span><span><i class="legend-dot mapped-dot"></i><span id="legend-mapped">MAPPED ACTION</span></span><span id="input-readout">—</span></div>
+            </article>
+            <aside class="status-card"><p class="eyebrow" id="input-eyebrow">INPUT FEEDBACK</p><h3 id="input-title">Nothing pressed yet.</h3><p id="input-copy">Connect a controller, or click any button on the diagram to try the visualizer.</p><div class="action-readout"><span id="action-label">MAPPED ACTION</span><strong id="action-value">—</strong></div><div class="stick-readout"><span><b>LS</b><span id="left-axis-value">X 0.00 · Y 0.00</span></span><span><b>RS</b><span id="right-axis-value">X 0.00 · Y 0.00</span></span></div></aside>
+          </div>
+        </section>
+        <section class="completion-row"><p id="completion-status">Test a controller input and customize at least one action mapping to complete this module.</p><button type="button" id="complete-module" disabled>COMPLETE MODULE</button></section>
+      </main>
+      <section class="settings-overlay" id="settings-overlay" role="dialog" aria-modal="true" aria-labelledby="settings-title" hidden>
+        <div class="settings-panel"><button class="close-settings" id="close-settings" type="button" aria-label="Close settings">×</button><p class="eyebrow" id="settings-eyebrow">PLAYER OPTIONS / INPUT</p><h2 id="settings-title">Customize gamepad</h2><p class="settings-description" id="settings-description">Choose a button for each game action, or listen for the next press on a connected gamepad.</p><div id="mapping-list" class="mapping-list"></div><div class="settings-actions"><button type="button" class="secondary-button" id="reset-mapping">RESET DEFAULTS</button><button type="button" class="primary-button" id="done-settings">DONE</button></div><p class="settings-note" id="settings-note">Mappings save automatically on this device.</p></div>
+      </section>
+    </div>
+  </body>
+</html>

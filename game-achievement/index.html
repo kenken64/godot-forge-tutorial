@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Collect ten gold coins and a healing heart, then unlock animated achievements." />
+    <title>Achievements · Godot Forge</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/toast.css" />
+    <link rel="stylesheet" href="/module-reset.css" />
+    <link rel="stylesheet" href="/game-achievement/styles.css" />
+    <script src="/brand-storage.js"></script>
+    <script src="/toast.js" defer></script>
+    <script src="/module-reset.js" defer></script>
+    <script src="/game-achievement/app.js" defer></script>
+  </head>
+  <body data-module="game-achievement">
+    <div class="achievement-shell">
+      <header class="module-header">
+        <a class="back-link" href="/" data-i18n="back">← GODOT FORGE / LEARNING PATH</a>
+        <span class="chapter-label" data-i18n="chapter">CHAPTER 15 / ACHIEVEMENTS</span>
+        <div class="language-toggle" id="languages" role="group" aria-label="Language" data-i18n-aria="language">
+          <button type="button" data-locale="en" aria-pressed="true">EN</button>
+          <button type="button" data-locale="zh" aria-pressed="false">中文</button>
+          <button type="button" data-locale="ms" aria-pressed="false">BM</button>
+        </div>
+      </header>
+      <main>
+        <section class="intro" aria-labelledby="page-title"><p class="eyebrow" data-i18n="eyebrow">PLAYABLE SYSTEM / REWARDS</p><h1 id="page-title" data-i18n="title">Earn it. See it shine.</h1><p data-i18n="intro">Collect 10 gold coins and a healing heart. Each milestone lights up an animated badge and stays earned when you return.</p></section>
+        <div class="module-tabs" role="tablist" aria-label="Achievement module views" data-i18n-aria="tabsLabel">
+          <button id="tab-play" type="button" role="tab" aria-selected="true" aria-controls="play-panel" data-tab="play" data-i18n="playTab">PLAY THE CHALLENGE</button>
+          <button id="tab-badges" type="button" role="tab" aria-selected="false" aria-controls="badges-panel" data-tab="badges"><span data-i18n="badgesTab">ACHIEVEMENTS</span> <span id="tab-earned-count">0 / 2</span></button>
+        </div>
+        <section id="play-panel" class="tab-panel" role="tabpanel" aria-labelledby="tab-play">
+          <div class="play-layout">
+            <div class="game-column">
+              <div class="game-topline"><span data-i18n="arenaEyebrow">FOREST RUN / TWO MILESTONES</span><span class="image-model">ART: GPT IMAGE 2.5 SUNBURST</span></div>
+              <div class="arena" id="arena">
+                <canvas id="achievement-stage" width="960" height="520" tabindex="0" role="application" aria-describedby="controls-help" aria-label="Run through the forest with left and right arrows or A and D. Collect ten gold coins and a heart. Space or up jumps." data-i18n-aria="canvasLabel">A forest game with coins, a heart, and an explorer.</canvas>
+                <div class="game-hud" aria-label="Game progress" data-i18n-aria="hudLabel"><div class="hud-pill"><img src="https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/game-achievement/images/gold-coin.webp" alt="" /><span data-i18n="goldLabel">GOLD</span><strong id="gold-count">0 / 10</strong></div><div class="hud-pill"><img src="https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/game-achievement/images/heart-pickup.webp" alt="" /><span data-i18n="hpLabel">HP</span><strong id="hp-count">2 / 3</strong></div></div>
+                <div class="unlock-reveal" id="unlock-reveal" role="status" aria-live="assertive" hidden><div class="reveal-ring"></div><div class="reveal-ring ring-two"></div><img id="reveal-art" src="https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/game-achievement/images/gold-badge.webp" alt="" /><div class="reveal-copy"><span data-i18n="unlockedLabel">ACHIEVEMENT UNLOCKED</span><strong id="reveal-title">Gold Collector</strong><p id="reveal-detail">You collected ten gold coins.</p></div></div>
+              </div>
+              <div class="game-footer"><p id="game-status" role="status" aria-live="polite">Move right to collect the gold and heart.</p><span id="world-progress">0%</span></div>
+              <div class="mobile-controls" aria-label="Touch game controls" data-i18n-aria="touchControlsLabel"><button type="button" data-control="left" aria-label="Move left" data-i18n-aria="leftControl">←</button><button type="button" data-control="right" aria-label="Move right" data-i18n-aria="rightControl">→</button><button type="button" data-control="jump" aria-label="Jump" data-i18n-aria="jumpControl">↑ <span data-i18n="jumpLabel">JUMP</span></button></div>
+              <p class="controls-help" id="controls-help" data-i18n="controlsHelp">← → or A / D to move · Space / ↑ to jump · touch buttons work too. Click the game to return keyboard focus.</p>
+            </div>
+            <aside class="mission-panel" aria-labelledby="mission-title"><p class="eyebrow" data-i18n="missionEyebrow">YOUR MISSION</p><h2 id="mission-title" data-i18n="missionTitle">Two small wins. Two bright badges.</h2><div class="mission-item"><img src="https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/game-achievement/images/gold-coin.webp" alt="" /><div><strong data-i18n="goldMission">Gather 10 gold</strong><p data-i18n="goldMissionCopy">Every coin moves the counter. The tenth unlocks a golden medal.</p></div></div><div class="mission-item"><img src="https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/game-achievement/images/heart-pickup.webp" alt="" /><div><strong data-i18n="heartMission">Find a healing heart</strong><p data-i18n="heartMissionCopy">The heart restores HP from 2 to 3 and unlocks the heart medal.</p></div></div><div class="mission-progress"><span data-i18n="earnedLabel">BADGES EARNED</span><strong id="earned-count">0 / 2</strong><div class="progress-track"><span id="earned-progress"></span></div></div><button id="view-badges" class="secondary-button" type="button" data-i18n="viewBadges">VIEW ACHIEVEMENTS →</button></aside>
+          </div>
+          <div class="completion-row"><p id="completion-status" data-i18n="completionHint">Earn both badges to finish this lesson.</p><button id="complete-module" type="button" disabled data-i18n="complete">COMPLETE MODULE</button></div>
+        </section>
+        <section id="badges-panel" class="tab-panel" role="tabpanel" aria-labelledby="tab-badges" hidden>
+          <div class="section-heading"><div><p class="eyebrow" data-i18n="collectionEyebrow">YOUR COLLECTION</p><h2 data-i18n="collectionTitle">Achievements</h2><p data-i18n="collectionIntro">Locked medals stay grey. Earn one and it blooms into full color.</p></div><strong id="collection-count">0 / 2</strong></div>
+          <div class="badge-grid">
+            <article class="badge-card is-locked" data-badge="gold"><div class="badge-art"><img src="https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/game-achievement/images/gold-badge.webp" alt="" /></div><div class="badge-content"><span class="badge-state" data-badge-state="gold">LOCKED</span><h3 data-i18n="goldBadgeTitle">Gold Collector</h3><p data-i18n="goldBadgeCopy">Collect all 10 gold coins in the forest run.</p><div class="badge-progress"><span id="gold-badge-progress">0 / 10</span><span data-i18n="goldUnit">GOLD</span></div><div class="progress-track"><span id="gold-badge-bar"></span></div></div></article>
+            <article class="badge-card is-locked" data-badge="heart"><div class="badge-art"><img src="https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/game-achievement/images/heart-badge.webp" alt="" /></div><div class="badge-content"><span class="badge-state" data-badge-state="heart">LOCKED</span><h3 data-i18n="heartBadgeTitle">Heart Restored</h3><p data-i18n="heartBadgeCopy">Collect a heart to bring your HP back to full.</p><div class="badge-progress"><span id="heart-badge-progress">0 / 1</span><span data-i18n="heartUnit">HEART</span></div><div class="progress-track"><span id="heart-badge-bar"></span></div></div></article>
+          </div>
+          <button id="back-to-play" class="primary-button" type="button" data-i18n="backToPlay">← BACK TO THE CHALLENGE</button>
+        </section>
+        <section class="lesson-section" aria-labelledby="lesson-title"><p class="eyebrow" data-i18n="lessonEyebrow">HOW IT WORKS</p><h2 id="lesson-title" data-i18n="lessonTitle">A milestone has a rule, a reward, and a memory.</h2><div class="lesson-grid"><p data-i18n="ruleCopy">The coin badge unlocks exactly when the tenth coin is collected. The heart badge unlocks when HP is restored.</p><p data-i18n="saveCopy">The game saves each pickup and earned badge. A return visit restores the same colors and counters.</p></div><p class="art-credit" data-i18n="artCredit">Forest scene and reward art generated with GPT Image 2.5 Sunburst; the explorer reuses a Sunburst character asset.</p><div class="prompt-collection"><details class="prompt-card"><summary data-i18n="arenaPrompt">Forest Arena prompt</summary><pre>Use case: stylized-concept
+Asset type: wide background for a playable side-view 2D forest collection game
+Primary request: A beautiful enchanted woodland clearing with layered emerald trees, distant soft mountains, mossy stone ruins, tiny warm fireflies, and a broad level grassy path across the lower quarter of the scene. The path is clear and readable for a character running and collecting items. Rich but uncluttered pixel-art-inspired game illustration, matching a young hooded forest explorer with a teal scarf. Warm late-afternoon sun shafts and teal forest shadows. Full-bleed landscape composition that crops gracefully to a 16:9 game canvas.
+Constraints: no characters, coins, hearts, badges, icons, game interface, text, letters, numbers, logos, or watermark. No floating platforms. The walkable path must span the full width.</pre></details><details class="prompt-card"><summary data-i18n="coinPrompt">Gold Coin prompt</summary><pre>Use case: stylized-concept
+Asset type: transparent gold pickup sprite for a 2D forest game
+Primary request: Exactly one chunky collectible gold coin, facing the viewer, with a luminous raised five-point star emblem, a beveled golden rim, warm amber highlights, and a crisp polished pixel-art-inspired game-sprite finish. Strong circular silhouette, readable when rendered at 34 pixels.
+Composition: centered object with generous transparent padding on every side.
+Constraints: genuinely transparent alpha background; no scenery, floor, shadow, extra coins, text, numerals, watermark, frame, or UI.</pre></details><details class="prompt-card"><summary data-i18n="heartPrompt">Heart Pickup prompt</summary><pre>Use case: stylized-concept
+Asset type: transparent HP heart pickup sprite for a 2D forest game
+Primary request: Exactly one bright ruby-red heart-shaped health pickup, with a small warm inner glow, a clean polished pixel-art-inspired game-sprite finish, and a bold symmetrical heart silhouette. It should read instantly as health at 34 pixels and match a fantasy woodland game.
+Composition: centered object with generous transparent padding on every side.
+Constraints: genuinely transparent alpha background; no scenery, floor, shadow, extra hearts, text, numerals, watermark, frame, medical cross, or UI.</pre></details><details class="prompt-card"><summary data-i18n="goldBadgePrompt">Gold Badge prompt</summary><pre>Use case: stylized-concept
+Asset type: transparent achievement badge art for collecting ten gold coins in a fantasy forest game
+Primary request: Exactly one ornate circular achievement medal, crafted in radiant gold with a central embossed gold coin and a small laurel wreath of ten tiny golden leaves around it. A few subtle star highlights, crisp layered metalwork, and a premium polished pixel-art-inspired game icon style. Bold silhouette and readable center at 120 pixels. This is the earned, full-color version; the interface will gray it out while locked.
+Composition: centered badge with generous transparent padding.
+Constraints: genuinely transparent alpha background; no scenery, extra badges, text, numbers, letters, watermark, UI panel, or border outside the medal.</pre></details><details class="prompt-card"><summary data-i18n="heartBadgePrompt">Heart Badge prompt</summary><pre>Use case: stylized-concept
+Asset type: transparent achievement badge art for collecting a healing heart in a fantasy forest game
+Primary request: Exactly one ornate circular achievement medal, crafted in rose gold and warm gold with a glowing ruby heart at its center and delicate leaf flourishes around it. A few subtle sparkles, crisp layered metalwork, and a premium polished pixel-art-inspired game icon style. Bold silhouette and readable center at 120 pixels. This is the earned, full-color version; the interface will gray it out while locked.
+Composition: centered badge with generous transparent padding.
+Constraints: genuinely transparent alpha background; no scenery, extra badges, text, numbers, letters, watermark, UI panel, or border outside the medal.</pre></details></div></section>
+      </main>
+    </div>
+  </body>
+</html>

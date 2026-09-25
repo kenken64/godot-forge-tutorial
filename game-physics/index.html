@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Explore gravity, impact speed, and energy by dropping a boulder into a forest pool." />
+    <title>Game Physics · Godot Forge</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/toast.css" />
+    <link rel="stylesheet" href="/module-reset.css" />
+    <link rel="stylesheet" href="/game-physics/styles.css" />
+    <script src="/brand-storage.js"></script>
+    <script src="/toast.js" defer></script>
+    <script src="/module-reset.js" defer></script>
+    <script src="/game-physics/app.js" defer></script>
+  </head>
+  <body data-module="game-physics">
+    <div class="physics-shell">
+      <header class="module-header">
+        <a class="back-link" href="/" data-i18n="back">← GODOT FORGE / LEARNING PATH</a>
+        <span class="chapter-label" data-i18n="chapter">CHAPTER 11 / GAME PHYSICS</span>
+        <div class="language-toggle" id="languages" role="group" aria-label="Language" data-i18n-aria="language">
+          <button type="button" data-locale="en" aria-pressed="true">EN</button>
+          <button type="button" data-locale="zh" aria-pressed="false">中文</button>
+          <button type="button" data-locale="ms" aria-pressed="false">BM</button>
+        </div>
+      </header>
+
+      <main>
+        <section class="intro" aria-labelledby="page-title">
+          <p class="eyebrow" data-i18n="eyebrow">A PHYSICS EXPERIMENT / WATER IMPACT</p>
+          <h1 id="page-title" data-i18n="title">Drop a boulder. Read the physics.</h1>
+          <p data-i18n="intro">Change the height, mass, and gravity. Watch the boulder splash into a forest pool while an explorer swims beside it.</p>
+        </section>
+
+        <section class="lesson-grid" aria-label="Physics ideas" data-i18n-aria="ideasLabel">
+          <article class="idea-card"><span>01 / <span data-i18n="gravityTag">GRAVITY</span></span><h2 data-i18n="gravityTitle">Speed grows during the fall</h2><p data-i18n="gravityCopy">With air resistance ignored, acceleration is constant: <strong>v = g × t</strong>.</p></article>
+          <article class="idea-card"><span>02 / <span data-i18n="energyTag">ENERGY</span></span><h2 data-i18n="energyTitle">Height and mass store energy</h2><p data-i18n="energyCopy">The impact energy is <strong>E = m × g × h</strong>. Mass changes energy, but not ideal fall time.</p></article>
+          <article class="idea-card"><span>03 / <span data-i18n="impactTag">IMPACT</span></span><h2 data-i18n="impactTitle">Motion meets the water</h2><p data-i18n="impactCopy">The measured fall drives the timing. The splash is a stylized visual response, not a fluid simulation.</p></article>
+        </section>
+
+        <section class="experiment" aria-labelledby="experiment-title">
+          <div class="section-heading"><div><p class="eyebrow" data-i18n="experimentEyebrow">INTERACTIVE EXPERIMENT</p><h2 id="experiment-title" data-i18n="experimentTitle">Boulder into water</h2></div><span class="model-badge" data-i18n="modelBadge">ART: GPT IMAGE 2.5 SUNBURST</span></div>
+          <div class="experiment-grid">
+            <aside class="control-panel" aria-labelledby="controls-title">
+              <h3 id="controls-title" data-i18n="controlsTitle">Set up the drop</h3>
+              <p data-i18n="controlsCopy">Change one value at a time to see what affects speed and what affects splash energy.</p>
+              <label class="slider-field" for="height-input"><span data-i18n="heightLabel">Drop height</span><output id="height-value" for="height-input">6.0 m</output></label>
+              <input id="height-input" type="range" min="2" max="8" step="0.5" value="6" />
+              <label class="slider-field" for="mass-input"><span data-i18n="massLabel">Boulder mass</span><output id="mass-value" for="mass-input">60 kg</output></label>
+              <input id="mass-input" type="range" min="20" max="120" step="10" value="60" />
+              <label class="slider-field" for="gravity-input"><span data-i18n="gravityLabel">Gravity</span><output id="gravity-value" for="gravity-input">9.8 m/s²</output></label>
+              <input id="gravity-input" type="range" min="4" max="15" step="0.1" value="9.8" />
+              <div class="control-actions"><button id="drop-button" class="primary-button" type="button" data-i18n="drop">DROP BOULDER ↓</button><button id="slow-button" class="secondary-button" type="button" aria-pressed="false" data-i18n="slowOff">SLOW MOTION: OFF</button></div>
+              <p class="control-note" data-i18n="controlNote">The boulder keeps the same visible size so you can compare how mass changes energy without changing the path.</p>
+            </aside>
+
+            <div class="visual-panel">
+              <div class="stage-wrap"><canvas id="physics-stage" width="960" height="600" tabindex="0" role="application" aria-describedby="swimmer-note" aria-label="Interactive forest pool: swim across the pool with left and right arrows, rise with up, and dive with down" data-i18n-aria="canvasLabel">A boulder falls into water beside a swimming explorer.</canvas><span class="stage-credit" data-i18n="stageCredit">FOREST POOL / GENERATED ART</span></div>
+              <p class="stage-status" id="stage-status" role="status" aria-live="polite">Ready. Press Drop Boulder to start.</p>
+              <div class="swimmer-controls"><p class="swimmer-note" id="swimmer-note" data-i18n="swimmerNote">← → swim across the pool · ↑ surface · ↓ dive · Click the pool after using sliders</p><p class="swimmer-depth"><span data-i18n="depthLabel">DIVE DEPTH</span> <output id="swimmer-depth">0.0 m</output></p></div>
+            </div>
+          </div>
+          <div class="readout-grid" aria-label="Physics readouts" data-i18n-aria="readoutsLabel">
+            <div class="readout"><span data-i18n="timeLabel">PREDICTED FALL TIME</span><strong id="time-value">1.11 s</strong><small data-i18n="timeFormula">t = √(2h / g)</small></div>
+            <div class="readout"><span data-i18n="speedLabel">BOULDER SPEED</span><strong id="speed-value">0.0 m/s</strong><small data-i18n="speedFormula">v = g × t; impact: √(2gh)</small></div>
+            <div class="readout"><span data-i18n="energyLabel">IMPACT ENERGY</span><strong id="energy-value">3,528 J</strong><small data-i18n="energyFormula">E = m × g × h</small></div>
+          </div>
+          <div class="completion-row"><p id="completion-status" data-i18n="completionHint">Make a drop to unlock module completion.</p><button id="complete-module" type="button" disabled data-i18n="complete">COMPLETE MODULE</button></div>
+        </section>
+
+        <section class="research-section" aria-labelledby="research-title">
+          <div class="section-heading"><div><p class="eyebrow" data-i18n="researchEyebrow">HOW THE DEMO WORKS</p><h2 id="research-title" data-i18n="researchTitle">Physics first, art on top</h2></div></div>
+          <p data-i18n="researchCopy">The falling position uses constant acceleration. The live speed and energy are calculated from the controls. Water spray and ripples are a visual interpretation of impact energy; real water entry also depends on shape, drag, and fluid flow.</p>
+          <p class="source-links"><a href="https://openstax.org/books/university-physics-volume-1/pages/3-5-free-fall" target="_blank" rel="noopener noreferrer" data-i18n="freeFallSource">OpenStax: Free Fall ↗</a><a href="https://openstax.org/books/college-physics/pages/7-3-gravitational-potential-energy" target="_blank" rel="noopener noreferrer" data-i18n="energySource">OpenStax: Gravitational Energy ↗</a><a href="https://developers.openai.com/api/docs/models/gpt-image-2.5-sunburst" target="_blank" rel="noopener noreferrer" data-i18n="modelSource">OpenAI Docs: Sunburst ↗</a></p>
+          <details class="prompt-details"><summary data-i18n="promptsSummary">See the exact image prompts</summary><div class="prompt-grid"><div><h3 data-i18n="poolPromptTitle">Forest pool background</h3><pre id="pool-prompt">Loading…</pre></div><div><h3 data-i18n="boulderPromptTitle">Transparent boulder sprite</h3><pre id="boulder-prompt">Loading…</pre></div><div><h3 data-i18n="splashPromptTitle">Transparent splash effect</h3><pre id="splash-prompt">Loading…</pre></div><div><h3 data-i18n="swimmerPromptTitle">Swimming explorer sprite</h3><pre id="swimmer-prompt">Loading…</pre></div></div></details>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

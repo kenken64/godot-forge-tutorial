@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Learn enemy perception, patrol, chase, and attack behavior in a playable Phaser demo." />
+    <title>Enemies &amp; AI · Godot Forge</title>
+    <link rel="stylesheet" href="/toast.css" />
+    <link rel="stylesheet" href="/module-reset.css" />
+    <link rel="stylesheet" href="/items-spawning/styles.css" />
+    <script src="/brand-storage.js"></script>
+    <script src="/toast.js" defer></script>
+    <script src="/module-reset.js" defer></script>
+    <script src="/node_modules/phaser/dist/phaser.min.js" defer></script>
+    <script src="/enemies-ai/app.js" defer></script>
+  </head>
+  <body data-module="enemies-ai">
+    <div class="module-shell">
+      <header class="module-header">
+        <a href="/" class="back-link" id="back-link">← GODOT FORGE / LEARNING PATH</a>
+        <span id="chapter-label">CHAPTER 07 / ENEMIES &amp; AI</span>
+        <div class="language-toggle" id="languages" role="group" aria-label="Language">
+          <button type="button" data-locale="en">EN</button><button type="button" data-locale="zh">中文</button><button type="button" data-locale="ms">BM</button>
+        </div>
+      </header>
+      <main>
+        <section class="intro">
+          <p class="eyebrow" id="intro-eyebrow">GAMEPLAY AI / PHASER DEMO</p>
+          <h1 id="page-title">Teach enemies to notice and pursue the player.</h1>
+          <p id="intro-copy">Approach the forest enemies to trigger their awareness. The Mossback Boar charges when you get close; the Thornling darts after you. Watch their state labels, then use your sword to make space.</p>
+        </section>
+        <section class="learning-section" aria-labelledby="learning-title">
+          <div class="section-heading"><p class="eyebrow" id="learning-eyebrow">THREE CORE IDEAS</p><h2 id="learning-title">What this system teaches</h2></div>
+          <div class="learning-grid">
+            <article><span id="sense-step">01 / PERCEPTION</span><h3 id="sense-title">Notice the player</h3><p id="sense-copy">A detection radius and vertical check decide when a nearby player is visible to an enemy.</p></article>
+            <article><span id="state-step">02 / STATE MACHINE</span><h3 id="state-title">Patrol, chase, recover</h3><p id="state-copy">Enemy state changes select movement, facing, and animation without mixing their rules.</p></article>
+            <article><span id="combat-step">03 / COMBAT FEEDBACK</span><h3 id="combat-title">Attack with a readable tell</h3><p id="combat-copy">Close-range attack timing, player health, hit reactions, and cooldowns make danger legible.</p></article>
+          </div>
+        </section>
+        <section class="prompt-section" aria-labelledby="prompts-title">
+          <div class="section-heading"><p class="eyebrow" id="prompts-eyebrow">AI ART DIRECTION / REUSABLE PROMPTS</p><h2 id="prompts-title">Two enemies, one forest style</h2><p id="prompts-intro">Review or copy the prompts used to generate these animation sheets. Prompts are available in English, Chinese, and Malay.</p></div>
+          <div class="prompt-grid">
+            <article class="prompt-card"><div class="prompt-card-heading"><div><span class="prompt-badge">GPT IMAGE 2.5 SUNBURST / ASSET PROMPT</span><h3 id="boar-prompt-title">Mossback Boar · wild boar</h3></div><button type="button" data-copy-prompt="boar">COPY PROMPT</button></div><pre class="prompt-text" id="boar-prompt"></pre></article>
+            <article class="prompt-card"><div class="prompt-card-heading"><div><span class="prompt-badge">GPT IMAGE 2.5 SUNBURST / ASSET PROMPT</span><h3 id="thornling-prompt-title">Thornling · root creature</h3></div><button type="button" data-copy-prompt="thornling">COPY PROMPT</button></div><pre class="prompt-text" id="thornling-prompt"></pre></article>
+          </div>
+        </section>
+        <section class="demo-section" aria-labelledby="demo-title">
+          <div class="section-heading demo-heading"><div><p class="eyebrow" id="demo-eyebrow">PLAYABLE ENEMY AI DEMO</p><h2 id="demo-title">Trigger the chase</h2></div><button type="button" class="restart-button" id="restart-demo">RESTART DEMO</button></div>
+          <div class="game-card">
+            <div class="game-hud" aria-live="polite"><span id="player-health">PLAYER · ♥♥♥</span><strong id="boar-state">MOSSBACK BOAR · PATROL</strong><strong id="thornling-state">THORNLING · PATROL</strong><span class="hud-hint" id="objective-hint">Move close to both enemies to trigger their chase, then hit each with your sword.</span></div>
+            <div id="enemy-stage" aria-label="Playable enemy AI forest game"></div>
+            <div class="game-controls"><span id="move-help">MOVE · A/D OR ←/→</span><span id="jump-help">JUMP · W / ↑ / SPACE</span><span id="attack-help">SWORD ATTACK · J / X NEAR AN ENEMY</span></div>
+            <div class="completion-row"><p id="completion-status">Trigger both enemy chases and land a sword hit on each to finish this module.</p><button type="button" id="complete-module" disabled>COMPLETE MODULE</button></div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

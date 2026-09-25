@@ -1,0 +1,81 @@
+.marketplace { margin-top: 32px; padding: 24px; border: 1px solid var(--line); border-radius: 0; background: var(--card); color: var(--ink); box-shadow: none; }
+.marketplace h2, .marketplace h3 { color: var(--ink); margin: 0; }
+.market-topbar, .inventory-head { display: flex; justify-content: space-between; align-items: center; gap: 18px; }
+.market-kicker { margin: 0 0 8px; color: var(--muted); font: 600 12px/1.4 "DM Mono", monospace; letter-spacing: .12em; }
+.market-topbar h2 { font-size: clamp(27px, 4vw, 38px); line-height: 1.1; }
+.market-wallet { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px; }
+.market-wallet > span { padding: 7px 11px; border: 1px solid var(--line); background: var(--paper); white-space: nowrap; font-size: 14px; }
+.market-wallet b { color: var(--mint-dark); }
+.market-intro { max-width: 750px; color: var(--muted); font-size: 15px; }
+.gear-tabs { display: flex; flex-wrap: wrap; gap: 8px; border-bottom: 1px solid var(--line); padding: 8px 0 16px; margin: 22px 0; }
+.marketplace .gear-tabs button { padding: 8px 12px; border-radius: 0; background: var(--card); color: var(--ink); border-color: var(--line); font-size: 14px; }
+.marketplace .gear-tabs button[aria-selected="true"] { background: var(--violet); border-color: var(--violet); color: #fff; }
+.grade-tabs { display: flex; align-items: center; flex-wrap: wrap; gap: 7px; margin: -10px 0 20px; }
+.grade-tabs > span { margin-right: 4px; color: var(--muted); font: 11px "DM Mono", monospace; letter-spacing: .1em; }
+.marketplace .grade-tabs button { padding: 6px 10px; border: 1px solid var(--line); border-radius: 0; background: var(--card); color: var(--ink); font-size: 12px; }
+.marketplace .grade-tabs button[aria-selected="true"] { background: var(--paper); border-color: var(--violet); color: var(--violet); }
+.gear-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.gear-card { min-width: 0; overflow: hidden; border: 1px solid var(--line); border-radius: 0; background: var(--card); }
+.gear-card.rarity-rare { border-color: #5499dd; }
+.gear-card.rarity-epic { border-color: #ae79ee; }
+.gear-art { display: grid; min-height: 144px; place-items: center; background: color-mix(in srgb, var(--paper) 74%, #8ea977 26%); border-bottom: 1px solid var(--line); }
+.gear-art img { width: min(136px, 76%); aspect-ratio: 1; object-fit: contain; filter: drop-shadow(0 8px 8px #08100c44); }
+.gear-card-copy { padding: 14px; }
+.gear-labels { display: flex; align-items: center; justify-content: space-between; gap: 8px; min-height: 20px; }
+.gear-type { display: block; margin-bottom: 4px; color: var(--muted); font: 11px "DM Mono", monospace; text-transform: uppercase; letter-spacing: .09em; }
+.rarity-badge { display: inline-flex; align-items: center; margin-bottom: 4px; padding: 2px 7px; border: 1px solid var(--line); color: var(--muted); font-size: 10px; line-height: 1.5; }
+.rarity-badge.rarity-rare { border-color: #5499dd; color: #2877bf; }
+.rarity-badge.rarity-epic { border-color: #ae79ee; color: #7950ad; }
+.dark-theme .rarity-badge.rarity-rare { color: #91c9ff; }
+.dark-theme .rarity-badge.rarity-epic { color: #d3b2ff; }
+.gear-card h3 { font-size: 18px; line-height: 1.25; }
+.gear-card p { min-height: 44px; margin: 8px 0 13px; color: var(--muted); font-size: 13px; line-height: 1.5; }
+.gear-values { display: flex; justify-content: space-between; flex-wrap: wrap; align-items: baseline; gap: 6px; margin-bottom: 12px; color: var(--mint-dark); font-size: 14px; }
+.dark-theme .gear-values { color: var(--mint); }
+.gear-values small { color: var(--muted); font-size: 11px; }
+.marketplace .trade-button { width: 100%; border-radius: 0; background: var(--violet); border-color: var(--violet); color: #fff; font-weight: 700; }
+.marketplace button:disabled { opacity: .52; cursor: not-allowed; }
+.inventory-head { margin-top: 30px; padding-top: 22px; border-top: 1px solid var(--line); }
+.inventory-head h3 { font-size: 22px; }
+.inventory-count { display: grid; width: 32px; height: 32px; place-items: center; border: 1px solid var(--line); color: var(--violet); }
+.inventory-grid { display: grid; gap: 10px; margin-top: 14px; }
+.owned-card { display: grid; grid-template-columns: 60px minmax(120px, 1fr) auto; align-items: center; gap: 12px; padding: 10px; border: 1px solid var(--line); background: var(--card); }
+.owned-card.rarity-rare { border-color: #5499dd; }
+.owned-card.rarity-epic { border-color: #ae79ee; }
+.owned-card > img { width: 58px; height: 58px; object-fit: contain; background: var(--paper); }
+.owned-copy { display: grid; gap: 3px; }
+.owned-copy strong { color: var(--ink); }
+.owned-copy small { color: var(--muted); }
+.owned-actions { display: flex; justify-content: flex-end; flex-wrap: wrap; gap: 7px; }
+.marketplace .owned-actions button { padding: 7px 9px; border-radius: 0; font-size: 12px; }
+.marketplace .owned-actions button:first-child { background: var(--card); color: var(--ink); }
+.marketplace .owned-actions .salvage-button { background: var(--card); border-color: #b4a356; color: #806d1e; }
+.dark-theme .marketplace .owned-actions .salvage-button { color: #e6d992; }
+.inventory-empty { padding: 16px; border: 1px dashed var(--line); color: var(--muted); }
+.market-hint { margin: 14px 0 0; color: var(--muted); font-size: 12px; }
+.asset-prompts { margin: 22px 0; border: 1px solid var(--line); border-radius: 0; background: var(--card); padding: 18px; }
+.asset-prompts summary { cursor: pointer; color: var(--violet); font-weight: 700; }
+.prompt-description { color: var(--muted); font-size: 14px; }
+.prompt-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 12px; }
+.prompt-card { min-width: 0; padding: 12px; border: 1px solid var(--line); background: var(--card); }
+.prompt-card h3 { margin: 0 0 8px; font-size: 16px; }
+.prompt-card textarea { width: 100%; resize: vertical; padding: 10px; border: 1px solid var(--line); border-radius: 0; background: var(--paper); color: var(--ink); font: inherit; font-size: 13px; line-height: 1.55; }
+.prompt-card button { margin-top: 8px; border-radius: 0; }
+@media (max-width: 920px) { .gear-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 760px) { .module-overview .module-header { flex-wrap: wrap; gap: 9px; padding: 14px 0; } .module-overview .chapter-label { display: none; } .module-overview .module-header .back-link { margin-right: auto; } .marketplace-intro-section { padding-top: 36px !important; } }
+@media (max-width: 580px) { .module-overview { padding-inline: 18px; } .marketplace { padding: 18px; } .market-topbar { align-items: flex-start; flex-direction: column; } .market-wallet { justify-content: flex-start; } .gear-grid, .prompt-grid { grid-template-columns: 1fr; } .gear-art { min-height: 128px; } .owned-card { grid-template-columns: 50px minmax(0,1fr); } .owned-card > img { width: 48px; height: 48px; } .owned-actions { grid-column: 1 / -1; justify-content: stretch; } .owned-actions button { flex: 1; } }
+.module-overview { width: min(1500px, 100%); padding: 0 clamp(18px, 4vw, 64px) 72px; font: 16px/1.55 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+.module-overview .module-header { display: flex; align-items: center; gap: 18px; min-height: 84px; margin: 0; border-bottom: 1px solid var(--line); color: var(--muted); font: 12px/1.4 ui-monospace, SFMono-Regular, monospace; letter-spacing: .05em; }
+.module-overview .module-header .back-link { margin-right: auto; color: var(--mint-dark); text-decoration: none; white-space: nowrap; }
+.dark-theme .module-overview .module-header .back-link { color: var(--mint); }
+.module-overview .chapter-label { color: var(--muted); white-space: nowrap; }
+.module-overview .language-toggle { display: flex; gap: 4px; }
+.module-overview .language-toggle button, .module-overview .module-header .reset-module-button { padding: 8px 10px; border: 1px solid var(--line); background: transparent; color: var(--muted); font: inherit; }
+.module-overview .language-toggle button[aria-pressed="true"] { border-color: var(--mint-dark); color: var(--mint-dark); }
+.dark-theme .module-overview .language-toggle button[aria-pressed="true"] { border-color: var(--mint); color: var(--mint); }
+.module-overview .marketplace-intro-section { margin: 0; padding: 50px 0 32px; border: 0; background: transparent; }
+.marketplace-intro-section .market-kicker { color: var(--mint-dark); }
+.dark-theme .marketplace-intro-section .market-kicker { color: var(--mint); }
+.module-overview .marketplace-intro-section h1 { margin: 0 0 12px; font-size: clamp(38px, 6vw, 76px); line-height: 1.02; letter-spacing: -.045em; }
+.marketplace-intro-section #description { max-width: 850px; margin-bottom: 0; color: var(--muted); font-size: clamp(17px, 2vw, 21px); }
+body[data-module="marketplace-system"] #overview-notice { display: none; }

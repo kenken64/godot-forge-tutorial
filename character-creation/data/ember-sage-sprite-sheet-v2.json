@@ -1,0 +1,44 @@
+{
+  "animationVersion": 2,
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "columns": 8,
+  "rows": [
+    {
+      "key": "idle",
+      "frames": 1,
+      "fps": 1
+    },
+    {
+      "key": "walk",
+      "frames": 8,
+      "fps": 12
+    },
+    {
+      "key": "run",
+      "frames": 8,
+      "fps": 18
+    },
+    {
+      "key": "attack",
+      "frames": 4,
+      "fps": 10
+    },
+    {
+      "key": "jump",
+      "frames": 4,
+      "fps": 7
+    },
+    {
+      "key": "hurt",
+      "frames": 4,
+      "fps": 5
+    },
+    {
+      "key": "death",
+      "frames": 4,
+      "fps": 6
+    }
+  ],
+  "assetUrl": "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/character-creation/data/ember-sage-sprite-sheet-v2.png"
+}

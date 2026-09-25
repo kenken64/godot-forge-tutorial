@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Build a parallax tilemap, place saved game assets, define collision boundaries and play-test it with a character." />
+    <title>Parallax &amp; Tilemaps · Godot Forge</title>
+    <link rel="stylesheet" href="/toast.css" />
+    <link rel="stylesheet" href="/module-reset.css" />
+    <link rel="stylesheet" href="/parallax-tiling-map/styles.css" />
+    <script src="/brand-storage.js"></script>
+    <script src="/toast.js" defer></script>
+    <script src="/module-reset.js" defer></script>
+    <script src="/node_modules/phaser/dist/phaser.min.js" defer></script>
+    <script src="/parallax-tiling-map/app.js" defer></script>
+  </head>
+  <body data-module="parallax-tiling-map">
+    <div class="workshop-shell">
+      <header class="module-header">
+        <a href="/" class="back-link" id="back-link">← GODOT FORGE / LEARNING PATH</a>
+        <span id="chapter-label">CHAPTER 05 / WORLD BUILDING</span>
+        <div class="language-toggle" id="languages" role="group" aria-label="Language">
+          <button type="button" data-locale="en">EN</button>
+          <button type="button" data-locale="zh">中文</button>
+          <button type="button" data-locale="ms">BM</button>
+        </div>
+        <a class="home-mark" href="/" aria-label="Godot Forge home">✦</a>
+      </header>
+
+      <main>
+        <section class="intro">
+          <p class="eyebrow" id="intro-eyebrow">LEVEL WORKSHOP / PHASER PREVIEW</p>
+          <h1 id="page-title">Build a world you can walk through.</h1>
+          <p id="intro-copy">Place your generated assets on a tile grid, mark solid collision boundaries, then control one character through the scene.</p>
+        </section>
+
+        <section class="concept-grid" aria-label="Learning goals">
+          <article><span>01</span><h2 id="concept-map-title">Compose the map</h2><p id="concept-map-copy">Use a consistent grid so platforms align and can be edited predictably.</p></article>
+          <article><span>02</span><h2 id="concept-collision-title">Separate art from collision</h2><p id="concept-collision-copy">A tile can look solid without being solid. Mark the boundaries the player should touch.</p></article>
+          <article><span>03</span><h2 id="concept-test-title">Test with a player</h2><p id="concept-test-copy">Movement exposes gaps, blocked routes and platforms that only looked correct in the editor.</p></article>
+        </section>
+
+        <section class="prompt-lab" aria-labelledby="prompt-title">
+          <div class="prompt-lab-heading">
+            <div>
+              <p class="eyebrow" id="prompt-eyebrow">AI ART BREAKDOWN / REUSABLE PROMPTS</p>
+              <h2 id="prompt-title">See the prompts that built this world.</h2>
+            </div>
+            <span class="model-chip">GPT IMAGE 2.5 SUNBURST</span>
+          </div>
+          <p class="prompt-intro" id="prompt-intro">Compare the role, composition and constraints in each prompt. Keeping those decisions consistent is what makes separate images feel like one game.</p>
+          <div class="prompt-grid" id="prompt-grid" aria-live="polite">
+            <p class="prompt-loading" id="prompt-loading">Loading the exact generation prompts…</p>
+          </div>
+        </section>
+
+        <section class="workshop" aria-labelledby="workshop-title">
+          <div class="section-heading">
+            <div><p class="eyebrow" id="workshop-eyebrow">INTERACTIVE TILEMAP</p><h2 id="workshop-title">Build, collide, play</h2></div>
+            <div class="mode-actions">
+              <button type="button" id="build-mode" aria-pressed="true">BUILD MODE</button>
+              <button type="button" id="play-mode">▶ TEST LEVEL</button>
+            </div>
+          </div>
+
+          <div class="asset-bar">
+            <label><span id="asset-pack-label">GAME ASSET PACK</span><select id="asset-pack"><option value="fallback">Built-in practice tiles</option></select></label>
+            <label><span id="character-label">PLAYER CHARACTER</span><select id="character"><option value="fallback">Practice explorer</option></select></label>
+            <button type="button" id="refresh-library">REFRESH LIBRARY</button>
+            <p id="library-status" role="status">Loading saved assets…</p>
+          </div>
+
+          <div class="editor-layout">
+            <aside class="builder-panel">
+              <div class="panel-heading"><span id="palette-label">TILE PALETTE</span><strong id="tile-count">4 TILES</strong></div>
+              <p class="art-model">DEFAULT ART · GPT IMAGE 2.5 SUNBURST</p>
+              <div id="tile-palette" class="tile-palette" role="listbox" aria-label="Tile palette"></div>
+              <div id="tile-info" class="tile-info" aria-live="polite">
+                <strong id="tile-info-title">Grass ground</strong>
+                <p id="tile-info-description">Solid footing for the player.</p>
+                <span id="tile-info-motion">STATIC TILE</span>
+              </div>
+              <div class="panel-heading tool-heading"><span id="tools-label">BUILD TOOLS</span></div>
+              <div class="tool-grid" id="tool-grid">
+                <button type="button" data-tool="paint" aria-pressed="true"><strong>▦</strong><span id="paint-label">PLACE TILE</span></button>
+                <button type="button" data-tool="collision"><strong>▣</strong><span id="collision-label">COLLISION</span></button>
+                <button type="button" data-tool="polygon"><strong>⬡</strong><span id="polygon-label">FREEFORM COLLISION</span></button>
+                <button type="button" data-tool="flip"><strong>↔</strong><span id="flip-label">FLIP LEFT / RIGHT</span></button>
+                <button type="button" data-tool="spawn"><strong>♙</strong><span id="spawn-label">PLAYER START</span></button>
+                <button type="button" data-tool="erase"><strong>⌫</strong><span id="erase-label">ERASE</span></button>
+              </div>
+              <div class="polygon-actions" id="polygon-actions" hidden>
+                <p id="polygon-help">Click at least three points, then finish the collision shape.</p>
+                <div><button type="button" id="undo-point">UNDO POINT</button><button type="button" id="finish-polygon" disabled>FINISH SHAPE</button></div>
+              </div>
+              <label class="solid-option"><input type="checkbox" id="solid-on-place" checked /><span id="solid-label">Make placed tiles solid</span></label>
+              <div class="legend">
+                <p><i class="legend-collision"></i><span id="legend-collision">Lime outline = collision boundary</span></p>
+                <p><i class="legend-freeform"></i><span id="legend-freeform">Orange shape = freeform collision</span></p>
+                <p><i class="legend-spawn"></i><span id="legend-spawn">Violet marker = player start</span></p>
+              </div>
+            </aside>
+
+            <div class="stage-column">
+              <div class="stage-toolbar">
+                <button type="button" id="pan-left">← <span id="pan-left-label">PAN LEFT</span></button>
+                <span id="camera-position">VIEW 1 / 2</span>
+                <button type="button" id="pan-right"><span id="pan-right-label">PAN RIGHT</span> →</button>
+                <button type="button" id="clear-map">CLEAR MAP</button>
+              </div>
+              <div id="phaser-stage" aria-label="Interactive parallax tilemap editor"></div>
+              <div class="play-help" id="play-help" hidden>
+                <span id="move-help">MOVE · A/D OR ←/→</span>
+                <span id="run-help">RUN · HOLD SHIFT + MOVE</span>
+                <span id="jump-help">JUMP · W, ↑ OR SPACE · PRESS AGAIN IN AIR TO DOUBLE JUMP</span>
+                <button type="button" id="reset-player">RESET PLAYER</button>
+              </div>
+              <p class="stage-note" id="stage-note">Choose a tile, then click the grid to place it. Use Collision to toggle solid boundaries.</p>
+            </div>
+          </div>
+
+          <div class="template-bar">
+            <div><span class="template-kicker" id="template-kicker">REUSABLE SIDE-SCROLLER TEMPLATE</span><p id="template-copy">Save the complete multi-screen layout, spawn point and collision shapes to the Final Game library.</p></div>
+            <label><span id="template-name-label">TEMPLATE NAME</span><input id="template-name" maxlength="60" value="Enchanted Grove Run" /></label>
+            <button type="button" id="save-template">SAVE AS TEMPLATE</button>
+            <label><span id="template-library-label">SAVED TEMPLATES</span><select id="template-library"><option value="">No templates saved</option></select></label>
+            <button type="button" id="load-template" disabled>LOAD TEMPLATE</button>
+          </div>
+
+          <div class="save-bar">
+            <div><span id="layout-summary">0 tiles · 0 collision boundaries</span><p id="save-status" role="status">Your layout is saved as a resumable learner checkpoint.</p></div>
+            <div><button type="button" id="save-layout">SAVE LAYOUT</button><button type="button" id="complete-module" disabled>COMPLETE MODULE</button></div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

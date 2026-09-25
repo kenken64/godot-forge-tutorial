@@ -1,0 +1,96 @@
+:root {
+  color-scheme: dark;
+  --bg: #101d18;
+  --panel: #182a22;
+  --panel-2: #20362b;
+  --ink: #edf5e9;
+  --muted: #9eb1a5;
+  --line: #385246;
+  --lime: #c4f265;
+  --violet: #9c8cff;
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: radial-gradient(circle at 80% 6%, #1e3929, transparent 30%), var(--bg); color: var(--ink); font: 16px/1.55 "Space Grotesk", sans-serif; }
+a { color: inherit; }
+button, input { font: inherit; }
+button { cursor: pointer; }
+button:disabled { cursor: not-allowed; opacity: .5; }
+:focus-visible { outline: 3px solid var(--violet); outline-offset: 3px; }
+
+.physics-shell { width: min(1280px, calc(100% - 40px)); margin: auto; padding-bottom: 72px; }
+.module-header { display: flex; align-items: center; gap: 20px; min-height: 76px; border-bottom: 1px solid var(--line); color: var(--muted); font: 500 11px/1.4 "DM Mono", monospace; letter-spacing: .05em; }
+.back-link { margin-right: auto; color: var(--lime); text-decoration: none; }
+.back-link:hover { text-decoration: underline; }
+.language-toggle { display: flex; gap: 4px; }
+.language-toggle button { min-height: 36px; padding: 7px 10px; border: 1px solid var(--line); background: transparent; color: var(--muted); font: inherit; }
+.language-toggle button[aria-pressed="true"] { border-color: var(--lime); color: var(--lime); }
+
+h1, h2, h3, p { margin-top: 0; }
+.eyebrow, .model-badge, .idea-card > span, .slider-field, .control-actions button, .control-note, .stage-credit, .stage-status, .swimmer-note, .swimmer-depth, .readout > span, .readout small, .completion-row button, .source-links, .prompt-details summary { font-family: "DM Mono", monospace; }
+.eyebrow { margin: 0 0 9px; color: var(--lime); font-size: 11px; letter-spacing: .14em; }
+.intro { max-width: 940px; padding: 53px 0 37px; }
+.intro h1 { margin-bottom: 14px; font-size: clamp(38px, 5.4vw, 72px); line-height: 1.04; letter-spacing: -.05em; }
+.intro > p:last-child { max-width: 760px; margin-bottom: 0; color: var(--muted); font-size: clamp(16px, 1.8vw, 20px); }
+
+.lesson-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.idea-card { min-width: 0; padding: 20px; border: 1px solid var(--line); background: var(--panel); }
+.idea-card > span { color: var(--violet); font-size: 10px; letter-spacing: .08em; }
+.idea-card h2 { margin: 10px 0 7px; font-size: 18px; line-height: 1.25; }
+.idea-card p { margin-bottom: 0; color: var(--muted); font-size: 14px; }
+.idea-card strong { color: var(--ink); font-weight: 600; }
+
+.experiment, .research-section { margin-top: 48px; }
+.section-heading { display: flex; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 17px; }
+.section-heading h2 { margin: 0; font-size: clamp(27px, 3vw, 36px); line-height: 1.15; letter-spacing: -.03em; }
+.model-badge { flex: 0 0 auto; padding: 8px 10px; border: 1px solid var(--violet); color: var(--violet); font-size: 10px; letter-spacing: .06em; }
+.experiment-grid { display: grid; grid-template-columns: minmax(250px, 300px) minmax(0, 1fr); gap: 12px; align-items: stretch; }
+.control-panel, .visual-panel { min-width: 0; border: 1px solid var(--line); background: var(--panel); }
+.control-panel { display: flex; flex-direction: column; padding: 21px; }
+.control-panel h3 { margin-bottom: 5px; font-size: 20px; }
+.control-panel > p:first-of-type { margin-bottom: 24px; color: var(--muted); font-size: 14px; }
+.slider-field { display: flex; justify-content: space-between; gap: 12px; margin: 18px 0 6px; color: var(--muted); font-size: 11px; }
+.slider-field output { flex: 0 0 auto; color: var(--lime); }
+input[type="range"] { display: block; width: 100%; margin: 0; accent-color: var(--lime); cursor: pointer; }
+input[type="range"]:disabled { cursor: not-allowed; opacity: .5; }
+.control-actions { display: grid; gap: 9px; margin-top: auto; padding-top: 28px; }
+.control-actions button, .completion-row button { min-height: 46px; padding: 10px 13px; border: 1px solid var(--line); font-size: 11px; font-weight: 500; letter-spacing: .04em; }
+.primary-button, .completion-row button:not(:disabled) { border-color: var(--lime) !important; background: var(--lime); color: #142119; }
+.primary-button:hover:not(:disabled), .completion-row button:hover:not(:disabled) { filter: brightness(1.09); }
+.secondary-button { background: var(--panel-2); color: var(--ink); }
+.secondary-button[aria-pressed="true"] { border-color: var(--violet); color: var(--violet); }
+.control-note { margin: 18px 0 0; color: var(--muted); font-size: 10px; line-height: 1.6; }
+.visual-panel { overflow: hidden; }
+.stage-wrap { position: relative; background: #122b28; }
+#physics-stage { display: block; width: 100%; height: auto; aspect-ratio: 8 / 5; }
+#physics-stage:focus-visible { outline: 3px solid var(--violet); outline-offset: -5px; }
+.stage-credit { position: absolute; right: 12px; bottom: 10px; padding: 4px 7px; background: #10221aca; color: #e2f4dd; font-size: 9px; letter-spacing: .04em; pointer-events: none; }
+.stage-status { min-height: 41px; margin: 0; padding: 10px 14px; border-top: 1px solid var(--line); color: var(--muted); font-size: 11px; }
+.swimmer-controls { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 3px 16px; padding: 0 14px 11px; }
+.swimmer-note, .swimmer-depth { margin: 0; color: var(--muted); font-size: 10px; }
+.swimmer-depth { white-space: nowrap; }
+.swimmer-depth output { color: var(--lime); font-variant-numeric: tabular-nums; }
+
+.readout-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 12px; }
+.readout { display: grid; gap: 3px; min-width: 0; padding: 15px 18px; border: 1px solid var(--line); background: var(--panel); }
+.readout > span { color: var(--muted); font-size: 10px; letter-spacing: .06em; }
+.readout strong { color: var(--lime); font-size: clamp(23px, 2.5vw, 32px); font-variant-numeric: tabular-nums; }
+.readout small { color: var(--muted); font-size: 10px; }
+.completion-row { display: flex; align-items: center; justify-content: space-between; gap: 18px; margin-top: 12px; padding: 16px 18px; border: 1px solid var(--line); background: var(--panel); }
+.completion-row p { margin: 0; color: var(--muted); font-size: 13px; }
+.completion-row button { flex: 0 0 auto; min-width: 170px; background: var(--panel-2); color: var(--ink); }
+
+.research-section { max-width: 1000px; }
+.research-section > p:not(.source-links) { max-width: 850px; color: var(--muted); }
+.source-links { display: flex; flex-wrap: wrap; gap: 10px 20px; font-size: 11px; }
+.source-links a { color: var(--lime); text-decoration: underline; text-underline-offset: 3px; }
+.prompt-details { border: 1px solid var(--line); background: var(--panel); }
+.prompt-details summary { padding: 14px 18px; color: var(--lime); font-size: 11px; cursor: pointer; }
+.prompt-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; padding: 0 16px 16px; }
+.prompt-grid > div { min-width: 0; }
+.prompt-grid h3 { margin: 0 0 8px; font-size: 14px; }
+.prompt-grid pre { max-height: 250px; overflow: auto; margin: 0; padding: 12px; border: 1px solid var(--line); background: var(--panel-2); color: var(--muted); font: 11px/1.6 "DM Mono", monospace; white-space: pre-wrap; overflow-wrap: anywhere; }
+
+@media (max-width: 900px) { .experiment-grid { grid-template-columns: 1fr; } .control-actions { margin-top: 24px; } }
+@media (max-width: 650px) { .physics-shell { width: min(100% - 24px, 1280px); } .module-header { flex-wrap: wrap; gap: 8px 12px; padding: 12px 0; } .chapter-label { order: 3; width: 100%; } .intro { padding: 36px 0 28px; } .lesson-grid, .readout-grid, .prompt-grid { grid-template-columns: 1fr; } .idea-card { padding: 16px; } .experiment, .research-section { margin-top: 35px; } .section-heading { align-items: start; flex-direction: column; } .control-panel { display: block; padding: 17px; } .slider-field { margin-top: 16px; } .control-actions { display: grid; } .stage-status { font-size: 10px; } .readout-grid { gap: 8px; } .readout { grid-template-columns: 1fr auto; align-items: center; } .readout small { grid-column: 1 / -1; } .completion-row { align-items: stretch; flex-direction: column; } .completion-row button { width: 100%; } }

@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Build a responsive game HUD and pause settings for player health, coins, music, and sound effects." />
+    <title>Game HUD and Settings · Godot Forge</title>
+    <link rel="stylesheet" href="/toast.css" />
+    <link rel="stylesheet" href="/module-reset.css" />
+    <link rel="stylesheet" href="/game-settings/styles.css" />
+    <script src="/brand-storage.js"></script>
+    <script src="/toast.js" defer></script>
+    <script src="/module-reset.js" defer></script>
+    <script src="/node_modules/phaser/dist/phaser.min.js" defer></script>
+    <script src="/game-settings/app.js" defer></script>
+  </head>
+  <body data-module="game-settings">
+    <div class="settings-shell">
+      <header class="module-header">
+        <a href="/" class="back-link" id="back-link">← GODOT FORGE / LEARNING PATH</a>
+        <span id="chapter-label">CHAPTER 10 / GAME HUD &amp; SETTINGS</span>
+        <div class="language-toggle" id="languages" role="group" aria-label="Language">
+          <button type="button" data-locale="en">EN</button><button type="button" data-locale="zh">中文</button><button type="button" data-locale="ms">BM</button>
+        </div>
+      </header>
+      <main>
+        <section class="intro">
+          <p class="eyebrow" id="intro-eyebrow">PLAYER FEEDBACK / PHASER DEMO</p>
+          <h1 id="page-title">Make the important information easy to read.</h1>
+          <p id="intro-copy">Keep player health visible on the left and collected coins on the right. Press Escape to pause and open settings, then control music and sound effects independently.</p>
+        </section>
+        <section class="learning-section" aria-labelledby="learning-title">
+          <div class="section-heading"><p class="eyebrow" id="learning-eyebrow">THREE CORE IDEAS</p><h2 id="learning-title">What this system teaches</h2></div>
+          <div class="learning-grid">
+            <article><span id="health-step">01 / PLAYER STATUS</span><h3 id="health-title">Health at a glance</h3><p id="health-copy">A persistent left-side health bar makes damage visible without blocking the play area.</p></article>
+            <article><span id="currency-step">02 / GAME PROGRESS</span><h3 id="currency-title">Track collected coins</h3><p id="currency-copy">A right-aligned counter updates as the player collects world coins.</p></article>
+            <article><span id="settings-step">03 / PLAYER OPTIONS</span><h3 id="settings-title">Pause and adjust audio</h3><p id="settings-copy">Escape pauses the game and opens settings with independent music and sound controls.</p></article>
+          </div>
+        </section>
+        <section class="prompt-section" aria-labelledby="prompt-heading">
+          <div class="section-heading"><p class="eyebrow" id="prompt-eyebrow">AI ART DIRECTION / REUSABLE PROMPT</p><h2 id="prompt-heading">HUD icons in the game’s visual style</h2><p id="prompt-intro">These icons were generated with GPT Image 2.5 Sunburst as a transparent 4 × 4 sheet. Copy the prompt to create a matching set.</p></div>
+          <article class="prompt-card"><div class="prompt-card-heading"><div><span class="prompt-badge">GPT IMAGE 2.5 SUNBURST / ASSET PROMPT</span><h3 id="prompt-title">Forest HUD audio settings icon sheet</h3></div><button type="button" id="copy-prompt">COPY PROMPT</button></div><pre class="prompt-text" id="asset-prompt"></pre></article>
+        </section>
+        <section class="demo-section" aria-labelledby="demo-title">
+          <div class="section-heading demo-heading"><div><p class="eyebrow" id="demo-eyebrow">PLAYABLE HUD &amp; SETTINGS DEMO</p><h2 id="demo-title">Explore the forest</h2></div><button type="button" class="restart-button" id="restart-demo">RESTART DEMO</button></div>
+          <div class="game-card">
+            <div class="playfield" id="playfield">
+              <div class="game-hud" id="game-hud">
+                <div class="health-widget"><span class="game-icon icon-heart" aria-hidden="true"></span><div class="health-information"><span id="health-label">PLAYER HEALTH</span><div class="health-meter" role="meter" aria-label="Player health" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100"><span id="health-fill"></span></div></div><span id="health-value">100%</span></div>
+                <div class="hud-actions"><div class="coin-widget"><span class="game-icon icon-coin" aria-hidden="true"></span><span id="coin-label">COINS</span><strong id="coin-count">0</strong></div><button type="button" class="settings-open" id="open-settings" aria-label="Open settings"><span class="game-icon icon-gear" aria-hidden="true"></span></button></div>
+              </div>
+              <div id="game-stage" aria-label="Playable forest platform game"></div>
+              <p class="escape-hint" id="escape-hint"><kbd>ESC</kbd> <span id="escape-copy">SETTINGS</span></p>
+              <section class="settings-overlay" id="settings-overlay" role="dialog" aria-modal="true" aria-labelledby="settings-dialog-title" hidden>
+                <div class="settings-panel">
+                  <p class="eyebrow" id="settings-eyebrow">PAUSED / PLAYER OPTIONS</p><h3 id="settings-dialog-title">Game settings</h3><p class="settings-description" id="settings-description">Choose which game audio you want to hear.</p>
+                  <div class="setting-row"><div class="setting-label"><span class="game-icon icon-music" id="music-icon" aria-hidden="true"></span><div><strong id="music-label">Music</strong><small id="music-description">Background game music</small></div></div><button type="button" class="audio-toggle" id="music-toggle" aria-pressed="true"><span class="toggle-state" id="music-state">ON</span></button></div>
+                  <div class="setting-row"><div class="setting-label"><span class="game-icon icon-sound" id="sound-icon" aria-hidden="true"></span><div><strong id="sound-label">Sound effects</strong><small id="sound-description">Jump and coin sounds</small></div></div><button type="button" class="audio-toggle" id="sound-toggle" aria-pressed="true"><span class="toggle-state" id="sound-state">ON</span></button></div>
+                  <p class="settings-footnote" id="settings-footnote">Your choices are saved on this device.</p>
+                  <button type="button" class="resume-button" id="resume-game"><span class="game-icon icon-resume" aria-hidden="true"></span><span id="resume-label">RESUME GAME</span></button>
+                </div>
+              </section>
+            </div>
+            <div class="game-controls"><span id="move-help">MOVE · A/D OR ←/→</span><span id="jump-help">JUMP · W / ↑ / SPACE</span><span id="collect-help">COLLECT · WALK INTO COINS</span><span id="settings-help">PAUSE / SETTINGS · ESC</span></div>
+            <div class="completion-row"><p id="completion-status">Collect a coin, take a little damage, and use both audio settings to complete the module.</p><button type="button" id="complete-module" disabled>COMPLETE MODULE</button></div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

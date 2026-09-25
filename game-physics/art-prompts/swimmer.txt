@@ -1,0 +1,6 @@
+Use case: precise-object-edit
+Asset type: transparent swimmer sprite for a side-view 2D game physics lesson
+Input image 1: identity and art-style reference for the same young woodland explorer with brown hood and hair, teal scarf, dark leather clothing, and boots.
+Primary request: Show this exact explorer swimming horizontally toward the right in a clear side-profile freestyle pose. Their head is raised slightly to breathe, one arm reaches forward, the other arm pulls back, and the legs extend behind in a gentle kick. The pose must read as swimming even without a water background. Keep the face, hood, teal scarf, clothing colors, and polished pixel-art-inspired game-sprite style recognizable from the reference.
+Composition: exactly one complete swimmer, full body visible, horizontal silhouette centered with generous transparent margin. Right-facing side view. The sprite will be placed beside a falling boulder at the water surface and animated with a small paddle and bob.
+Constraints: genuinely transparent alpha background; no pool, water, splash, bubbles, weapon, extra person, text, labels, UI, watermark, shadow, or border. Keep all body parts inside the frame.

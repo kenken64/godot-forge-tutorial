@@ -1,0 +1,5 @@
+Use case: stylized-concept
+Asset type: transparent sprite for a browser-based 2D game physics lesson
+Primary request: One heavy, irregular gray granite boulder with small moss patches and a few natural cracks, viewed from the side in a polished hand-painted pixel-art-inspired fantasy forest game style. Strong readable rounded silhouette, believable stone volume, crisp edges, detailed but not noisy. Neutral lighting consistent with a daylight woodland pool.
+Composition: exactly one boulder centered in a square image, fully visible with breathing room around every edge, no ground plane, no cast shadow.
+Constraints: genuinely transparent background with alpha, no water, no splash, no droplets, no other objects, no labels, no text, no UI, no watermark, no border.

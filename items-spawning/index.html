@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Learn randomized item spawning, player pickup collisions, and enemy loot drops in a playable forest demo." />
+    <title>Item Spawning · Godot Forge</title>
+    <link rel="stylesheet" href="/toast.css" />
+    <link rel="stylesheet" href="/module-reset.css" />
+    <link rel="stylesheet" href="/items-spawning/styles.css" />
+    <script src="/brand-storage.js"></script>
+    <script src="/toast.js" defer></script>
+    <script src="/module-reset.js" defer></script>
+    <script src="/node_modules/phaser/dist/phaser.min.js" defer></script>
+    <script src="/items-spawning/app.js" defer></script>
+  </head>
+  <body data-module="items-spawning">
+    <div class="module-shell">
+      <header class="module-header">
+        <a href="/" class="back-link" id="back-link">← GODOT FORGE / LEARNING PATH</a>
+        <span id="chapter-label">CHAPTER 06 / ITEMS &amp; REWARDS</span>
+        <div class="language-toggle" id="languages" role="group" aria-label="Language">
+          <button type="button" data-locale="en">EN</button>
+          <button type="button" data-locale="zh">中文</button>
+          <button type="button" data-locale="ms">BM</button>
+        </div>
+      </header>
+
+      <main>
+        <section class="intro">
+          <p class="eyebrow" id="intro-eyebrow">GAMEPLAY SYSTEMS / PHASER DEMO</p>
+          <h1 id="page-title">Make the world reward exploration.</h1>
+          <p id="intro-copy">Watch pickups appear at randomized positions, collect them by touching them, then defeat the grove brute to scatter its loot.</p>
+        </section>
+
+        <section class="learning-section" aria-labelledby="learning-title">
+          <div class="section-heading">
+            <p class="eyebrow" id="learning-eyebrow">THREE CORE IDEAS</p>
+            <h2 id="learning-title">What this system teaches</h2>
+          </div>
+          <div class="learning-grid">
+            <article><span id="spawn-step">01 / SPAWN RULES</span><h3 id="spawn-title">Random world pickups</h3><p id="spawn-copy">A timer creates pickups ahead of the player while limiting how many can exist at once.</p></article>
+            <article><span id="collect-step">02 / COLLECTION</span><h3 id="collect-title">Contact-based collection</h3><p id="collect-copy">An overlap check collects an item, removes its sprite, and updates the player's counters.</p></article>
+            <article><span id="loot-step">03 / ENEMY DROPS</span><h3 id="loot-title">Rewards after combat</h3><p id="loot-copy">Defeating the grove brute spawns a small random bundle of collectible loot.</p></article>
+          </div>
+        </section>
+
+        <section class="prompt-section" aria-labelledby="prompts-title">
+          <div class="section-heading">
+            <p class="eyebrow" id="prompts-eyebrow">AI ART DIRECTION / REUSABLE PROMPTS</p>
+            <h2 id="prompts-title">The prompts behind the art</h2>
+            <p id="prompts-intro">These prompts describe the two generated sprite sheets. Switch language to read the prompt in English, Chinese, or Malay.</p>
+          </div>
+          <div class="prompt-grid">
+            <article class="prompt-card">
+              <div class="prompt-card-heading"><div><span class="prompt-badge">GPT IMAGE 2.5 SUNBURST / ASSET PROMPT</span><h3 id="pickup-prompt-title">Forest pickup sprite sheet</h3></div><button type="button" data-copy-prompt="pickup">COPY PROMPT</button></div>
+              <pre class="prompt-text" id="pickup-prompt"></pre>
+            </article>
+            <article class="prompt-card">
+              <div class="prompt-card-heading"><div><span class="prompt-badge">GPT IMAGE 2.5 SUNBURST / ASSET PROMPT</span><h3 id="monster-prompt-title">Grove brute sprite sheet</h3></div><button type="button" data-copy-prompt="monster">COPY PROMPT</button></div>
+              <pre class="prompt-text" id="monster-prompt"></pre>
+            </article>
+            <article class="prompt-card">
+              <div class="prompt-card-heading"><div><span class="prompt-badge">GPT IMAGE 2.5 SUNBURST / ASSET PROMPT</span><h3 id="explorer-prompt-title">Sword-wielding explorer</h3></div><button type="button" data-copy-prompt="explorer">COPY PROMPT</button></div>
+              <pre class="prompt-text" id="explorer-prompt"></pre>
+            </article>
+          </div>
+        </section>
+
+        <section class="demo-section" aria-labelledby="demo-title">
+          <div class="section-heading demo-heading">
+            <div><p class="eyebrow" id="demo-eyebrow">PLAYABLE SYSTEM DEMO</p><h2 id="demo-title">Explore, collect, earn loot</h2></div>
+            <button type="button" class="restart-button" id="restart-demo">RESTART DEMO</button>
+          </div>
+          <div class="game-card">
+            <div class="game-hud" aria-live="polite">
+              <span id="pickup-counter">PICKUPS · 0</span>
+              <span id="loot-counter">LOOT · 0 / 0</span>
+              <strong id="monster-counter">GROVE BRUTE · ♥♥</strong>
+              <span class="hud-hint" id="objective-hint">Collect a glowing item, defeat the monster, then collect its loot.</span>
+            </div>
+            <div id="items-stage" aria-label="Playable item spawning forest game"></div>
+            <div class="game-controls"><span id="move-help">MOVE · A/D OR ←/→</span><span id="jump-help">JUMP · W / ↑ / SPACE</span><span id="attack-help">ATTACK · J / X NEAR MONSTER</span></div>
+            <div class="completion-row"><p id="completion-status">Complete the three demo tasks to finish this module.</p><button type="button" id="complete-module" disabled>COMPLETE MODULE</button></div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

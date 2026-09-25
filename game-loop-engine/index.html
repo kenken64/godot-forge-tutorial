@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Learn how input, game state, simulation, and rendering work together in a complete level loop." />
+    <title>Game Loop Architecture · Godot Forge</title>
+    <link rel="stylesheet" href="/toast.css" />
+    <link rel="stylesheet" href="/module-reset.css" />
+    <link rel="stylesheet" href="/game-loop-engine/styles.css" />
+    <script src="/brand-storage.js"></script>
+    <script src="/toast.js" defer></script>
+    <script src="/module-reset.js" defer></script>
+    <script src="/node_modules/phaser/dist/phaser.min.js" defer></script>
+    <script src="/game-loop-engine/app.js" defer></script>
+  </head>
+  <body data-module="game-loop-engine">
+    <div class="loop-shell">
+      <header class="module-header">
+        <a href="/" class="back-link" id="back-link">← GODOT FORGE / LEARNING PATH</a>
+        <span id="chapter-label">CHAPTER 08 / GAME LOOP ARCHITECTURE</span>
+        <div class="language-toggle" id="languages" role="group" aria-label="Language">
+          <button type="button" data-locale="en">EN</button><button type="button" data-locale="zh">中文</button><button type="button" data-locale="ms">BM</button>
+        </div>
+      </header>
+      <main>
+        <section class="intro">
+          <p class="eyebrow" id="intro-eyebrow">CORE GAME SYSTEMS / PHASER DEMO</p>
+          <h1 id="page-title">Build a complete game loop.</h1>
+          <p id="intro-copy">Collect 20 coins, then touch the glowing grove relic at the end of the path. Celebrate the level clear and continue to restart.</p>
+        </section>
+        <section class="learning-section" aria-labelledby="learning-title">
+          <div class="section-heading"><p class="eyebrow" id="learning-eyebrow">THREE PARTS OF A PLAYABLE LOOP</p><h2 id="learning-title">Input becomes a finished level</h2></div>
+          <div class="learning-grid">
+            <article><span id="input-step">01 / INPUT</span><h3 id="input-title">Read player intent</h3><p id="input-copy">Keyboard input turns into movement and jumps during each frame.</p></article>
+            <article><span id="state-step">02 / SIMULATION &amp; STATE</span><h3 id="state-title">Update the world</h3><p id="state-copy">Physics resolves movement while coin pickups update the quest state.</p></article>
+            <article><span id="render-step">03 / RENDER &amp; TRANSITION</span><h3 id="render-title">Reach the level clear</h3><p id="render-copy">The goal checks quest conditions, displays a win state, and starts a fresh level on Continue.</p></article>
+          </div>
+        </section>
+        <section class="prompt-section" aria-labelledby="prompt-heading">
+          <div class="section-heading"><p class="eyebrow" id="prompt-eyebrow">REUSABLE GAME-LOOP PROMPT</p><h2 id="prompt-heading">Make the objective and state transitions explicit</h2><p id="prompt-intro">This prompt describes the lesson's input, simulation, quest state, win condition, and restart flow in the selected language.</p></div>
+          <article class="prompt-card"><div class="prompt-card-heading"><div><span class="prompt-badge">PHASER / GAMEPLAY SYSTEM PROMPT</span><h3 id="prompt-title">Coin quest and level completion</h3></div><button type="button" id="copy-prompt">COPY PROMPT</button></div><pre class="prompt-text" id="game-prompt"></pre></article>
+        </section>
+        <section class="demo-section" aria-labelledby="demo-title">
+          <div class="section-heading demo-heading"><div><p class="eyebrow" id="demo-eyebrow">PLAYABLE GAME LOOP</p><h2 id="demo-title">The Grove Relic Quest</h2></div><button type="button" class="restart-button" id="restart-demo">RESTART LEVEL</button></div>
+          <div class="game-card">
+            <div class="playfield" id="playfield">
+              <div class="game-hud">
+                <div class="quest-widget"><span class="quest-coin" aria-hidden="true"></span><span id="quest-label">GROVE COINS</span><strong id="coin-progress">0 / 20</strong></div>
+                <div class="goal-widget"><span id="goal-hint">COLLECT 20 · TOUCH THE RELIC</span></div>
+              </div>
+              <div id="game-stage" aria-label="Playable coin quest platform game"></div>
+              <p class="control-hint" id="control-hint">MOVE · A/D OR ←/→ &nbsp; JUMP / DOUBLE JUMP · W / ↑ / SPACE</p>
+              <section class="level-overlay" id="level-overlay" role="dialog" aria-modal="true" aria-labelledby="level-title" hidden>
+                <div class="level-panel"><p class="eyebrow" id="level-eyebrow">QUEST COMPLETE</p><h3 id="level-title">Level completed!</h3><p id="level-copy">You collected all 20 coins and reached the Grove Relic.</p><button type="button" class="continue-button" id="continue-button">CONTINUE</button></div>
+              </section>
+            </div>
+            <div class="completion-row"><p id="completion-status">Collect all 20 coins, then touch the relic to complete the module.</p><span id="module-status" aria-live="polite"></span></div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

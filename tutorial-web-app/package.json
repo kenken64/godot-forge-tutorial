@@ -1,0 +1,46 @@
+{
+  "name": "godot-forge-tutorial-web-app",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "The Godot Forge 2D game development tutorial web app.",
+  "scripts": {
+    "start": "node --env-file=.env server.js",
+    "dev": "node --env-file=.env --watch server.js",
+    "test": "node --test tests/locomotion.test.js",
+    "test:browser": "node tests/locomotion-browser.js",
+    "test:assets-browser": "node tests/assets-browser.js",
+    "test:boss-browser": "node tests/boss-browser.js",
+    "test:boss": "node --test tests/boss-layout.test.js tests/boss-pipeline.test.js",
+    "test:branding": "node --test tests/branding.test.js",
+    "test:quiz-browser": "node tests/quiz-browser.js",
+    "test:storyline-browser": "node tests/storyline-browser.js",
+    "test:credits-browser": "node tests/credits-browser.js",
+    "test:marketplace-browser": "node tests/marketplace-browser.js",
+    "test:gamepad-recommendation": "node tests/gamepad-recommendation-browser.js",
+    "test:ending-browser": "node tests/ending-cutscene-browser.js",
+    "test:parallax-browser": "node tests/parallax-browser.js",
+    "test:storyline-voice": "node --test tests/storyline-voice.test.js",
+    "test:toast-browser": "node tests/toast-browser.js",
+    "test:theme-browser": "node tests/theme-browser.js",
+    "test:physics-browser": "node tests/physics-browser.js",
+    "test:achievement-browser": "node tests/achievement-browser.js",
+    "test:leaderboard-browser": "node tests/leaderboard-browser.js",
+    "test:local-coop-browser": "node tests/local-coop-browser.js",
+    "test:multiplayer-browser": "node tests/multiplayer-browser.js",
+    "test:proxy": "node --test tests/proxy.test.js",
+    "test:modules": "node --test tests/modules.test.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@duckdb/node-api": "1.5.5-r.5",
+    "phaser": "^3.90.0",
+    "sharp": "^0.35.4",
+    "ws": "^8.21.3"
+  },
+  "devDependencies": {
+    "playwright-core": "^1.63.0"
+  }
+}

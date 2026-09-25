@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Explore how player fantasy, motivation, conflict, choices and gameplay tell a story." />
+    <title>Storyline Engine · Godot Forge</title>
+    <link rel="stylesheet" href="/toast.css" />
+    <link rel="stylesheet" href="/module-reset.css" />
+    <link rel="stylesheet" href="/storyline-engine/styles.css" />
+    <script src="/brand-storage.js"></script>
+    <script src="/toast.js" defer></script>
+    <script src="/module-reset.js" defer></script>
+    <script src="/node_modules/phaser/dist/phaser.min.js" defer></script>
+    <script src="/storyline-engine/app.js" defer></script>
+  </head>
+  <body data-module="storyline-engine">
+    <div class="story-shell">
+      <header class="module-header">
+        <a href="/" class="back-link" id="back-link">← GODOT FORGE / LEARNING PATH</a>
+        <span id="chapter-label">CHAPTER 04 / STORYLINE ENGINE</span>
+        <div class="language-toggle" id="languages" role="group" aria-label="Language">
+          <button type="button" data-locale="en">EN</button>
+          <button type="button" data-locale="zh">中文</button>
+          <button type="button" data-locale="ms">BM</button>
+        </div>
+        <a class="home-mark" href="/" aria-label="Godot Forge home">✦</a>
+      </header>
+      <main>
+        <section class="intro">
+          <p class="eyebrow" id="intro-eyebrow">STORY DESIGN / PLAYABLE EXAMPLE</p>
+          <h1 id="page-title">Make the story happen in play.</h1>
+          <p id="intro-copy">Watch five storytelling ingredients become a six-beat adventure. Make choices, then see the world and ending change.</p>
+        </section>
+
+        <section class="attribute-section" aria-labelledby="attributes-title">
+          <div class="section-heading"><p class="eyebrow" id="attributes-eyebrow">THE FIVE INGREDIENTS</p><h2 id="attributes-title">What makes this a game story?</h2></div>
+          <div class="attribute-grid" id="attribute-grid"></div>
+        </section>
+
+        <section class="demo-section" aria-labelledby="demo-title">
+          <div class="section-heading"><p class="eyebrow" id="demo-eyebrow">PLAYABLE STORY</p><h2 id="demo-title">The Sleeping Grove</h2><p id="demo-intro">A reusable example: the explorer must wake the grove and find a missing friend.</p></div>
+          <div class="demo-layout">
+            <div class="stage-column">
+              <div class="stage-top"><strong id="beat-label">01 / BEGINNING</strong><span id="asset-status" role="status">Loading sprite library…</span></div>
+              <div id="phaser-stage" role="img" aria-label="Story scene preview"></div>
+              <div class="dialogue-strip" aria-label="Character conversation">
+                <div class="dialogue-copy"><span class="eyebrow" id="conversation-title">CHARACTER CONVERSATION</span><strong id="dialogue-speaker">Explorer</strong><p id="dialogue-line" role="status" aria-live="polite"></p></div>
+                <div class="dialogue-controls"><button type="button" id="previous-line">← PREVIOUS LINE</button><span id="dialogue-count">1 / 2</span><button type="button" id="next-line">NEXT LINE →</button><button type="button" id="play-line" aria-pressed="false">▶ PLAY VOICE</button><label class="auto-voice"><input type="checkbox" id="auto-voice" checked /><span id="auto-voice-label">AUTO VOICE</span></label></div>
+              </div>
+              <p class="voice-note" id="voice-note">Voice playback uses your browser's speech engine; available voices depend on your device.</p>
+              <div class="asset-pickers">
+                <label><span id="hero-picker-label">PLAYER SPRITE</span><select id="hero-picker"><option value="">GPT Image demo figure</option></select></label>
+                <label><span id="boss-picker-label">GUARDIAN SPRITE</span><select id="boss-picker"><option value="">GPT Image demo figure</option></select></label>
+                <button type="button" id="refresh-assets">REFRESH ASSETS</button>
+              </div>
+              <p class="asset-note" id="asset-note">The scenery and demo figures were generated with GPT Image 2.5. Save a character or boss sprite sheet to Final Game to animate your own artwork here.</p>
+            </div>
+            <div class="story-panel">
+              <div class="beat-track" id="beat-track" aria-label="Six story beats"></div>
+              <p class="eyebrow" id="beat-kind">BEGINNING</p>
+              <h3 id="beat-title"></h3>
+              <p id="beat-body"></p>
+              <div class="choices" id="choices"></div>
+              <div class="story-actions"><button type="button" id="replay-story">REPLAY STORY</button><button type="button" id="complete-story" hidden>COMPLETE MODULE</button></div>
+              <p id="story-status" role="status"></p>
+            </div>
+          </div>
+          <div class="world-state" aria-live="polite">
+            <div><span id="trust-label">VILLAGE TRUST</span><strong id="trust-value">2</strong></div>
+            <div><span id="supplies-label">SUPPLIES</span><strong id="supplies-value">2</strong></div>
+            <div><span id="water-label">GROVE WATER</span><strong id="water-value">2</strong></div>
+            <div><span id="price-label">MARKET PRICE</span><strong id="price-value">2 coins</strong></div>
+          </div>
+          <p class="lesson-note" id="lesson-note">Notice how scarce water changes the market and scenery. The story is happening through gameplay, not only dialogue.</p>
+        </section>
+
+        <section class="prompts-section" aria-labelledby="prompts-title">
+          <div class="section-heading">
+            <p class="eyebrow" id="prompts-eyebrow">BEHIND THE ARTWORK</p>
+            <h2 id="prompts-title">The prompts that made this world</h2>
+            <p id="prompts-intro">Open an asset to read and copy the exact English prompt used with GPT Image 2.5. Notice how the scene, silhouette and camera constraints keep the artwork consistent.</p>
+          </div>
+          <p class="prompt-model" id="prompt-model">MODEL · gpt-image-2.5-sunburst</p>
+          <div class="prompt-grid" id="prompt-grid" aria-live="polite"><p id="prompt-loading">Loading artwork prompts…</p></div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

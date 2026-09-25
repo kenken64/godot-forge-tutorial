@@ -1,0 +1,5 @@
+Use case: stylized-concept
+Asset type: static background for a browser-based 2D game physics lesson
+Primary request: A side-view woodland pool with a clear horizontal water surface at about 58 percent of the image height. The upper portion shows a quiet, lush forest with layered trees, mossy banks at the far left and far right, soft shafts of daylight, and open space in the center for a falling boulder. The lower portion shows the same pool below the waterline, in deep teal with subtle underwater light and depth. Polished hand-painted pixel-art-inspired game environment, crisp shapes and rich texture, atmospheric but readable at small screen sizes.
+Composition: fixed side-on camera, wide landscape, central vertical path and the middle of the water surface kept unobstructed. The pool spans the full width of the frame. Straight level waterline so it can align with a browser animation layer.
+Constraints: no boulder, no characters, no splash, no droplets, no labels, no text, no UI, no watermark, no border.

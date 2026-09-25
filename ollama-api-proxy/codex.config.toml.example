@@ -1,0 +1,7 @@
+# This file is not required by the proxy. The proxy invokes Codex CLI directly.
+# The Ollama client points at the proxy instead:
+#
+#   ollama run --help
+#   OLLAMA_HOST=http://127.0.0.1:8787 ollama run gpt-5.6-luna
+#
+# For Codex CLI's own native local-provider mode, see the official Codex docs.

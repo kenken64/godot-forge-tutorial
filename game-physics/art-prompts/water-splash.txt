@@ -1,0 +1,5 @@
+Use case: stylized-concept
+Asset type: transparent water-impact effect sprite for a side-view 2D game physics lesson
+Primary request: One dramatic but readable freshwater splash crown at the moment a heavy boulder enters a woodland pool. The center dips slightly while two broad translucent teal-blue arcs rise outward, with bright white foam and a few droplets. Match a polished hand-painted pixel-art-inspired fantasy forest game environment. Clear silhouette and luminous water edges.
+Composition: side view, symmetrical around the center, wide shallow splash shape occupying the middle of a square canvas with transparent empty space above and around it. The effect will be placed exactly on a horizontal waterline and scaled by impact energy.
+Constraints: genuinely transparent alpha background, exactly one isolated splash, no boulder, no pool, no shoreline, no characters, no text, no labels, no UI, no watermark, no border.

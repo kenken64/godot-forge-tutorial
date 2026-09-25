@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <script src="/brand-storage.js"></script>
+    <link rel="stylesheet" href="/toast.css" />
+    <script src="/toast.js" defer></script>
+    <link rel="stylesheet" href="/module-reset.css" />
+    <script src="/module-reset.js" defer></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Marketplace System · Godot Forge</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/module-overview.css" />
+    <link rel="stylesheet" href="/marketplace-system/marketplace.css" />
+    <script src="/module-overview.js" defer></script>
+    <script src="/marketplace-system/marketplace.js" defer></script>
+  </head>
+  <body data-module="marketplace-system">
+    <main class="module-overview">
+      <header class="module-header">
+        <a href="/" class="back-link" id="back-link">← GODOT FORGE / LEARNING PATH</a>
+        <span id="chapter" class="chapter-label"></span>
+        <div id="languages" class="language-toggle" role="group" aria-label="Language"><button type="button" data-locale="en">EN</button><button type="button" data-locale="zh">中文</button><button type="button" data-locale="ms">BM</button></div>
+      </header>
+      <section class="marketplace-intro-section">
+        <p class="market-kicker" data-market="introEyebrow">PLAYER ECONOMY / SHOP DEMO</p>
+        <h1 id="title">Marketplace System</h1>
+        <p id="description"></p>
+      </section>
+      <section><h2 data-copy="topics">Planned topics</h2><ol id="topics"></ol></section>
+      <section class="marketplace" aria-labelledby="market-title">
+        <div class="market-topbar">
+          <div><p class="market-kicker" data-market="label">GROVE TRADER · PRACTICE SHOP</p><h2 id="market-title" data-market="title">The Grove Exchange</h2></div>
+          <div class="market-wallet" aria-live="polite"><span>🪙 <b id="gold-count">0</b> <span data-market="gold">gold</span></span><span>✧ <b id="dust-count">0</b> <span data-market="dust">arcane dust</span></span></div>
+        </div>
+        <p class="market-intro" data-market="intro">Trade forest-forged gear, sell what you no longer need, or pay a small fee to salvage it into enchanting materials.</p>
+        <nav class="gear-tabs" role="tablist" aria-label="Gear category">
+          <button type="button" role="tab" aria-selected="true" data-category="all" data-market="all">All gear</button>
+          <button type="button" role="tab" aria-selected="false" data-category="armor" data-market="armor">Armor</button>
+          <button type="button" role="tab" aria-selected="false" data-category="weapon" data-market="weapon">Weapons</button>
+          <button type="button" role="tab" aria-selected="false" data-category="ring" data-market="ring">Rings</button>
+          <button type="button" role="tab" aria-selected="false" data-category="necklace" data-market="necklace">Necklaces</button>
+        </nav>
+        <nav class="grade-tabs" role="tablist" aria-label="Item grade">
+          <span data-market="gradeLabel">GRADE</span>
+          <button type="button" role="tab" aria-selected="true" data-grade="all" data-market="gradeAll">All grades</button>
+          <button type="button" role="tab" aria-selected="false" data-grade="normal" data-market="normal">Normal</button>
+          <button type="button" role="tab" aria-selected="false" data-grade="rare" data-market="rare">Rare</button>
+          <button type="button" role="tab" aria-selected="false" data-grade="epic" data-market="epic">Epic</button>
+        </nav>
+        <div id="shop-items" class="gear-grid" aria-live="polite"></div>
+        <div class="inventory-head"><div><p class="market-kicker" data-market="inventoryLabel">YOUR PACK</p><h3 data-market="inventoryTitle">Owned gear</h3></div><span id="inventory-count" class="inventory-count">0</span></div>
+        <div id="inventory-items" class="inventory-grid" aria-live="polite"></div>
+        <p class="market-hint" data-market="salvageHint">Salvaging consumes the item and charges a gold fee. It cannot be undone.</p>
+      </section>
+      <details class="asset-prompts" open>
+        <summary data-market="promptSummary">OpenAI GPT Image 2.5 Burst · view and copy the gear-art prompts</summary>
+        <p class="prompt-description" data-market="promptDescription">These reusable prompts describe the four generated shop icons. Change language above to read them in Chinese or Malay.</p>
+        <div id="asset-prompts" class="prompt-grid"></div>
+      </details>
+      <p id="overview-notice" data-copy="notice">This module overview is ready. Interactive lessons are coming next.</p>
+      <button id="complete" class="primary-button" disabled></button>
+      <p id="status" role="status"></p>
+    </main>
+  </body>
+</html>

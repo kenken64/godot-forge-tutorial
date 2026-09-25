@@ -1,0 +1,93 @@
+import assert from 'node:assert/strict';
+import { mkdtemp } from 'node:fs/promises';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
+import { spawn } from 'node:child_process';
+import { once } from 'node:events';
+import { chromium } from 'playwright-core';
+
+const storage = await mkdtemp(join(tmpdir(), 'godot-forge-coop-test-'));
+const server = spawn(process.execPath, ['server.js'], { cwd: new URL('..', import.meta.url), env: { ...process.env, PORT: '0', APP_STORAGE_DIR: storage, OPENAI_API_KEY: '' }, stdio: ['ignore', 'pipe', 'pipe'] });
+let output = '';
+let browser;
+try {
+  const baseUrl = await new Promise((resolve, reject) => {
+    const timeout = setTimeout(() => reject(new Error(`Co-op test server timed out: ${output}`)), 10000);
+    server.once('error', error => { clearTimeout(timeout); reject(error); });
+    server.once('exit', code => { clearTimeout(timeout); reject(new Error(`Co-op test server exited ${code}: ${output}`)); });
+    server.stdout.on('data', chunk => { output += chunk; const match = output.match(/http:\/\/localhost:(\d+)/); if (match) { clearTimeout(timeout); resolve(`http://127.0.0.1:${match[1]}`); } });
+  });
+  browser = await chromium.launch({ channel: process.env.CHROME_CHANNEL || 'chrome', headless: true });
+  const page = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
+  const errors = [];
+  page.on('pageerror', error => errors.push(error.message));
+  await page.addInitScript(() => {
+    window.coopTestPad = { connected: false, axes: [0, 0], buttons: Array.from({ length: 16 }, () => ({ pressed: false })) };
+    Object.defineProperty(navigator, 'getGamepads', { configurable: true, value: () => [window.coopTestPad.connected ? window.coopTestPad : null] });
+  });
+  await page.goto(`${baseUrl}/local-coop/`);
+  await page.waitForFunction(() => document.body.dataset.coopReady === 'true');
+  assert.equal(await page.locator('#p1-coins').textContent(), '0');
+  assert.equal(await page.locator('#p2-coins').textContent(), '0');
+  assert.equal(await page.locator('#team-count').textContent(), '0 / 12');
+  assert.equal(await page.locator('#complete-module').isDisabled(), true);
+  assert.equal(await page.locator('.prompt-card').count(), 4);
+  await page.locator('.prompt-card summary').first().click();
+  assert.match(await page.locator('#build-prompt').textContent(), /Player 1 controlled only by/);
+  assert.match(await page.locator('#explorer-prompt').textContent(), /GPT Image 2\.5 Sunburst/);
+  assert.equal(await page.locator('a[href$=".txt"]').count(), 0);
+  assert.match(await page.locator('#controller-status').textContent(), /CONNECT A GAMEPAD/);
+  await page.locator('#coop-stage').click();
+  await page.keyboard.down('ArrowRight');
+  await page.waitForFunction(() => Number(document.querySelector('#p1-coins')?.textContent) >= 1);
+  await page.keyboard.up('ArrowRight');
+  assert.equal(await page.locator('#p2-coins').textContent(), '0');
+  await page.evaluate(() => { window.coopTestPad.connected = true; window.coopTestPad.axes[0] = -1; });
+  await page.waitForFunction(() => document.querySelector('#controller-status')?.dataset.connected === 'true');
+  await page.waitForFunction(() => Number(document.querySelector('#p2-coins')?.textContent) >= 1);
+  await page.evaluate(() => { window.coopTestPad.axes[0] = 0; });
+  assert.ok(Number(await page.locator('#p1-coins').textContent()) >= 1);
+  const learnerId = await page.evaluate(() => localStorage.getItem('godot-forge-learner-id'));
+  await page.waitForFunction(async id => {
+    const response = await fetch(`/api/modules/local-coop/checkpoint?learnerId=${encodeURIComponent(id)}`);
+    const state = (await response.json()).state;
+    return state?.collected?.some(item => item.owner === 1) && state.collected.some(item => item.owner === 2);
+  }, learnerId);
+  const beforeReload = [await page.locator('#p1-coins').textContent(), await page.locator('#p2-coins').textContent()];
+  await page.reload();
+  await page.waitForFunction(() => document.body.dataset.coopReady === 'true');
+  assert.deepEqual([await page.locator('#p1-coins').textContent(), await page.locator('#p2-coins').textContent()], beforeReload);
+  const completedState = { collected: Array.from({ length: 12 }, (_, id) => ({ id, owner: id === 11 ? 2 : 1 })), positions: [300, 690] };
+  assert.equal((await page.request.put(`${baseUrl}/api/modules/local-coop/checkpoint`, { data: { learnerId, state: completedState } })).status(), 200);
+  await page.reload();
+  await page.waitForFunction(() => document.body.dataset.coopReady === 'true');
+  assert.equal(await page.locator('#team-count').textContent(), '12 / 12');
+  assert.equal(await page.locator('#p1-coins').textContent(), '11');
+  assert.equal(await page.locator('#p2-coins').textContent(), '1');
+  assert.equal(await page.locator('#complete-module').isEnabled(), true);
+  await page.click('#complete-module');
+  await page.waitForFunction(async id => (await (await fetch(`/api/modules?learnerId=${encodeURIComponent(id)}`)).json()).find(module => module.slug === 'local-coop')?.completed === true, learnerId);
+  await page.click('[data-locale="zh"]');
+  assert.match(await page.locator('#page-title').textContent(), /英雄/);
+  assert.match(await page.locator('#prompts-title').textContent(), /提示词/);
+  await page.click('[data-locale="ms"]');
+  assert.match(await page.locator('#page-title').textContent(), /wira/i);
+  assert.match(await page.locator('#prompts-title').textContent(), /prom/i);
+  await page.setViewportSize({ width: 390, height: 844 });
+  assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);
+  await page.click('#reset-module');
+  const resetResponse = page.waitForResponse(response => response.url().endsWith('/api/modules/local-coop/reset') && response.ok());
+  const resetNavigation = page.waitForNavigation({ waitUntil: 'load' });
+  await page.click('#reset-module');
+  await Promise.all([resetResponse, resetNavigation]);
+  await page.waitForFunction(() => document.body.dataset.coopReady === 'true');
+  assert.equal(await page.locator('#p1-coins').textContent(), '0');
+  assert.equal(await page.locator('#p2-coins').textContent(), '0');
+  assert.equal((await (await page.request.get(`${baseUrl}/api/modules/local-coop/checkpoint?learnerId=${learnerId}`)).json()).state, null);
+  assert.equal((await (await page.request.get(`${baseUrl}/api/modules?learnerId=${learnerId}`)).json()).find(module => module.slug === 'local-coop').completed, false);
+  assert.deepEqual(errors, []);
+  console.log('PASS two players, independent keyboard/gamepad coins, persistence, localization, mobile layout, and reset');
+} finally {
+  if (browser) await browser.close();
+  if (server.exitCode === null) { const exited = once(server, 'exit'); server.kill('SIGTERM'); await exited; }
+}

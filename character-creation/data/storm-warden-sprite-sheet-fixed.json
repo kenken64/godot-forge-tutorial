@@ -1,0 +1,21 @@
+{
+  "character": "Storm Warden",
+  "asset": "storm-warden-sprite-sheet-fixed.png",
+  "format": "rgba-png",
+  "width": 1024,
+  "height": 1792,
+  "columns": 4,
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "rows": [
+    { "key": "idle", "frames": 1, "fps": 1, "note": "Static neutral pose held across the row" },
+    { "key": "walk", "frames": 4, "fps": 9, "note": "Alternating contact and centerline-passing leg poses" },
+    { "key": "run", "frames": 4, "fps": 12, "note": "Long alternating strides with crossing knee poses" },
+    { "key": "attack", "frames": 4, "fps": 10 },
+    { "key": "jump", "frames": 4, "fps": 7 },
+    { "key": "hurt", "frames": 4, "fps": 5 },
+    { "key": "death", "frames": 4, "fps": 6 }
+  ],
+  "background": "transparent",
+  "anchor": "center-bottom"
+}

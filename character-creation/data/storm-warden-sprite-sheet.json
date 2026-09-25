@@ -1,0 +1,21 @@
+{
+  "character": "Storm Warden",
+  "asset": "storm-warden-sprite-sheet.png",
+  "format": "rgba-png",
+  "width": 948,
+  "height": 1659,
+  "columns": 4,
+  "frameWidth": 237,
+  "frameHeight": 237,
+  "rows": [
+    { "key": "idle", "frames": 4, "fps": 5 },
+    { "key": "walk", "frames": 4, "fps": 9 },
+    { "key": "run", "frames": 4, "fps": 12 },
+    { "key": "attack", "frames": 4, "fps": 10 },
+    { "key": "jump", "frames": 4, "fps": 7 },
+    { "key": "hurt", "frames": 4, "fps": 5 },
+    { "key": "death", "frames": 4, "fps": 6 }
+  ],
+  "background": "transparent",
+  "anchor": "center-bottom"
+}
