@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <script src="/brand-storage.js"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Final Game · Godot Forge</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/module-overview.css" />
+    <link rel="stylesheet" href="/final-game/style.css" />
+    <script src="/final-game/guide.js" defer></script>
+    <script src="/final-game/walkthrough.js" defer></script>
+    <script src="/final-game/function-details.js" defer></script>
+    <script src="/final-game/app.js" defer></script>
+  </head>
+  <body>
+    <main class="module-overview final-game-page">
+      <header>
+        <a href="/" data-copy="back">← Learning path</a>
+        <span class="header-chapter" data-copy="chapter">CHAPTER 21 / FINAL GAME</span>
+        <div id="languages" role="group" aria-label="Language">
+          <button type="button" data-locale="en">EN</button>
+          <button type="button" data-locale="zh">中文</button>
+          <button type="button" data-locale="ms">BM</button>
+        </div>
+      </header>
+      <p class="eyebrow" data-copy="eyebrow">CAPSTONE / GODOT PROJECT</p>
+      <h1 data-copy="title">Build your final game.</h1>
+      <p data-copy="intro">Build one complete 2D level in the Godot cloud editor, using the characters, art, and systems you made across modules 1–18.</p>
+      <section class="project-brief">
+        <h2 data-copy="briefTitle">The one-level challenge</h2>
+        <p data-copy="briefBody">Create a single journey: start in a safe area, cross a hazard, collect 20 coins, visit a shop, defeat two enemy types and a boss, then make a final choice and reach the credits. Use the same level for solo, local co-op, and online play.</p>
+        <p class="kit-note" data-copy="briefFreedom">Make the story and visual theme your own. Keep the full journey playable from start to finish before adding extra polish.</p>
+      </section>
+      <section>
+        <h2 data-copy="kitTitle">Your starter kit</h2>
+        <p data-copy="kitDescription">The ZIP contains a Godot project, published lesson media, animation coordinate files, and an asset catalog. The project opens on a welcome scene that you will replace with your level.</p>
+        <a class="kit-button" href="/api/final-game/starter-kit" data-copy="download">Download starter ZIP</a>
+        <h3 data-copy="savedAssetsTitle">Your saved game assets</h3>
+        <p data-copy="savedAssetsDescription">Characters, bosses, and asset sheets you generated are separate from the shared ZIP. Download your saved PNG and JSON files here, then add them to your Godot project.</p>
+        <div id="saved-assets" aria-live="polite"></div>
+      </section>
+      <section>
+        <h2 data-copy="editorTitle">Open it in Godot</h2>
+        <ol>
+          <li data-copy="stepOne">Open the Learn Godot Web Editor lesson and start your cloud workspace.</li>
+          <li data-copy="stepTwo">The starter project and lesson assets are installed automatically.</li>
+          <li data-copy="stepThree">Follow the sections below in build order. Run the same level after each section.</li>
+          <li data-copy="stepFour">For your own PNG and JSON files, use the Files control at the top of the cloud workspace to upload them into assets/my-game, then return to Godot's FileSystem panel.</li>
+        </ol>
+        <a class="kit-button secondary" href="/setup-godot-with-ai/#cloud-title" data-copy="openEditor">Open cloud editor lesson →</a>
+        <p class="kit-note" data-copy="saveNote">Your project stays on the server while the workspace exists. Stop and delete workspace removes it permanently, so download your project ZIP first.</p>
+      </section>
+      <nav class="build-nav" aria-label="Final game build sections" data-aria-label="buildNavLabel">
+        <h2 data-copy="buildTitle">Build the game, one section at a time</h2>
+        <p data-copy="buildIntro">Each section names the earlier modules it brings together and ends with a playable check.</p>
+        <p id="guide-language-note" data-copy="guideLanguageNote" hidden></p>
+        <ol id="build-nav-list"></ol>
+      </nav>
+      <div id="build-sections"></div>
+      <section class="final-checklist">
+        <h2 data-copy="finishTitle">Ready to submit?</h2>
+        <ul>
+          <li data-copy="finishOne">One level plays from its opening story to an ending and credits.</li>
+          <li data-copy="finishTwo">Your hero, world, pickups, enemies, boss, interface, and ending use the game assets you made or selected.</li>
+          <li data-copy="finishThree">Solo, local co-op, and online modes use the same level and have been play-tested.</li>
+          <li data-copy="finishFour">Your shop, achievements, score, leaderboard, settings, and restart flow work.</li>
+          <li data-copy="finishFive">Download the finished project ZIP and open the copy to confirm it contains your changes.</li>
+        </ul>
+      </section>
+      <section class="reference-links">
+        <h2 data-copy="referencesTitle">Godot reference</h2>
+        <ul>
+          <li><a href="https://docs.godotengine.org/en/stable/tutorials/scripting/singletons_autoload.html" target="_blank" rel="noopener noreferrer">Autoload ↗</a></li>
+          <li><a href="https://docs.godotengine.org/en/stable/classes/class_tilemaplayer.html" target="_blank" rel="noopener noreferrer">TileMapLayer ↗</a></li>
+          <li><a href="https://docs.godotengine.org/en/stable/classes/class_characterbody2d.html" target="_blank" rel="noopener noreferrer">CharacterBody2D ↗</a></li>
+          <li><a href="https://docs.godotengine.org/en/stable/classes/class_websocketpeer.html" target="_blank" rel="noopener noreferrer">WebSocketPeer ↗</a></li>
+        </ul>
+      </section>
+    </main>
+  </body>
+</html>

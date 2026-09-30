@@ -134,14 +134,23 @@ function mappedActionDown(action,pad){
   const until=simulatedUntil.get(binding)||0;
   return Boolean(pad?.buttons?.[binding]?.pressed||pad?.buttons?.[binding]?.value>.55||until>performance.now());
 }
-function practicePreload(){this.load.setCORS('anonymous');this.load.image('practice-far','https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/parallax-tiling-map/images/parallax-far.webp');this.load.image('practice-mid','https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/parallax-tiling-map/images/parallax-midground.webp');this.load.image('practice-dummy','https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/game-controls/images/training-dummy.webp');this.load.spritesheet('practice-hero','https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/items-spawning/images/forest-sword-explorer.png',{frameWidth:256,frameHeight:256});}
+function practicePreload(){
+  this.load.image('practice-far','/parallax-tiling-map/images/parallax-far.webp');
+  this.load.image('practice-mid','/parallax-tiling-map/images/parallax-midground.webp');
+  this.load.image('practice-dummy','/game-controls/images/training-dummy.webp');
+  this.load.spritesheet('practice-hero','/items-spawning/images/forest-sword-explorer.png',{frameWidth:256,frameHeight:256});
+}
 function practiceCreate(){
   practiceScene=this;this.physics.world.setBounds(0,0,practiceWorldWidth,practiceHeight);this.cameras.main.setBounds(0,0,practiceWorldWidth,practiceHeight).setBackgroundColor('#17332a');
   this.add.tileSprite(0,0,practiceWorldWidth,practiceHeight,'practice-far').setOrigin(0).setScrollFactor(.13).setDepth(-10).setTint(0xd5e6db);
   this.add.tileSprite(0,85,practiceWorldWidth,practiceHeight-85,'practice-mid').setOrigin(0).setScrollFactor(.3).setDepth(-5).setAlpha(.72);
   const groundArt=this.add.graphics();groundArt.fillStyle(0x263f2d).fillRect(0,practiceFloorY,practiceWorldWidth,practiceHeight-practiceFloorY);groundArt.fillStyle(0x78a84a).fillRect(0,practiceFloorY,practiceWorldWidth,9);groundArt.fillStyle(0x3b5c35);for(let x=0;x<practiceWorldWidth;x+=64)groundArt.fillRoundedRect(x+6,practiceFloorY+22,38,8,3);
   const floor=this.add.rectangle(practiceWorldWidth/2,practiceFloorY+48,practiceWorldWidth,96,0,0);this.physics.add.existing(floor,true);floor.setVisible(false);
-  const anims=this.anims;anims.create({key:'test-idle',frames:anims.generateFrameNumbers('practice-hero',{start:0,end:0}),frameRate:5,repeat:-1});anims.create({key:'test-walk',frames:anims.generateFrameNumbers('practice-hero',{start:8,end:15}),frameRate:9,repeat:-1});anims.create({key:'test-run',frames:anims.generateFrameNumbers('practice-hero',{start:16,end:23}),frameRate:13,repeat:-1});anims.create({key:'test-attack',frames:anims.generateFrameNumbers('practice-hero',{start:24,end:27}),frameRate:12,repeat:0});anims.create({key:'test-jump',frames:anims.generateFrameNumbers('practice-hero',{start:32,end:35}),frameRate:12,repeat:0});
+  const anims=this.anims;
+  for(const [key,start,end,frameRate,repeat] of [['test-idle',0,0,5,-1],['test-walk',8,15,9,-1],['test-run',16,23,13,-1],['test-attack',24,27,12,0],['test-jump',32,35,12,0]]){
+    const frames=anims.generateFrameNumbers('practice-hero',{start,end});
+    if(frames.length)anims.create({key,frames,frameRate,repeat});
+  }
   practicePlayer=this.physics.add.sprite(90,practiceFloorY,'practice-hero',0).setScale(.34).setOrigin(.5,.94).setDepth(8).setCollideWorldBounds(true);practicePlayer.body.setSize(140,200).setOffset(58,35);this.physics.add.collider(practicePlayer,floor);
   const crystalArt=this.make.graphics({x:0,y:0,add:false});crystalArt.fillStyle(0xc4f265,1);crystalArt.fillPoints([{x:14,y:0},{x:27,y:14},{x:14,y:29},{x:1,y:14}],true);crystalArt.lineStyle(2,0xf1ffbb,1).strokePoints([{x:14,y:0},{x:27,y:14},{x:14,y:29},{x:1,y:14}],true);crystalArt.generateTexture('practice-crystal',28,30);crystalArt.destroy();
   const coinGroup=this.physics.add.group({allowGravity:false,immovable:true});for(const [index,x] of [270,475,710,915].entries()){const coin=coinGroup.create(x,index%2?practiceFloorY-98:practiceFloorY-52,'practice-crystal').setDepth(7);coin.body.setAllowGravity(false).setImmovable(true);this.tweens.add({targets:coin,y:coin.y-7,duration:540,yoyo:true,repeat:-1,ease:'Sine.easeInOut'});}this.physics.add.overlap(practicePlayer,coinGroup,(_player,coin)=>{if(!coin.active)return;coin.destroy();practiceCrystals=Math.min(4,practiceCrystals+1);updatePracticeHud();setPracticeMessage(pt().collected);window.showToast?.(pt().collected,'success');},null,this);

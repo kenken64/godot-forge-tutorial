@@ -86,8 +86,8 @@ const fallbackModuleTranslations = {
     ms: { title: "Enjin jalan cerita", description: "Berikan sebab untuk meneroka melalui rentak naratif bercabang." },
   },
   "final-game": {
-    zh: { title: "最终游戏", description: "整合所有系统，发布一场小而完整的冒险。" },
-    ms: { title: "Permainan akhir", description: "Satukan semua sistem dan siapkan pengembaraan kecil yang lengkap." },
+    zh: { title: "最终游戏", description: "运用第 1–18 章的素材与系统，在 Godot 中制作并测试一个完整关卡。" },
+    ms: { title: "Permainan akhir", description: "Gunakan aset dan sistem modul 1–18 untuk membina dan menguji satu tahap Godot yang lengkap." },
   },
   "game-ending-cutscene": {
     zh: { title: "游戏结局过场动画", description: "设计令人满意的结局，让玩家的最后行动成为难忘的收尾时刻。" },
@@ -122,8 +122,8 @@ const fallbackModuleTranslations = {
     ms: { title: "Kuiz matematik, STEM & fizik", description: "Uji pengetahuan matematik, pergerakan, masa dan perlanggaran dalam pembangunan permainan anda." },
   },
   "setup-godot-with-ai": {
-    zh: { title: "借助 AI 设置 Godot", description: "创建 Godot 2D 项目，导入已保存的素材，并借助 AI 组装和检查场景。" },
-    ms: { title: "Sediakan Godot dengan AI", description: "Cipta projek Godot 2D, import aset yang disimpan dan gunakan AI untuk membantu membina serta menguji adegan." },
+    zh: { title: "学习 Godot 网页编辑器", description: "在浏览器中打开 Godot 项目 ZIP，探索 2D 编辑器、运行场景并保存作品副本。" },
+    ms: { title: "Pelajari Godot Web Editor", description: "Buka ZIP projek Godot dalam pelayar, terokai editor 2D, jalankan adegan dan simpan salinan kerja anda." },
   },
 };
 
@@ -359,7 +359,7 @@ function renderNavigation() {
     .map(
       (module) => {
         const copy = moduleCopy(module);
-        const destination = ["character-creation", "game-assets-creation", "boss-creation", "storyline-engine", "parallax-tiling-map", "items-spawning", "game-loop-engine", "game-controls", "game-settings", "game-physics", "game-ending-cutscene", "credits", "marketplace-system", "game-achievement", "game-leaderboard", "local-coop", "multiplayer-game", "math-stem-physics-quiz", "setup-godot-with-ai", "enemies-ai"].includes(module.slug) ? modulePath(module) : `#module-${module.slug}`;
+        const destination = ["character-creation", "game-assets-creation", "boss-creation", "storyline-engine", "parallax-tiling-map", "items-spawning", "game-loop-engine", "game-controls", "game-settings", "game-physics", "game-ending-cutscene", "credits", "marketplace-system", "game-achievement", "game-leaderboard", "local-coop", "multiplayer-game", "math-stem-physics-quiz", "setup-godot-with-ai", "enemies-ai", "final-game"].includes(module.slug) ? modulePath(module) : `#module-${module.slug}`;
         return `
         <a class="nav-item ${completedModules.has(module.slug) ? "completed" : ""}" href="${destination}">
           <span class="nav-number">${String(moduleLevel(module)).padStart(2, "0")}</span>

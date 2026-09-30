@@ -11,24 +11,24 @@ Object.assign(copy.en, {
   retry: 'START NEW ATTEMPT', retryConfirm: 'CONFIRM NEW ATTEMPT',
   retryWarning: 'Click again to clear every answer and your quiz pass status.', retrySuccess: 'New quiz attempt started.',
   complete: 'COMPLETE QUIZ', completed: 'QUIZ COMPLETE ✓',
-  passed: (score, total) => `Passed — ${score}/${total}. Complete this quiz, then continue to Set Up Godot with AI.`,
-  saved: (score, total) => `Quiz complete — ${score}/${total}. Set Up Godot with AI is next.`,
+  passed: (score, total) => `Passed — ${score}/${total}. Complete this quiz, then continue to Learn Godot Web Editor.`,
+  saved: (score, total) => `Quiz complete — ${score}/${total}. Learn Godot Web Editor is next.`,
 });
 Object.assign(copy.zh, {
   chapter: '第 18 章 / 知识测验', finalQuiz: '知识测验',
   retry: '开始新一轮测验', retryConfirm: '确认重新开始',
   retryWarning: '再次点击将清除所有答案和测验通过状态。', retrySuccess: '已开始新一轮测验。',
   complete: '完成测验', completed: '测验已完成 ✓',
-  passed: (score, total) => `通过 — ${score}/${total}。完成本测验后，继续进入“借助 AI 设置 Godot”。`,
-  saved: (score, total) => `测验已完成 — ${score}/${total}。下一站是“借助 AI 设置 Godot”。`,
+  passed: (score, total) => `通过 — ${score}/${total}。完成本测验后，继续进入“学习 Godot 网页编辑器”。`,
+  saved: (score, total) => `测验已完成 — ${score}/${total}。下一站是“学习 Godot 网页编辑器”。`,
 });
 Object.assign(copy.ms, {
   chapter: 'BAB 18 / SEMAKAN PENGETAHUAN', finalQuiz: 'SEMAKAN PENGETAHUAN',
   retry: 'MULA CUBAAN BAHARU', retryConfirm: 'SAHKAN CUBAAN BAHARU',
   retryWarning: 'Klik sekali lagi untuk padam semua jawapan dan status lulus kuiz.', retrySuccess: 'Cubaan kuiz baharu bermula.',
   complete: 'LENGKAPKAN KUIZ', completed: 'KUIZ SELESAI ✓',
-  passed: (score, total) => `Lulus — ${score}/${total}. Lengkapkan kuiz ini, kemudian teruskan ke Sediakan Godot dengan AI.`,
-  saved: (score, total) => `Kuiz selesai — ${score}/${total}. Sediakan Godot dengan AI ialah langkah seterusnya.`,
+  passed: (score, total) => `Lulus — ${score}/${total}. Lengkapkan kuiz ini, kemudian teruskan ke Pelajari Godot Web Editor.`,
+  saved: (score, total) => `Kuiz selesai — ${score}/${total}. Pelajari Godot Web Editor ialah langkah seterusnya.`,
 });
 let currentLocale = copy[localStorage.getItem('godot-forge-locale')] ? localStorage.getItem('godot-forge-locale') : 'en';
 const quizList = document.querySelector("#quiz-list"), pageTabs = document.querySelector('#quiz-page-tabs'), previousPage = document.querySelector('#previous-page'), nextPage = document.querySelector('#next-page'), pageLabel = document.querySelector('#quiz-page-label'), scoreElement = document.querySelector("#score"), answeredElement = document.querySelector("#answered-count"), intro = document.querySelector("#quiz-intro"), result = document.querySelector("#quiz-result"), retry = document.querySelector("#retry"), complete = document.querySelector("#complete");

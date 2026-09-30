@@ -1,0 +1,45 @@
+name: godot-forge-cloud
+
+services:
+  controller:
+    build: ./controller
+    restart: unless-stopped
+    environment:
+      GODOT_CLOUD_LEARNER_ID: ${GODOT_CLOUD_LEARNER_ID:-}
+      GODOT_CLOUD_SHARED_SECRET: ${GODOT_CLOUD_SHARED_SECRET:?Set a long random secret}
+      GODOT_CLOUD_APP_ORIGIN: ${GODOT_CLOUD_APP_ORIGIN:?Set the tutorial app HTTPS origin}
+      GODOT_CLOUD_EXTRA_FRAME_ORIGINS: ${GODOT_CLOUD_EXTRA_FRAME_ORIGINS:-}
+      GODOT_CLOUD_DATA_ROOT: ${GODOT_CLOUD_DATA_ROOT:-/srv/godot-forge-cloud/data}
+      GODOT_CLOUD_NETWORK: godot-forge-cloud
+      GODOT_CLOUD_EDITOR_IMAGE: godot-forge-cloud-editor:4.7.2
+      GODOT_CLOUD_STARTER_URL: ${GODOT_CLOUD_STARTER_URL:-https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/final-game/starter/godot-forge-starter-v1.zip}
+      GODOT_CLOUD_STARTER_SHA256: ${GODOT_CLOUD_STARTER_SHA256:-f850b6d722fc5f253b7090ee48722ec32f8c68d6ed4cef35346f9c61b2780212}
+      GODOT_CLOUD_MAX_SESSIONS: ${GODOT_CLOUD_MAX_SESSIONS:-1}
+      GODOT_CLOUD_IDLE_MINUTES: ${GODOT_CLOUD_IDLE_MINUTES:-45}
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ${GODOT_CLOUD_DATA_ROOT:-/srv/godot-forge-cloud/data}:${GODOT_CLOUD_DATA_ROOT:-/srv/godot-forge-cloud/data}
+    networks: [cloud]
+
+  caddy:
+    image: caddy:2.10.0
+    restart: unless-stopped
+    environment:
+      GODOT_CLOUD_DOMAIN: ${GODOT_CLOUD_DOMAIN:?Set the editor hostname}
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on: [controller]
+    networks: [cloud]
+
+networks:
+  cloud:
+    name: godot-forge-cloud
+
+volumes:
+  caddy_data:
+  caddy_config:

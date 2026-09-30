@@ -18,6 +18,7 @@
     "test:credits-browser": "node tests/credits-browser.js",
     "test:marketplace-browser": "node tests/marketplace-browser.js",
     "test:gamepad-recommendation": "node tests/gamepad-recommendation-browser.js",
+    "test:final-game-walkthrough": "node tests/final-game-walkthrough-browser.js",
     "test:ending-browser": "node tests/ending-cutscene-browser.js",
     "test:parallax-browser": "node tests/parallax-browser.js",
     "test:storyline-voice": "node --test tests/storyline-voice.test.js",

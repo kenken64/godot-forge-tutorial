@@ -104,7 +104,7 @@ test("21 modules: localized navigation, overview pages, search and persistent pr
     assert.deepEqual(modules.map(module => module.slug), moduleSequence);
     assert.equal(modules[9].title, "Game HUD and Settings");
     assert.match(modules[9].description, /HUD/);
-    assert.equal(modules.at(-2).title, "Set Up Godot with AI");
+    assert.equal(modules.at(-2).title, "Learn Godot Web Editor");
     assert.equal(modules.at(-1).title, "Final Game");
     const learnerId = "checkpoint-learner-0001";
     const checkpointSave = await fetch(`${server.url}/api/modules/game-assets-creation/checkpoint`, {
@@ -215,9 +215,17 @@ test("21 modules: localized navigation, overview pages, search and persistent pr
         const translation = module.translations[locale];
         assert.ok(translation.title && translation.description);
         await page.fill("#module-search", translation.title);
-        assert.equal(await page.locator(".module-card").count(), 1);
-        assert.equal(await page.locator(".module-card h3").textContent(), translation.title);
+        assert.equal(await page.locator(`#module-${slug} h3`).textContent(), translation.title);
         await page.click(`#module-nav a[href="/${slug}/"]`);
+        if (slug === "setup-godot-with-ai") {
+          await page.locator('.lesson-intro h1').waitFor();
+          await page.waitForFunction(expected => document.documentElement.lang === expected, locale === 'zh' ? 'zh-CN' : locale);
+          assert.match(await page.locator('.lesson-intro h1').textContent(), /Godot|编辑器/);
+          assert.equal(await page.locator('html').getAttribute('lang'), locale === 'zh' ? 'zh-CN' : locale);
+          await page.goto(server.url);
+          await page.waitForFunction(() => document.querySelectorAll('.module-card').length === 21);
+          continue;
+        }
         if (["game-loop-engine", "game-controls", "game-settings", "game-physics", "game-ending-cutscene", "game-achievement", "game-leaderboard", "local-coop", "multiplayer-game", "enemies-ai", "credits"].includes(slug)) {
           await page.locator("#page-title").waitFor();
           await page.waitForFunction(expected => document.documentElement.lang === expected, locale === "zh" ? "zh-CN" : locale);

@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+exec /usr/local/bin/godot --editor --path /config/project --rendering-method gl_compatibility

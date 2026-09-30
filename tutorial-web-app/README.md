@@ -25,8 +25,8 @@ The `tutorial-web-app` folder is the landing page and API server for the 2D game
 - `local-coop` — a shared-screen coin run with a keyboard player, a gamepad player, separate coin counters, saved progress, and on-page gameplay and art prompts
 - `multiplayer-game` — a two-player WebSocket room where either player hosts or joins, both can chat and ready up, and both live game views share server-owned movement and coin scores
 - `math-stem-physics-quiz` — 40-question maths, physics, game-systems, and computer-game-history quiz
-- `setup-godot-with-ai` — Godot 2D project setup, asset import and AI-assisted scene assembly
-- `final-game`
+- `setup-godot-with-ai` — Learn Godot Web Editor: a six-step illustrated walkthrough with an embedded, server-run Godot workspace and a separate-tab launch button
+- `final-game` — a Godot starter project ZIP containing the published lesson artwork and animation coordinates, with a link to the cloud editor lesson
 
 ## Persistence model
 
@@ -53,6 +53,9 @@ Published lesson images, module icons, previously uploaded library images, and c
 
 The API currently exposes:
 
+- `GET /api/godot/config` — report whether the cloud editor service is configured.
+- `POST /api/godot/session` with `{ "learnerId": "..." }` — start or resume that learner's server-side Godot workspace and return its embedded and download URLs.
+- `POST /api/godot/stop` with `{ "learnerId": "..." }` — stop that learner's editor container while preserving their project files.
 - `GET /api/modules?learnerId=...` — module metadata and that learner's saved progress.
 - `POST /api/chat` — forward text/design requests to the server-configured Ollama-compatible proxy.
 - `PATCH /api/modules/:slug/progress` with `{ "learnerId": "...", "completed": true }` — save that learner's progress. For the chapter 18 quiz, the server first verifies a passing score from saved graded answers.
@@ -99,4 +102,66 @@ The explorer and guardian exchange choice-sensitive lines in a GPT Image 2.5-gen
 
 Set `OLLAMA_PROXY_URL` in `tutorial-web-app/.env` to the Ollama-compatible Codex proxy address (default `http://127.0.0.1:8788`). If that proxy uses `PROXY_API_KEY`, set the same value as `OLLAMA_PROXY_API_KEY` here. Character, boss, and asset creation send text/design requests through this server; students do not enter or see the proxy URL. Restart the tutorial server after changing `.env`.
 
-For Character Creation, Game Asset Creation, Boss Creation image generation, and Storyline Engine voice playback, set `OPENAI_API_KEY` in the same `.env`. The default image model is `gpt-image-2.5-sunburst`; the default voice model is `gpt-4o-mini-tts` and can be changed with `OPENAI_TTS_MODEL`. `npm start` and `npm run dev` load `.env` automatically. The quiz is chapter 18, followed by Set Up Godot with AI at chapter 19 and Final Game at chapter 20. Its New Attempt button clears saved answers and pass status for unlimited retries.
+For Character Creation, Game Asset Creation, Boss Creation image generation, and Storyline Engine voice playback, set `OPENAI_API_KEY` in the same `.env`. The default image model is `gpt-image-2.5-sunburst`; the default voice model is `gpt-4o-mini-tts` and can be changed with `OPENAI_TTS_MODEL`. `npm start` and `npm run dev` load `.env` automatically. The quiz is chapter 19, followed by Learn Godot Web Editor at chapter 20 and Final Game at chapter 21. Its New Attempt button clears saved answers and pass status for unlimited retries.
+
+## Provision a dedicated Lightsail editor for each student
+
+Install Python 3, AWS CLI and the OpenSSH client on the tutorial server and include `godot-cloud/`
+in deployment. Configure replacement AWS credentials through the server's AWS CLI
+credential chain or ignored `godot-cloud/.env.aws`; never enter AWS keys in the browser.
+Credentials need Lightsail instance, bundle, blueprint, region, static IP and firewall
+permissions, including deletion permissions for cleanup and `GetInstanceAccessDetails`
+for retrying deployment with temporary SSH credentials. Keep SSH port 22 reachable
+from the tutorial server for retries. SSH host keys are verified against Lightsail
+access details. DNS defaults to Porkbun:
+set `GODOT_DNS_PROVIDER=porkbun`, `GODOT_DNS_DOMAIN=kere.ceo`, `PORKBUN_API_KEY` and `PORKBUN_SECRET_API_KEY` in the
+server environment and enable **API Access** for `kere.ceo` in Porkbun. Porkbun must
+host the authoritative DNS. The app creates and removes only the generated student
+A record; existing domain records stay in place. No registrar/nameserver change is
+automated. If using Lightsail DNS instead, set `GODOT_DNS_PROVIDER=lightsail`, grant
+Lightsail DNS permissions, and delegate the preexisting `kere.com` Lightsail zone.
+
+For local iframe testing, optionally set
+`GODOT_CLOUD_EXTRA_FRAME_ORIGINS=http://localhost:3000`; leave it empty in production.
+
+Set `GODOT_PROVISION_ENABLED=true` and `GODOT_CLOUD_APP_ORIGIN` to the tutorial
+HTTPS origin (default `https://learn-game.kere.ceo`). Restart the app.
+No administrator token is required. Student identity is generated and stored in
+browser storage and is hidden from the lesson. Supabase authentication is planned.
+
+Select **Start cloud editor** to provision the student's workspace. Play tic-tac-toe
+against the computer while the progress bar below reports server creation,
+network setup, installation and HTTPS readiness. Once ready, the same button changes
+to **Launch cloud editor** and opens Godot in a new tab when clicked.
+
+Each student receives a random `godot-<id>.kere.ceo` hostname, a dedicated Singapore
+instance, static IP, and unique editor secret. The launch script installs Docker,
+builds Godot, starts the controller and Caddy, and obtains HTTPS. Deployment retries
+through `godot-cloud-deploy.service` on the instance. Provisioning completes only after
+an authenticated HTTPS request succeeds. Then the student's **Launch cloud editor**
+button becomes available automatically. Opening the dedicated subdomain directly also
+starts that student’s editor on Lightsail. Direct hostname access is currently
+unauthenticated; anyone who can reach it can access that workspace. Add student
+authentication before a public class rollout. Initial deployment can take 20 minutes or more.
+
+The server saves mappings and secrets with restricted file permissions under
+`APP_STORAGE_DIR/lightsail` (or the normal storage directory). Keep this directory
+on a persistent volume and back it up; loss of the mapping can create duplicate
+instances. Retries and server restarts reuse the saved instance name, IP name,
+subdomain and secret. Run one tutorial server process with provisioning enabled;
+concurrency protection operates within that process. After a restart, interrupted
+jobs require an student retry to verify readiness. AWS instances keep running.
+
+The existing plan cap is $24/month **per student**, excluding other AWS charges.
+Check/increase Lightsail static IP and instance quotas for the class size.
+Use **Stop and delete workspace** or **Remove cloud editor** and confirm the warning to permanently
+delete the instance, release its static IP and remove its generated DNS record.
+The module asks for confirmation because this deletes the student's project files;
+download the project ZIP first. Removal verifies the saved names, ownership tag and
+DNS target before changing resources, and can be retried after partial failure.
+Existing snapshots, if any, are not deleted.
+
+Learner identity currently uses a random browser-generated ID, not authenticated
+student accounts. Clearing browser storage changes the ID; retain the original
+ID to recover the mapping. Anyone who obtains a learner ID can request its editor
+through the tutorial API. Add authenticated student accounts before public rollout.

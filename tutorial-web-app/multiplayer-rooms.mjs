@@ -153,7 +153,10 @@ export function attachMultiplayerRooms(server) {
     let pathname;
     try { pathname = new URL(request.url, `http://${request.headers.host}`).pathname; }
     catch { socket.destroy(); return; }
-    if (pathname !== '/ws/multiplayer') { socket.destroy(); return; }
+    if (pathname !== '/ws/multiplayer') {
+      if (pathname !== '/ws/final-game') socket.destroy();
+      return;
+    }
     try {
       if (request.headers.origin && new URL(request.headers.origin).host !== request.headers.host) { socket.destroy(); return; }
     } catch { socket.destroy(); return; }

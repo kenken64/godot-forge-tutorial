@@ -22,7 +22,16 @@ try {
   try {
     const page = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
     const errors = [];
-    page.on('pageerror', error => errors.push(error.message));
+    page.on('pageerror', error => errors.push(error.stack));
+    await page.addInitScript(() => {
+      window.testGamepad = {
+        connected: true,
+        id: 'Test gamepad',
+        axes: [0, 0, 0, 0],
+        buttons: Array.from({ length: 17 }, () => ({ pressed: false, value: 0 })),
+      };
+      Object.defineProperty(navigator, 'getGamepads', { value: () => [window.testGamepad] });
+    });
     await page.goto(`${baseUrl}/game-controls/`);
     await page.locator('#gamepad-buy-link').waitFor();
     assert.equal(await page.locator('#gamepad-buy-link').getAttribute('href'), 'https://www.amazon.com/dp/B081HML6MP?th=1');
@@ -30,6 +39,20 @@ try {
     assert.equal(await page.locator('#gamepad-buy-link').getAttribute('rel'), 'noopener noreferrer');
     assert.match(await page.locator('#gamepad-recommendation-title').textContent(), /Recommended mini gamepad/);
     await page.locator('#playtest-stage canvas').waitFor();
+    const stageBox = await page.locator('#playtest-stage').boundingBox();
+    const cardBox = await page.locator('.practice-card').boundingBox();
+    assert.ok(Math.abs(stageBox.x + stageBox.width / 2 - cardBox.x - cardBox.width / 2) < 2);
+    await page.waitForFunction(() => typeof practicePlayer !== 'undefined' && practicePlayer?.body);
+    assert.ok(await page.evaluate(() => practiceScene.textures.get('practice-hero').frameTotal > 1));
+    const startX = await page.evaluate(() => practicePlayer.x);
+    await page.keyboard.down('ArrowRight');
+    await page.waitForFunction(x => practicePlayer.x > x + 30, startX);
+    await page.keyboard.up('ArrowRight');
+    const keyboardX = await page.evaluate(() => practicePlayer.x);
+    await page.evaluate(() => { window.testGamepad.axes[0] = 1; });
+    await page.waitForFunction(x => practicePlayer.x > x + 30, keyboardX);
+    await page.evaluate(() => { window.testGamepad.axes[0] = 0; });
+    assert.match(await page.locator('#connection-label').textContent(), /Test gamepad/);
     await page.waitForFunction(() => performance.getEntriesByType('resource').some(entry => entry.name.includes('/game-controls/images/training-dummy.webp')));
     assert.equal((await page.request.get(`${baseUrl}/game-controls/images/training-dummy.webp`)).status(), 200);
     assert.match(await page.locator('#dummy-prompt').textContent(), /wooden sparring dummy/);
@@ -43,6 +66,6 @@ try {
     await page.setViewportSize({ width: 390, height: 844 });
     assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);
     assert.deepEqual(errors, []);
-    console.log('PASS recommended gamepad link, safe new-tab attributes, English/Chinese/Malay copy, and mobile layout');
+    console.log('PASS playable game, keyboard and gamepad movement, recommended gamepad link, translations, and mobile layout');
   } finally { await browser.close(); }
 } finally { if (server.exitCode === null) { const exited = once(server, 'exit'); server.kill('SIGTERM'); await exited; } }

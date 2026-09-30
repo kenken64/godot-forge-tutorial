@@ -41,6 +41,7 @@ __pycache__/
 output/
 tmp/
 tutorial-web-app/test-results/
+final-game/dist/
 .env
 .env.*
 !.env.example

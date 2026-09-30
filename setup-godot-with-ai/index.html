@@ -8,21 +8,168 @@
     <script src="/module-reset.js" defer></script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Set Up Godot with AI · Godot Forge</title>
-    <link rel="stylesheet" href="/styles.css" />
-    <link rel="stylesheet" href="/module-overview.css" />
-    <script src="/module-overview.js" defer></script>
+    <meta name="description" content="Explore the Godot editor with a guided cloud workspace and starter project." />
+    <title>Learn Godot Web Editor · Godot Forge</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/setup-godot-with-ai/style.css" />
+    <script src="/setup-godot-with-ai/waiting-game.js" defer></script>
+    <script src="/setup-godot-with-ai/app.js" defer></script>
   </head>
   <body data-module="setup-godot-with-ai">
-    <main class="module-overview">
-      <header><a href="/" data-copy="back">← Learning path</a><div id="languages" role="group" aria-label="Language"><button data-locale="en">EN</button><button data-locale="zh">中文</button><button data-locale="ms">BM</button></div></header>
-      <p class="eyebrow" id="chapter"></p>
-      <h1 id="title">Set Up Godot with AI</h1>
-      <p id="description"></p>
-      <section><h2 data-copy="topics">Planned topics</h2><ol id="topics"></ol></section>
-      <p data-copy="notice">This module overview is ready. Interactive lessons are coming next.</p>
-      <button id="complete" class="primary-button" disabled></button>
-      <p id="status" role="status"></p>
+    <div class="godot-module-shell">
+      <header class="lesson-header module-header">
+        <div class="lesson-header-inner">
+          <a class="back-link" href="/" data-copy="back">← GODOT FORGE / LEARNING PATH</a>
+          <span class="chapter-label" data-copy="chapter">CHAPTER 20 / GODOT WEB EDITOR</span>
+          <div class="header-tools">
+            <div id="languages" class="language-toggle" role="group" aria-label="Language">
+              <button type="button" data-locale="en">EN</button>
+              <button type="button" data-locale="zh">中文</button>
+              <button type="button" data-locale="ms">BM</button>
+            </div>
+            <a class="home-mark" href="/" aria-label="Godot Forge home">✦</a>
+          </div>
+        </div>
+      </header>
+
+    <main class="editor-lesson">
+      <section class="lesson-intro">
+        <p class="eyebrow" data-copy="introEyebrow">GUIDED WORKSPACE / STARTER PROJECT</p>
+        <h1 data-copy="title">Learn Godot Web Editor.</h1>
+        <p data-copy="intro">Run Godot on our cloud server, edit the starter project in this lesson, and keep your work on the server.</p>
+        <div class="lesson-actions">
+          <a class="lesson-button secondary" id="download-starter" role="link" aria-disabled="true" tabindex="-1" data-copy="downloadKit">Download starter ZIP · 83 MiB</a>
+        </div>
+      </section>
+
+      <section class="cloud-workspace" aria-labelledby="cloud-title">
+        <h2 id="cloud-title" data-copy="cloudTitle">Your cloud editor</h2>
+        <p data-copy="cloudIntro">Your project opens with the lesson assets already installed. Stopping deletes the Lightsail instance and saved files. Download your project ZIP first.</p>
+        <div class="lesson-actions">
+          <button class="lesson-button" id="start-cloud" type="button" disabled data-copy="startCloud">Start cloud editor</button>
+          <button class="lesson-button secondary" id="stop-cloud" type="button" disabled data-copy="stopCloud">Stop and delete workspace</button>
+          <button class="lesson-button secondary" id="remove-cloud" type="button" hidden data-copy="removeCloud">Remove cloud editor</button>
+          <a class="lesson-button secondary" id="download-cloud" href="#" hidden data-copy="downloadCloud">Download my project ZIP</a>
+        </div>
+        <p id="cloud-status" role="status" aria-live="polite"></p>
+        <section id="cloud-preparing" class="cloud-preparing" aria-labelledby="preparing-title" hidden>
+          <div class="preparation-heading">
+            <div><p class="eyebrow" data-copy="preparingEyebrow">YOUR WORKSPACE IS ON ITS WAY</p><h3 id="preparing-title" data-copy="preparingTitle">Play while we prepare Godot.</h3></div>
+            <span id="preparing-badge" class="preparing-badge" data-copy="preparingBadge">Preparing</span>
+          </div>
+          <div class="preparation-grid">
+            <div class="waiting-game">
+              <div class="game-heading"><h4 data-copy="gameTitle">Tic-tac-toe</h4></div>
+              <div id="waiting-game" role="group" aria-label="Tic-tac-toe board" data-aria-label="gameAccessible"></div>
+              <p id="game-result" role="status" aria-live="polite"></p>
+              <div class="game-controls"><button type="button" id="game-new" data-copy="gameNew">New game</button><button type="button" id="game-pause" data-copy="gamePause">Pause game</button></div>
+              <p data-copy="gameHelp">You are X. Choose a square; the computer plays O.</p>
+            </div>
+            <div class="readiness-panel">
+              <h4 data-copy="readinessTitle">Getting your editor ready</h4>
+              <progress id="readiness-progress" max="5" value="0" aria-label="Editor preparation progress" data-aria-label="readinessAccessible"></progress>
+              <p id="readiness-summary" class="readiness-summary" role="status" aria-live="polite"></p>
+              <ol id="readiness-steps">
+                <li data-stage="instance"><span class="step-dot">1</span><span class="stage-content"><span data-copy="stageInstance">Create your Lightsail server</span><span class="task-track" aria-hidden="true"><span class="task-fill"></span></span></span></li>
+                <li data-stage="network"><span class="step-dot">2</span><span class="stage-content"><span data-copy="stageNetwork">Connect your workspace</span><span class="task-track" aria-hidden="true"><span class="task-fill"></span></span></span></li>
+                <li data-stage="installing"><span class="step-dot">3</span><span class="stage-content"><span data-copy="stageInstalling">Build the Godot editor service</span><span class="task-track" aria-hidden="true"><span class="task-fill"></span></span></span></li>
+                <li data-stage="secure"><span class="step-dot">4</span><span class="stage-content"><span data-copy="stageSecure">Check the secure connection</span><span class="task-track" aria-hidden="true"><span class="task-fill"></span></span></span></li>
+                <li data-stage="ready"><span class="step-dot">5</span><span class="stage-content"><span data-copy="stageReady">Ready to launch in a new tab</span><span class="task-track" aria-hidden="true"><span class="task-fill"></span></span></span></li>
+              </ol>
+              <p id="readiness-detail" role="status" aria-live="polite"></p>
+              <p id="readiness-checked" class="readiness-checked"></p>
+              <p class="preparation-note" data-copy="preparingNote">First-time preparation can take about 20 minutes. Your game does not affect the setup.</p>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <nav class="step-nav" aria-label="Walkthrough steps" data-aria-label="stepsLabel">
+        <a href="#step-1">01</a><a href="#step-2">02</a><a href="#step-3">03</a><a href="#step-4">04</a><a href="#step-5">05</a><a href="#step-6">06</a>
+      </nav>
+
+      <section class="walkthrough" aria-label="Godot Web Editor walkthrough">
+        <article class="lesson-step" id="step-1">
+          <div class="step-heading"><span>01</span><h2 data-copy="step1Title">Start your cloud workspace</h2></div>
+          <p data-copy="step1Body">Select Start cloud editor above. The server prepares a private Godot workspace with the starter project and opens it here. First-time setup can take about 20 minutes. When ready, select Launch cloud editor to open it in a new tab.</p>
+          <p class="step-tip" data-copy="step1Tip">The 83 MiB starter ZIP is available if you want a separate backup. You do not need to upload it to the cloud editor.</p>
+        </article>
+
+        <article class="lesson-step has-figure" id="step-2">
+          <div class="step-heading"><span>02</span><h2 data-copy="step2Title">Find the 2D workspace</h2></div>
+          <p data-copy="step2Body">Godot opens the starter project directly. Choose 2D at the top. The canvas is in the center, with project panels around it.</p>
+          <figure>
+            <a href="https://docs.godotengine.org/en/stable/_images/editor_intro_workspace_2d.webp" target="_blank" rel="noopener noreferrer"><img src="https://docs.godotengine.org/en/stable/_images/editor_intro_workspace_2d.webp" alt="Godot editor with the 2D workspace active" data-alt="editorAlt" loading="lazy" decoding="async" /></a>
+            <figcaption data-copy="editorCaption">Choose 2D at the top to work in the 2D workspace.</figcaption>
+          </figure>
+        </article>
+
+        <article class="lesson-step has-figure" id="step-3">
+          <div class="step-heading"><span>03</span><h2 data-copy="step3Title">Read the Scene panel</h2></div>
+          <p data-copy="step3Body">Open res://scenes/Main.tscn in FileSystem. The Scene panel lists its nodes. Select Welcome to inspect the Label in the starter scene.</p>
+          <figure>
+            <a href="https://docs.godotengine.org/en/stable/_images/editor_intro_scene_dock.webp" target="_blank" rel="noopener noreferrer"><img src="https://docs.godotengine.org/en/stable/_images/editor_intro_scene_dock.webp" alt="Godot Scene dock showing the node tree" data-alt="sceneAlt" loading="lazy" decoding="async" /></a>
+            <figcaption data-copy="sceneCaption">Scene lists the nodes in the open scene.</figcaption>
+          </figure>
+        </article>
+
+        <article class="lesson-step has-figure" id="step-4">
+          <div class="step-heading"><span>04</span><h2 data-copy="step4Title">Explore the lesson assets</h2></div>
+          <p data-copy="step4Body">In FileSystem, open res://assets. The art is grouped by lesson module, ready to use in your final game.</p>
+          <figure>
+            <a href="https://docs.godotengine.org/en/stable/_images/editor_intro_filesystem_dock.webp" target="_blank" rel="noopener noreferrer"><img src="https://docs.godotengine.org/en/stable/_images/editor_intro_filesystem_dock.webp" alt="Godot FileSystem dock listing project folders and files" data-alt="filesAlt" loading="lazy" decoding="async" /></a>
+            <figcaption data-copy="filesCaption">Look for your starter kit's assets and scenes in FileSystem.</figcaption>
+          </figure>
+        </article>
+
+        <article class="lesson-step has-figure" id="step-5">
+          <div class="step-heading"><span>05</span><h2 data-copy="step5Title">Change the welcome text</h2></div>
+          <p data-copy="step5Body">Select Welcome in Scene, then edit its Text property in Inspector. Save with Ctrl+S (Cmd+S on Mac); the project files stay in your server workspace.</p>
+          <figure>
+            <a href="https://docs.godotengine.org/en/stable/_images/editor_intro_inspector_dock.webp" target="_blank" rel="noopener noreferrer"><img src="https://docs.godotengine.org/en/stable/_images/editor_intro_inspector_dock.webp" alt="Godot Inspector dock showing editable node properties" data-alt="inspectorAlt" loading="lazy" decoding="async" /></a>
+            <figcaption data-copy="inspectorCaption">Inspector lets you edit the selected Label's text.</figcaption>
+          </figure>
+        </article>
+
+        <article class="lesson-step has-figure" id="step-6">
+          <div class="step-heading"><span>06</span><h2 data-copy="step6Title">Run, back up, and stop</h2></div>
+          <p data-copy="step6Body">Press F5 or the Play button to run the project. When done, use Download my project ZIP for a copy, then Stop and delete workspace. Confirm the warning and wait for cleanup to finish.</p>
+          <figure>
+            <a href="https://docs.godotengine.org/en/stable/_images/editor_intro_top_menus.webp" target="_blank" rel="noopener noreferrer"><img src="https://docs.godotengine.org/en/stable/_images/editor_intro_top_menus.webp" alt="Top of the Godot editor with workspace tabs and play controls" data-alt="toolbarAlt" loading="lazy" decoding="async" /></a>
+            <figcaption data-copy="toolbarCaption">The Play controls are at the top right of the editor.</figcaption>
+          </figure>
+        </article>
+      </section>
+
+      <footer class="lesson-footer">
+        <p data-copy="finish">You are ready to use these assets in Final Game.</p>
+        <div class="lesson-finish-actions">
+          <button class="lesson-button" id="complete" type="button" disabled data-copy="complete">Mark lesson complete</button>
+          <a class="lesson-button secondary" href="/final-game/" data-copy="next">Continue to Final Game →</a>
+        </div>
+        <p id="status" role="status" aria-live="polite"></p>
+        <p class="image-credit"><span data-copy="credit">Godot editor screenshots by Juan Linietsky, Ariel Manzur, and the Godot Engine community.</span> <a href="https://docs.godotengine.org/en/stable/getting_started/introduction/first_look_at_the_editor.html" target="_blank" rel="noopener noreferrer" data-copy="source">Screenshot source</a> · <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="noopener noreferrer">CC BY 3.0</a></p>
+      </footer>
     </main>
+    <dialog id="remove-dialog" class="remove-dialog" aria-labelledby="remove-title" aria-describedby="remove-description">
+      <form method="dialog">
+        <p class="dialog-eyebrow" data-copy="removeEyebrow">PERMANENT DELETION</p>
+        <h2 id="remove-title" data-copy="removeTitle">Delete your cloud workspace?</h2>
+        <p id="remove-description" data-copy="removeDescription">This will permanently delete your Lightsail instance and all saved project files.</p>
+        <ul>
+          <li data-copy="removeInstance">Your Godot editor instance</li>
+          <li data-copy="removeFiles">All project files saved on the instance</li>
+          <li data-copy="removeNetwork">Its static IP and subdomain DNS record</li>
+        </ul>
+        <p class="dialog-warning" data-copy="removeWarning">This cannot be undone. Download your project ZIP before continuing.</p>
+        <div class="dialog-actions">
+          <button class="lesson-button secondary" type="submit" value="cancel" autofocus data-copy="removeCancel">Keep workspace</button>
+          <button class="lesson-button danger" id="confirm-remove" type="button" data-copy="removeAction">Delete workspace</button>
+        </div>
+      </form>
+    </dialog>
+    </div>
   </body>
 </html>

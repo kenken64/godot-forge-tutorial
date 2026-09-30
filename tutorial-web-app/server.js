@@ -1,5 +1,7 @@
 import { createServer } from "node:http";
+import { createProvisioningController } from "./lightsail-provisioning.mjs";
 import { promises as fs } from "node:fs";
+import { createReadStream } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { createHash, randomUUID } from "node:crypto";
@@ -12,10 +14,15 @@ import { characterManifest, bossManifest, assetPackManifest } from './sprite-man
 import { quizQuestionBank } from './quiz-question-bank.mjs';
 import { quizQuestionTranslations } from './quiz-question-translations.mjs';
 import { attachMultiplayerRooms } from './multiplayer-rooms.mjs';
+import { attachFinalGameRooms } from './final-game-rooms.mjs';
 
 const appDirectory = path.dirname(fileURLToPath(import.meta.url));
 const projectDirectory = path.resolve(appDirectory, "..");
 const publicDirectory = appDirectory;
+const lightsailProvisioning = createProvisioningController({ projectDirectory });
+const starterKitPath = path.join(projectDirectory, "final-game", "dist", "godot-forge-starter-v1.zip");
+const starterKitUrl = process.env.GODOT_STARTER_KIT_URL || "";
+const publishedStarterKitUrl = "https://godot-forge.sgp1.digitaloceanspaces.com/2d-game-development/final-game/starter/godot-forge-starter-v1.zip";
 const spacesManifest = await fs.readFile(path.join(projectDirectory, "SPACES_PUBLIC_URLS.json"), "utf8")
   .then(JSON.parse)
   .catch(error => {
@@ -294,26 +301,26 @@ const modules = [
   },
   {
     slug: "setup-godot-with-ai",
-    title: "Set Up Godot with AI",
-    description: "Configure a Godot 2D project, import published assets, and review AI-assisted scene and script workflows.",
+    title: "Learn Godot Web Editor",
+    description: "Run Godot in a cloud workspace, explore the 2D editor, and build with the lesson assets.",
     level: 20,
     durationMinutes: 45,
     tag: "GODOT",
     translations: {
-      zh: { title: "借助 AI 设置 Godot", description: "创建 Godot 2D 项目，导入已保存的素材，并借助 AI 组装和检查场景。" },
-      ms: { title: "Sediakan Godot dengan AI", description: "Cipta projek Godot 2D, import aset yang disimpan dan gunakan AI untuk membantu membina serta menguji adegan." },
+      zh: { title: "学习 Godot 网页编辑器", description: "在云端工作区运行 Godot，探索 2D 编辑器，并使用课程素材制作游戏。" },
+      ms: { title: "Pelajari Godot Web Editor", description: "Jalankan Godot dalam ruang kerja awan, terokai editor 2D dan bina permainan dengan aset pelajaran." },
     },
   },
   {
     slug: "final-game",
     title: "Final Game",
-    description: "Integrate every system, test the complete experience, and package a small 2D game for release.",
+    description: "Build one complete Godot level with the art and systems from modules 1–18, then test solo, local co-op, and online play.",
     level: 21,
-    durationMinutes: 60,
+    durationMinutes: 180,
     tag: "SHIP IT",
     translations: {
-      zh: { title: "最终游戏", description: "整合所有系统，发布一场小而完整的冒险。" },
-      ms: { title: "Permainan akhir", description: "Satukan semua sistem dan siapkan pengembaraan kecil yang lengkap." },
+      zh: { title: "最终游戏", description: "运用第 1–18 章的素材与系统，在 Godot 中制作并测试一个完整关卡。" },
+      ms: { title: "Permainan akhir", description: "Gunakan aset dan sistem modul 1–18 untuk membina dan menguji satu tahap Godot yang lengkap." },
     },
   },
 ];
@@ -897,6 +904,12 @@ function contentType(filePath) {
 
 async function serveStatic(request, response, pathname) {
   if (request.method !== "GET" && request.method !== "HEAD") return false;
+  const segments = pathname.split('/').filter(Boolean);
+  const phaserBundle = pathname === '/node_modules/phaser/dist/phaser.min.js';
+  if (segments.some(segment => segment.startsWith('.')) || (segments.includes('node_modules') && !phaserBundle) ||
+      ['godot-cloud', 'ollama-api-proxy', 'tmp', 'output', 'storage'].includes(segments[0]) ||
+      (segments[0] === 'tutorial-web-app' && segments[1] === 'storage') ||
+      (segments[0] === 'final-game' && segments[1] === 'dist')) return false;
 
   // Serve published artwork from Spaces through this origin so Phaser and
   // canvas-based modules can use it without browser CORS restrictions.
@@ -1325,7 +1338,79 @@ async function storyVoiceAudio({ locale, speaker, text }) {
   try { return await work; } finally { storyVoiceRequests.delete(key); }
 }
 
+function studentProvisionStatus(job) {
+  const { state, stage, startedAt, finishedAt } = job;
+  return { state, stage, startedAt, finishedAt };
+}
+
 async function handleApi(request, response, url) {
+  if (url.pathname === '/api/godot/config' && request.method === 'GET') {
+    const learnerId = url.searchParams.get('learnerId');
+    const connection = learnerId ? await lightsailProvisioning.connection(learnerId) : null;
+    const provisioning = learnerId ? await lightsailProvisioning.status(learnerId) : null;
+    return sendJson(response, 200, { provisioningEnabled: lightsailProvisioning.enabled, configured: Boolean(connection), provisioning: provisioning ? studentProvisionStatus(provisioning) : null });
+  }
+  if (['/api/godot/session', '/api/godot/stop'].includes(url.pathname) && request.method === 'POST') {
+    const body = await readJson(request);
+    if (typeof body.learnerId !== 'string' || !/^[a-zA-Z0-9_-]{8,100}$/.test(body.learnerId)) {
+      return sendJson(response, 400, { error: 'A valid learner ID is required.' });
+    }
+    const connection = await lightsailProvisioning.connection(body.learnerId);
+    if (!connection) {
+      if (url.pathname === '/api/godot/stop') return sendJson(response, 200, { stopped: true });
+      const job = await lightsailProvisioning.start(body.learnerId);
+      return sendJson(response, 202, { provisioning: studentProvisionStatus(job) });
+    }
+    let upstream;
+    try {
+      upstream = await fetch(`${connection.serviceUrl}${url.pathname === '/api/godot/stop' ? '/internal/stop' : '/internal/session'}`, {
+        method: 'POST',
+        headers: { authorization: `Bearer ${connection.secret}`, 'content-type': 'application/json' },
+        body: JSON.stringify({ learnerId: body.learnerId }),
+        signal: AbortSignal.timeout(180_000),
+      });
+    } catch {
+      return sendJson(response, 502, { error: 'The cloud Godot server is unavailable.' });
+    }
+    const result = await upstream.json().catch(() => ({}));
+    if (!upstream.ok) return sendJson(response, upstream.status, { error: result.error || 'Cloud editor request failed.' });
+    if (url.pathname === '/api/godot/stop') return sendJson(response, 200, { stopped: true });
+    if (!/^\/s\/[a-f0-9]{64}\/$/.test(result.path || '') || !/^\/download\/[a-f0-9]{64}$/.test(result.downloadPath || '')) {
+      return sendJson(response, 502, { error: 'Cloud editor returned an invalid session.' });
+    }
+    return sendJson(response, 200, {
+      url: `${connection.publicUrl}${result.path}`,
+      downloadUrl: `${connection.publicUrl}${result.downloadPath}`,
+    });
+  }
+  if (url.pathname === '/api/godot/workspace' && request.method === 'DELETE') {
+    const body = await readJson(request);
+    if (body.confirmed !== true) return sendJson(response, 400, { error: 'Confirm removal of your workspace first.' });
+    const job = await lightsailProvisioning.remove(body.learnerId);
+    return sendJson(response, 202, { provisioning: studentProvisionStatus(job) });
+  }
+  if (url.pathname === "/api/final-game/starter-kit" && (request.method === "GET" || request.method === "HEAD")) {
+    if (starterKitUrl) {
+      response.writeHead(302, { location: starterKitUrl, "cache-control": "no-store" });
+      response.end();
+      return;
+    }
+    const stats = await fs.stat(starterKitPath).catch(() => null);
+    if (!stats?.isFile()) {
+      response.writeHead(302, { location: publishedStarterKitUrl, "cache-control": "no-store" });
+      response.end();
+      return;
+    }
+    response.writeHead(200, {
+      "content-type": "application/zip",
+      "content-disposition": 'attachment; filename="godot-forge-starter-v1.zip"',
+      "content-length": stats.size,
+      "cache-control": "no-cache",
+    });
+    if (request.method === "HEAD") response.end();
+    else createReadStream(starterKitPath).pipe(response);
+    return;
+  }
   if (request.method === 'GET' && url.pathname === '/api/storyline/voice/config') {
     return sendJson(response, 200, { configured: Boolean(openAiApiKey), model: openAiTtsModel });
   }
@@ -1832,6 +1917,7 @@ const server = createServer(async (request, response) => {
   }
 });
 attachMultiplayerRooms(server);
+attachFinalGameRooms(server);
 
 await initializeDatabase();
 server.listen(port, "0.0.0.0", () => {

@@ -1,0 +1,4 @@
+{$GODOT_CLOUD_DOMAIN} {
+  encode gzip
+  reverse_proxy controller:8080
+}

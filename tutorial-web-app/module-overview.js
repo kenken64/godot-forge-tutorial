@@ -1,7 +1,7 @@
 const overviewCopy = {
-  en: { back: "← Learning path", language: "Language", topics: "Planned topics", notice: "This module overview is ready. Interactive lessons are coming next.", complete: "Mark complete", reopen: "Reopen module", saved: "Progress saved.", error: "Unable to load or save this module. Please refresh and try again.", chapter: (n, minutes) => `CHAPTER ${String(n).padStart(2, "0")} · ${minutes} min` },
-  zh: { back: "← 学习路径", language: "语言", topics: "计划学习内容", notice: "本模块概览已就绪，互动课程将在后续添加。", complete: "标记完成", reopen: "重新打开模块", saved: "进度已保存。", error: "无法加载或保存本模块，请刷新后重试。", chapter: (n, minutes) => `第 ${String(n).padStart(2, "0")} 章 · ${minutes} 分钟` },
-  ms: { back: "← Laluan pembelajaran", language: "Bahasa", topics: "Topik yang dirancang", notice: "Gambaran keseluruhan modul ini tersedia. Pelajaran interaktif akan ditambah kemudian.", complete: "Tanda selesai", reopen: "Buka semula modul", saved: "Kemajuan disimpan.", error: "Modul ini tidak dapat dimuatkan atau disimpan. Sila muat semula dan cuba lagi.", chapter: (n, minutes) => `BAB ${String(n).padStart(2, "0")} · ${minutes} min` },
+  en: { back: "← Learning path", language: "Language", topics: "Planned topics", notice: "This module overview is ready. Interactive lessons are coming next.", openEditor: "Open Godot Web Editor ↗", complete: "Mark complete", reopen: "Reopen module", saved: "Progress saved.", error: "Unable to load or save this module. Please refresh and try again.", chapter: (n, minutes) => `CHAPTER ${String(n).padStart(2, "0")} · ${minutes} min` },
+  zh: { back: "← 学习路径", language: "语言", topics: "计划学习内容", notice: "本模块概览已就绪，互动课程将在后续添加。", openEditor: "打开 Godot 网页编辑器 ↗", complete: "标记完成", reopen: "重新打开模块", saved: "进度已保存。", error: "无法加载或保存本模块，请刷新后重试。", chapter: (n, minutes) => `第 ${String(n).padStart(2, "0")} 章 · ${minutes} 分钟` },
+  ms: { back: "← Laluan pembelajaran", language: "Bahasa", topics: "Topik yang dirancang", notice: "Gambaran keseluruhan modul ini tersedia. Pelajaran interaktif akan ditambah kemudian.", openEditor: "Buka Godot Web Editor ↗", complete: "Tanda selesai", reopen: "Buka semula modul", saved: "Kemajuan disimpan.", error: "Modul ini tidak dapat dimuatkan atau disimpan. Sila muat semula dan cuba lagi.", chapter: (n, minutes) => `BAB ${String(n).padStart(2, "0")} · ${minutes} min` },
 };
 const plannedTopics = {
   "items-spawning": {
@@ -65,9 +65,9 @@ const plannedTopics = {
     ms: ["Cipta keadaan musuh untuk diam, meronda, mengejar, menyerang, cedera dan tewas.", "Gunakan julat pengesanan, garis penglihatan, navigasi dan tempoh bertenang supaya keputusan mudah difahami.", "Bina dan nyahpepijat mesin keadaan terhingga yang sentiasa mengembalikan musuh kepada tingkah laku yang sah."],
   },
   "setup-godot-with-ai": {
-    en: ["Create a new Godot 2D project and set its viewport, input actions, and folder structure.", "Import your published sprites, tiles, and coordinate JSON into scenes and animations.", "Ask AI for small GDScript examples, review each suggestion, and play-test the assembled scene."],
-    zh: ["创建新的 Godot 2D 项目，并设置视口、输入动作和文件夹结构。", "将已发布的精灵图、地图块和坐标 JSON 导入场景与动画。", "请 AI 提供简短的 GDScript 示例，逐一检查建议，并试玩组装好的场景。"],
-    ms: ["Cipta projek Godot 2D baharu dan tetapkan viewport, tindakan input serta struktur folder.", "Import sprite, jubin dan JSON koordinat yang diterbitkan ke dalam adegan dan animasi.", "Minta contoh GDScript ringkas daripada AI, semak setiap cadangan dan uji adegan yang dibina."],
+    en: ["Open the Godot Web Editor and import a Godot project ZIP.", "Explore scenes, the asset library, and the 2D editor; edit a scene and run it in the browser.", "Download the project source ZIP to keep a copy of your work."],
+    zh: ["打开 Godot 网页编辑器并导入 Godot 项目 ZIP。", "浏览场景、素材库和 2D 编辑器；编辑场景并在浏览器中运行。", "下载项目源代码 ZIP，保存自己的作品。"],
+    ms: ["Buka Godot Web Editor dan import ZIP projek Godot.", "Terokai adegan, pustaka aset dan editor 2D; sunting adegan dan jalankannya dalam pelayar.", "Muat turun ZIP sumber projek untuk menyimpan salinan kerja anda."],
   },
 };
 const slug = document.body.dataset.module;
