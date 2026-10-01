@@ -77,10 +77,65 @@ Object.assign(copy.ms, {
   referencesTitle: 'Rujukan Godot', functionStepsLabel: 'Cara kod berjalan'
 });
 
+Object.assign(copy.en, {
+  codeLabel: 'Reference script',
+  buildIntro: 'Write one small part in Godot, test it, then continue. The full scripts unlock as references after you finish each file.',
+  stepThree: 'Work through one task at a time below. Type the code in Godot and run each milestone before moving on.',
+  taskOf: (current, total) => `TASK ${current} OF ${total}`,
+  taskThink: 'Think first', taskWrite: 'Write in Godot', taskHint: 'Need a hint?', taskReveal: 'Show this step’s code', taskOutline: 'Fill in this outline',
+  taskWhy: 'Why these lines matter', taskContinue: 'Continue below the previous lines in this file. Keep the indentation shown.',
+  taskFirst: 'Create this script in Godot. Type only the lines for this step.', taskReplace: 'Clear the temporary Online.gd script, then type these lines into the same file.',
+  taskPrevious: 'Previous', taskNext: 'Next', taskDone: 'I wrote this step', taskChecked: 'I ran this check',
+  taskPrepared: 'I completed this step', taskPracticed: 'I tried this change', taskCompleted: 'Done ✓', taskReady: 'All tasks complete ✓',
+  referenceTitle: 'Complete script reference', referenceLocked: 'Finish this file’s writing and change tasks to unlock its complete reference.',
+  progressNote: 'This checklist saves your place in this browser. Check the result in Godot before marking a task done.'
+});
+Object.assign(copy.zh, {
+  codeLabel: '参考脚本',
+  buildIntro: '在 Godot 中一次编写一小部分，测试后继续。完成每个文件后，才会显示完整脚本供对照。',
+  stepThree: '一次完成下方一个任务。在 Godot 中亲自输入代码，并在继续前运行每个阶段。',
+  taskOf: (current, total) => `任务 ${current} / ${total}`,
+  taskThink: '先思考', taskWrite: '在 Godot 中编写', taskHint: '需要提示？', taskReveal: '显示本步骤代码', taskOutline: '补全此代码框架',
+  taskWhy: '这些代码的作用', taskContinue: '在此文件的上一部分下方继续输入，保持所示缩进。',
+  taskFirst: '在 Godot 中创建此脚本，只输入本步骤的代码。', taskReplace: '清空临时的 Online.gd 脚本，然后在同一文件中输入这些代码。',
+  taskPrevious: '上一步', taskNext: '下一步', taskDone: '我已编写此步骤', taskChecked: '我已运行检查',
+  taskPrepared: '我已完成此步骤', taskPracticed: '我已尝试修改', taskCompleted: '已完成 ✓', taskReady: '所有任务已完成 ✓',
+  referenceTitle: '完整脚本参考', referenceLocked: '完成此文件的编写和修改任务后可查看完整参考。',
+  progressNote: '此清单会在本浏览器中保存进度。完成任务前，请在 Godot 中检查结果。'
+});
+Object.assign(copy.ms, {
+  codeLabel: 'Skrip rujukan',
+  buildIntro: 'Tulis satu bahagian kecil dalam Godot, uji, kemudian teruskan. Skrip penuh boleh dirujuk selepas setiap fail disiapkan.',
+  stepThree: 'Selesaikan satu tugasan pada satu masa. Taip kod dalam Godot dan jalankan setiap peringkat sebelum meneruskan.',
+  taskOf: (current, total) => `TUGASAN ${current} DARIPADA ${total}`,
+  taskThink: 'Fikir dahulu', taskWrite: 'Tulis dalam Godot', taskHint: 'Perlu petunjuk?', taskReveal: 'Tunjuk kod langkah ini', taskOutline: 'Lengkapkan rangka kod ini',
+  taskWhy: 'Mengapa baris ini penting', taskContinue: 'Teruskan di bawah baris sebelumnya dalam fail ini. Kekalkan inden yang ditunjukkan.',
+  taskFirst: 'Cipta skrip ini dalam Godot. Taip hanya baris untuk langkah ini.', taskReplace: 'Kosongkan skrip Online.gd sementara, kemudian taip baris ini dalam fail yang sama.',
+  taskPrevious: 'Sebelumnya', taskNext: 'Seterusnya', taskDone: 'Saya sudah menulis langkah ini', taskChecked: 'Saya sudah menjalankan semakan',
+  taskPrepared: 'Saya sudah menyelesaikan langkah ini', taskPracticed: 'Saya sudah mencuba perubahan', taskCompleted: 'Selesai ✓', taskReady: 'Semua tugasan selesai ✓',
+  referenceTitle: 'Rujukan skrip lengkap', referenceLocked: 'Siapkan tugasan menulis dan mengubah fail ini untuk membuka rujukan lengkap.',
+  progressNote: 'Senarai ini menyimpan tempat anda dalam pelayar ini. Semak hasilnya dalam Godot sebelum menandakan tugasan selesai.'
+});
+
 const guide = window.finalGameGuide || [];
 const walkthroughs = window.finalGameWalkthrough || {};
 const functionDetails = window.finalGameFunctionDetails || {};
 const commonSymbols = window.finalGameCommonSymbols || {};
+const writing = window.finalGameWriting;
+const writingProgressKey = 'godot-forge-final-writing-v1';
+function readWritingProgress() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(writingProgressKey) || '{}');
+    return { completed: new Set(Array.isArray(saved.completed) ? saved.completed : []), positions: saved.positions || {} };
+  } catch { return { completed: new Set(), positions: {} }; }
+}
+const writingProgress = readWritingProgress();
+const hintsShown = new Set();
+const codeShown = new Set();
+const tasksBySection = new Map(guide.map(section => [section.id, writing.makeTasks(section, walkthroughs, functionDetails)]));
+function saveWritingProgress() {
+  localStorage.setItem(writingProgressKey, JSON.stringify({ completed: [...writingProgress.completed], positions: writingProgress.positions }));
+}
 const moduleSlugs = {
   1: 'character-creation', 2: 'game-assets-creation', 3: 'boss-creation',
   4: 'storyline-engine', 5: 'parallax-tiling-map', 6: 'items-spawning',
@@ -266,14 +321,128 @@ function createCodeStudy(code, notes, words, fileName) {
   return study;
 }
 
-function renderGuide() {
+function writingStep(task, words) {
+  const body = element('div', 'writing-task-body');
+  if (task.kind !== 'code') {
+    body.append(element('p', 'writing-goal', task.body));
+    return body;
+  }
+  body.append(element('p', 'writing-goal', task.goal));
+  const think = element('div', 'writing-think');
+  think.append(element('strong', '', words.taskThink), element('p', '', task.think));
+  body.append(think);
+  const instruction = task.fileName === 'scripts/Online.gd' && task.code.startsWith('extends ')
+    ? words.taskReplace : task.id === 'code:plan:game-stub' || task.part === 1 && task.code.startsWith('extends ')
+      ? words.taskFirst : words.taskContinue;
+  const write = element('div', 'writing-instruction');
+  write.append(element('strong', '', `${words.taskWrite} · ${task.displayFileName || task.fileName}`), element('p', '', instruction));
+  body.append(write);
+  const hasHint = hintsShown.has(task.id);
+  const hasCode = task.coached || codeShown.has(task.id) || writingProgress.completed.has(task.id);
+  if (task.coached && task.hint) body.append(element('p', 'writing-hint', task.hint));
+  if (!hasCode && task.skeleton) {
+    body.append(element('strong', 'writing-outline-label', words.taskOutline));
+    const outline = element('pre', 'step-outline');
+    outline.append(element('code', '', task.skeleton));
+    body.append(outline);
+  }
+  if (!hasHint && !hasCode) {
+    const hintButton = element('button', 'writing-help', words.taskHint);
+    hintButton.type = 'button';
+    hintButton.addEventListener('click', () => { hintsShown.add(task.id); renderGuide(task.sectionId, '.writing-reveal'); });
+    body.append(hintButton);
+  }
+  if (hasHint) body.append(element('p', 'writing-hint', task.hint));
+  if (!hasCode) {
+    if (hasHint) {
+      const reveal = element('button', 'writing-reveal', words.taskReveal);
+      reveal.type = 'button';
+      reveal.addEventListener('click', () => { codeShown.add(task.id); renderGuide(task.sectionId, '.step-code'); });
+      body.append(reveal);
+    }
+  } else {
+    const pre = element('pre', 'step-code');
+    const code = element('code');
+    code.append(highlightedGDScript(task.code));
+    pre.append(code);
+    body.append(pre);
+    if (task.explanations?.length) {
+      const why = element('div', 'writing-why');
+      why.append(element('strong', '', words.taskWhy));
+      const list = element('ul');
+      task.explanations.forEach(explanation => list.append(element('li', '', explanation)));
+      why.append(list);
+      body.append(why);
+    }
+  }
+  return body;
+}
+
+function renderTask(section, words) {
+  const tasks = tasksBySection.get(section.id);
+  const position = Math.min(Math.max(Number(writingProgress.positions[section.id]) || 0, 0), tasks.length - 1);
+  const task = tasks[position];
+  const completedCount = tasks.filter(item => writingProgress.completed.has(item.id)).length;
+  const shell = element('div', 'writing-stepper');
+  const top = element('div', 'writing-stepper-top');
+  top.append(element('span', 'writing-count', words.taskOf(position + 1, tasks.length)),
+    element('span', 'writing-progress-text', `${completedCount} / ${tasks.length}`));
+  shell.append(top);
+  const meter = element('progress', 'writing-progress');
+  meter.max = tasks.length;
+  meter.value = completedCount;
+  meter.setAttribute('aria-label', `${completedCount} / ${tasks.length}`);
+  shell.append(meter);
+  shell.append(element('h3', 'writing-task-title', task.title));
+  shell.append(writingStep(task, words));
+  const actions = element('div', 'writing-actions');
+  const previous = element('button', 'writing-previous', words.taskPrevious);
+  previous.type = 'button';
+  previous.disabled = position === 0;
+  previous.addEventListener('click', () => {
+    writingProgress.positions[section.id] = position - 1;
+    saveWritingProgress();
+    renderGuide(section.id, '.writing-next');
+  });
+  const doneText = writingProgress.completed.has(task.id) ? words.taskCompleted
+    : task.kind === 'checkpoint' ? words.taskChecked
+      : task.kind === 'practice' ? words.taskPracticed
+        : task.kind === 'setup' ? words.taskPrepared : words.taskDone;
+  const done = element('button', 'writing-done', doneText);
+  done.type = 'button';
+  done.disabled = writingProgress.completed.has(task.id);
+  done.addEventListener('click', () => {
+    writingProgress.completed.add(task.id);
+    if (position + 1 < tasks.length) writingProgress.positions[section.id] = position + 1;
+    saveWritingProgress();
+    renderGuide(section.id, '.writing-done');
+  });
+  const next = element('button', 'writing-next', words.taskNext);
+  next.type = 'button';
+  next.disabled = position + 1 >= tasks.length || !writingProgress.completed.has(task.id);
+  next.addEventListener('click', () => {
+    writingProgress.positions[section.id] = position + 1;
+    saveWritingProgress();
+    renderGuide(section.id, '.writing-done');
+  });
+  actions.append(previous, done, next);
+  shell.append(actions);
+  if (completedCount === tasks.length) shell.append(element('p', 'writing-ready', words.taskReady));
+  return shell;
+}
+
+function renderGuide(focusSection = '', focusSelector = '') {
   navList.replaceChildren();
   sections.replaceChildren();
   const words = copy[currentLocale];
   guide.forEach(section => {
+    const tasks = tasksBySection.get(section.id);
+    const completeCount = tasks.filter(task => writingProgress.completed.has(task.id)).length;
     const item = element('li');
     const link = element('a', '', section.title);
     link.href = `#${section.id}`;
+    const count = element('span', 'nav-progress', `${completeCount}/${tasks.length}`);
+    link.append(count);
     item.append(link);
     navList.append(item);
     const card = element('section', 'build-section');
@@ -293,36 +462,38 @@ function renderGuide() {
     card.append(modules);
     card.append(element('h2', '', section.title));
     card.append(element('p', 'section-summary', section.summary));
-    card.append(element('h3', '', words.stepsLabel));
-    const steps = element('ol', 'build-steps');
-    section.steps.forEach(step => steps.append(element('li', '', step)));
-    card.append(steps);
+    card.append(element('p', 'writing-progress-note', words.progressNote));
+    card.append(renderTask(section, words));
     if (section.tree) {
-      card.append(element('h3', '', words.treeLabel));
+      const tree = element('details', 'scene-tree-reference');
+      tree.append(element('summary', '', words.treeLabel));
       const pre = element('pre', 'scene-tree');
       pre.append(element('code', '', section.tree));
-      card.append(pre);
+      tree.append(pre);
+      card.append(tree);
     }
-    (section.files || []).forEach(file => {
+    writing.buildFiles(section).forEach(file => {
+      const fileTasks = tasks.filter(task => task.fileName === file.name);
+      const ready = fileTasks.every(task => writingProgress.completed.has(task.id));
+      if (!ready) {
+        const locked = element('p', 'reference-locked', `${file.name}: ${words.referenceLocked}`);
+        card.append(locked);
+        return;
+      }
+      const reference = element('details', 'file-reference');
+      reference.append(element('summary', '', `${words.referenceTitle} · ${file.name}`));
       const header = element('div', 'code-header');
       header.append(element('h3', '', `${words.codeLabel}: ${file.name}`));
-      const button = element('button', 'copy-code', words.copyCode);
-      button.type = 'button';
       const code = file.code.replace('__RELAY_URL__', `${location.protocol === 'https:' ? 'wss:' : 'ws:'}//${location.host}/ws/final-game`);
-      button.addEventListener('click', async () => {
-        await navigator.clipboard.writeText(code);
-        button.textContent = words.copied;
-        setTimeout(() => { button.textContent = copy[currentLocale].copyCode; }, 1800);
-      });
-      header.append(button);
-      card.append(header);
-      card.append(createCodeStudy(code, walkthroughs[file.name] || {}, words, file.name));
+      reference.append(header, createCodeStudy(code, walkthroughs[file.name] || {}, words, file.name));
+      card.append(reference);
     });
-    const check = element('p', 'playtest');
-    check.append(element('strong', '', `${words.checkLabel}: `), document.createTextNode(section.check));
-    card.append(check);
     sections.append(card);
   });
+  if (focusSection) {
+    const card = document.getElementById(focusSection);
+    card?.querySelector(focusSelector)?.focus?.({ preventScroll: true });
+  }
 }
 
 function applyLocale(locale) {

@@ -30,12 +30,45 @@ body { background: radial-gradient(circle at 82% 4%, #1e3929, transparent 32%), 
 .final-game-page .build-nav li { margin: 0; }
 .final-game-page .build-nav a { display: block; min-height: 48px; padding: 11px 13px; border: 1px solid var(--line); background: var(--card); color: var(--ink); font: 12px/1.5 "DM Mono", monospace; text-decoration: none; }
 .final-game-page .build-nav a:hover { border-color: var(--lime); color: var(--lime); }
+.final-game-page .build-nav .nav-progress { float: right; margin-left: 12px; color: var(--violet); }
 .final-game-page #build-sections { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; }
 .final-game-page .build-section { min-width: 0; scroll-margin-top: 20px; margin: 0; }
 .final-game-page .module-links { margin: 0 0 10px; color: var(--violet); font: 500 11px/1.5 "DM Mono", monospace; letter-spacing: .05em; }
 .final-game-page .module-links a { color: inherit; text-decoration: underline; text-decoration-color: transparent; text-underline-offset: 3px; }
 .final-game-page .module-links a:hover { color: var(--lime); text-decoration-color: currentColor; }
 .final-game-page .section-summary { max-width: 780px; font-size: 16px; line-height: 1.65; }
+.final-game-page .writing-progress-note { margin: 0 0 18px; font-size: 12px; }
+.final-game-page .writing-stepper { padding: clamp(16px, 2.5vw, 24px); border: 1px solid var(--line); border-top: 3px solid var(--lime); background: #102019; }
+.final-game-page .writing-stepper-top { display: flex; justify-content: space-between; gap: 16px; color: var(--violet); font: 600 11px "DM Mono", monospace; }
+.final-game-page .writing-progress { width: 100%; height: 7px; margin: 13px 0 18px; accent-color: var(--lime); }
+.final-game-page .writing-task-title { margin: 0 0 11px; color: var(--ink); font: 600 clamp(17px, 2vw, 21px)/1.35 "Space Grotesk", sans-serif; overflow-wrap: anywhere; }
+.final-game-page .writing-goal { max-width: 760px; margin: 0 0 15px; color: var(--ink); }
+.final-game-page .writing-think, .final-game-page .writing-instruction { margin: 13px 0; padding: 11px 13px; border-left: 3px solid var(--violet); background: var(--panel-2); }
+.final-game-page .writing-instruction { border-left-color: var(--lime); }
+.final-game-page .writing-think strong, .final-game-page .writing-instruction strong, .final-game-page .writing-why strong { color: var(--lime); font: 600 11px/1.5 "DM Mono", monospace; }
+.final-game-page .writing-outline-label { display: block; margin-top: 14px; color: var(--violet); font: 600 11px/1.5 "DM Mono", monospace; }
+.final-game-page .step-outline { max-height: none; margin: 7px 0 12px; border-color: var(--line); color: var(--ink); }
+.final-game-page .writing-think strong { color: var(--violet); }
+.final-game-page .writing-think p, .final-game-page .writing-instruction p { margin: 5px 0 0; font-size: 13px; }
+.final-game-page .writing-help, .final-game-page .writing-reveal, .final-game-page .writing-actions button { min-height: 38px; padding: 8px 12px; border: 1px solid var(--line); background: var(--panel-2); color: var(--ink); font: 12px "DM Mono", monospace; cursor: pointer; }
+.final-game-page .writing-help:hover, .final-game-page .writing-reveal:hover, .final-game-page .writing-actions button:hover:not(:disabled) { border-color: var(--lime); color: var(--lime); }
+.final-game-page .writing-help:disabled, .final-game-page .writing-reveal:disabled, .final-game-page .writing-actions button:disabled { opacity: .46; cursor: default; }
+.final-game-page .writing-hint { margin: 9px 0; padding: 10px 12px; border-left: 3px solid var(--violet); background: var(--panel-2); font-size: 13px; }
+.final-game-page .writing-reveal { margin-top: 2px; }
+.final-game-page .step-code { max-height: none; margin: 12px 0 0; border-color: var(--line); white-space: pre; }
+.final-game-page .writing-why { margin-top: 10px; }
+.final-game-page .writing-why ul { margin: 7px 0 0; padding-left: 20px; color: var(--muted); font-size: 12px; }
+.final-game-page .writing-why li { margin-bottom: 5px; }
+.final-game-page .writing-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 21px; padding-top: 15px; border-top: 1px solid var(--line); }
+.final-game-page .writing-actions .writing-done { margin-left: auto; border-color: var(--lime); color: var(--lime); }
+.final-game-page .writing-ready { margin: 13px 0 0; color: var(--lime) !important; font: 600 12px "DM Mono", monospace; }
+.final-game-page .scene-tree-reference, .final-game-page .file-reference { margin-top: 17px; border: 1px solid var(--line); background: var(--panel-2); }
+.final-game-page .scene-tree-reference summary, .final-game-page .file-reference summary { padding: 12px 14px; color: var(--lime); font: 600 12px/1.5 "DM Mono", monospace; cursor: pointer; }
+.final-game-page .scene-tree-reference .scene-tree { border: 0; border-top: 1px solid var(--line); }
+.final-game-page .file-reference .code-header { margin: 0; border-left: 0; border-right: 0; }
+.final-game-page .file-reference .gdscript { border-left: 0; }
+.final-game-page .file-reference .logic-panel { border-right: 0; }
+.final-game-page .reference-locked { margin: 12px 0 0; padding: 10px 12px; border: 1px dashed var(--line); color: var(--muted); font: 11px/1.55 "DM Mono", monospace; }
 .final-game-page .build-steps { padding-left: 1.5em; }
 .final-game-page .build-steps li { padding-left: 5px; margin-bottom: 12px; }
 .final-game-page .code-header { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-top: 22px; padding: 12px 14px; border: 1px solid var(--line); border-bottom: 0; background: var(--panel-2); }
@@ -90,5 +123,5 @@ body { background: radial-gradient(circle at 82% 4%, #1e3929, transparent 32%), 
 .final-game-page .reference-links a { display: block; padding: 8px 11px; border: 1px solid var(--line); color: var(--lime); font: 11px "DM Mono", monospace; text-decoration: none; }
 .final-game-page .reference-links a:hover { border-color: var(--lime); }
 @media (max-width: 900px) { .final-game-page .code-study { grid-template-columns: minmax(0, 1fr); } .final-game-page .logic-panel { max-height: none; border-left: 1px solid var(--line); } }
-@media (max-width: 640px) { .final-game-page { width: calc(100% - 24px); } .final-game-page header { gap: 10px; padding: 12px 0; margin-bottom: 38px; } .final-game-page .saved-asset-list { columns: 1; } .final-game-page .code-header { align-items: flex-start; flex-direction: column; } .final-game-page .kit-button { width: 100%; } }
+@media (max-width: 640px) { .final-game-page { width: calc(100% - 24px); } .final-game-page header { gap: 10px; padding: 12px 0; margin-bottom: 38px; } .final-game-page .saved-asset-list { columns: 1; } .final-game-page .code-header { align-items: flex-start; flex-direction: column; } .final-game-page .kit-button { width: 100%; } .final-game-page .writing-actions .writing-done { margin-left: 0; } }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }

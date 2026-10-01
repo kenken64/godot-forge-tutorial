@@ -7,112 +7,8 @@ window.finalGameGuide = [
     steps: [
       'In the FileSystem panel, create folders scenes, scripts, and assets/my-game. Put your own hero, boss, tiles, props, pickups, and UI PNGs in assets/my-game. The lesson art under assets/ is a reference library.',
       'Rename the welcome scene to Main.tscn or create a new 2D scene named Main. Set it as the main scene with Project → Project Settings → Application → Run.',
-      'Sketch a left-to-right level: safe start → coins and hazard → shop → two enemy encounters → boss arena → exit. Keep one map for every play mode.',
-      'Create scripts/Game.gd with the code below. Add it at Project → Project Settings → Globals → Autoload, using the name Game.'
+      'Sketch a left-to-right level: safe start → coins and hazard → shop → two enemy encounters → boss arena → exit. Keep one map for every play mode.'
     ],
-    files: [{name:'scripts/Game.gd', code:`extends Node
-
-var coins := 0
-var collected := 0
-var score := 0
-var boss_defeated := false
-var ending := ""
-var inventory: Array[String] = []
-var materials := 0
-var attack_bonus := 0
-var spawn_index := 0
-var achievements: Dictionary = {}
-var records: Array = []
-
-func _ready() -> void:
-    if FileAccess.file_exists("user://final_save.json"):
-        var data = JSON.parse_string(FileAccess.get_file_as_string("user://final_save.json"))
-        if data is Dictionary:
-            achievements = data.get("achievements", {})
-            records = data.get("records", [])
-
-func start_run() -> void:
-    coins = 0
-    collected = 0
-    score = 0
-    boss_defeated = false
-    ending = ""
-    inventory.clear()
-    materials = 0
-    attack_bonus = 0
-    spawn_index = 0
-
-func next_pickup_name() -> String:
-    spawn_index += 1
-    return "Bonus_%d" % spawn_index
-
-func collect_coin() -> void:
-    coins += 1
-    collected += 1
-    score += 10
-    if collected >= 20:
-        unlock("coin_collector")
-
-func buy_heal(player) -> bool:
-    if coins < 5 or player.health >= 3:
-        return false
-    coins -= 5
-    player.heal()
-    unlock("first_purchase")
-    return true
-
-func buy_gear() -> bool:
-    if coins < 8 or inventory.has("Forest Blade"):
-        return false
-    coins -= 8
-    inventory.append("Forest Blade")
-    attack_bonus = 1
-    unlock("first_purchase")
-    return true
-
-func sell_gear() -> bool:
-    if not inventory.has("Forest Blade"):
-        return false
-    inventory.erase("Forest Blade")
-    coins += 4
-    attack_bonus = 0
-    return true
-
-func salvage_gear() -> bool:
-    if coins < 2 or not inventory.has("Forest Blade"):
-        return false
-    coins -= 2
-    inventory.erase("Forest Blade")
-    materials += 1
-    attack_bonus = 0
-    unlock("first_salvage")
-    return true
-
-func defeat_enemy(is_boss: bool) -> void:
-    score += 100 if is_boss else 20
-    if is_boss:
-        boss_defeated = true
-        unlock("boss_breaker")
-
-func unlock(id: String) -> void:
-    if achievements.has(id):
-        return
-    achievements[id] = true
-    save_progress()
-
-func finish(choice: String) -> void:
-    ending = choice
-    score += 50
-    unlock("finished_game")
-    records.append({"score": score, "ending": choice})
-    records.sort_custom(func(a, b): return a["score"] > b["score"])
-    records = records.slice(0, 5)
-    save_progress()
-
-func save_progress() -> void:
-    var file = FileAccess.open("user://final_save.json", FileAccess.WRITE)
-    if file:
-        file.store_string(JSON.stringify({"achievements": achievements, "records": records}))` }],
     check: 'Press F6 on Main. The welcome text is gone; the new scene opens. The Debugger shows no script errors.'
   },
   {
@@ -153,7 +49,7 @@ func save_progress() -> void:
     steps:[
       'Open Project → Project Settings → Input Map. Add p1_left, p1_right, p1_jump, p1_roll, p1_attack, p1_interact, the same six p2_ actions, plus toggle_coop, pause, and restart.',
       'Bind P1 to A/D, Space, K, J, E. Bind P2 to Left/Right, Up, Down, Right Shift, Return. Bind toggle_coop to C, pause to Escape, and restart to R. Keep these keyboard events; GamepadBindings.gd adds controller events at run time.',
-      'Create scripts/GamepadBindings.gd and scripts/Player.gd from the code below. Attach Player.gd to Player.tscn. In Main set Player1 slot=1 and Player2 slot=2. Adjust CollisionShape2D to the hero silhouette; keep the feet near the bottom of the shape.',
+      'Build scripts/Player.gd and scripts/GamepadBindings.gd one task at a time below. Attach Player.gd to Player.tscn. In Main set Player1 slot=1 and Player2 slot=2. Adjust CollisionShape2D to the hero silhouette; keep the feet near the bottom of the shape.',
       'Once Main.gd is attached in Section 6, the first connected pad controls P1 in solo play. In local co-op, it controls P2 while P1 uses the keyboard or a second pad. The script maps left stick/D-pad, A jump, B roll, X attack, Y interact, Back to join P2, Start to pause, and right shoulder to restart.',
       'The cloud editor runs on a remote Linux desktop. Test a physical pad only if that desktop forwards it to Godot; if Input.get_connected_joypads() is empty, run a downloaded project locally for the controller check. For online play later, the host uses remote_axis, remote_jump, remote_roll, and remote_attack for Player2.'
     ],
@@ -279,6 +175,7 @@ func heal() -> void:
     id:'pickups',title:'4. Collect coins and survive hazards',modules:'6 Item spawning · 8 Game loop · 11 Physics',
     summary:'Coins fund the shop and count toward the exit. A timer creates bonus pickups at safe markers, and defeated enemies drop loot.',
     steps:[
+      'Create scripts/Game.gd as an Autoload named Game in Project → Project Settings → Globals. Build it in small steps below before writing Pickup.gd.',
       'Attach Pickup.gd to Pickup.tscn. Set kind=coin on 20 instances and kind=heart on health pickups. Give every instance a unique node name; keep all instances under Main/Pickups.',
       'Create Hazard.tscn as Area2D → CollisionShape2D, add your hazard Sprite2D, and attach Hazard.gd. Place hazards where players can jump over or around them.',
       'Add five Marker2D children under SpawnPoints, placed on safe platforms. Attach Spawner.gd to Spawner, assign scenes/Pickup.tscn to pickup_scene in the Inspector, and set its Timer wait time to 12 seconds with Autostart on. BonusPickups holds these timed items and enemy loot.',
@@ -286,6 +183,109 @@ func heal() -> void:
       'In each Area2D Inspector, enable Monitoring and set its collision mask so it detects Player bodies; Water must also detect Boulder. Use Debug → Visible Collision Shapes if an overlap does not register.'
     ],
     files:[
+      {name:'scripts/Game.gd', code:`extends Node
+
+var coins := 0
+var collected := 0
+var score := 0
+var boss_defeated := false
+var ending := ""
+var inventory: Array[String] = []
+var materials := 0
+var attack_bonus := 0
+var spawn_index := 0
+var achievements: Dictionary = {}
+var records: Array = []
+
+func _ready() -> void:
+    if FileAccess.file_exists("user://final_save.json"):
+        var data = JSON.parse_string(FileAccess.get_file_as_string("user://final_save.json"))
+        if data is Dictionary:
+            achievements = data.get("achievements", {})
+            records = data.get("records", [])
+
+func start_run() -> void:
+    coins = 0
+    collected = 0
+    score = 0
+    boss_defeated = false
+    ending = ""
+    inventory.clear()
+    materials = 0
+    attack_bonus = 0
+    spawn_index = 0
+
+func next_pickup_name() -> String:
+    spawn_index += 1
+    return "Bonus_%d" % spawn_index
+
+func collect_coin() -> void:
+    coins += 1
+    collected += 1
+    score += 10
+    if collected >= 20:
+        unlock("coin_collector")
+
+func buy_heal(player) -> bool:
+    if coins < 5 or player.health >= 3:
+        return false
+    coins -= 5
+    player.heal()
+    unlock("first_purchase")
+    return true
+
+func buy_gear() -> bool:
+    if coins < 8 or inventory.has("Forest Blade"):
+        return false
+    coins -= 8
+    inventory.append("Forest Blade")
+    attack_bonus = 1
+    unlock("first_purchase")
+    return true
+
+func sell_gear() -> bool:
+    if not inventory.has("Forest Blade"):
+        return false
+    inventory.erase("Forest Blade")
+    coins += 4
+    attack_bonus = 0
+    return true
+
+func salvage_gear() -> bool:
+    if coins < 2 or not inventory.has("Forest Blade"):
+        return false
+    coins -= 2
+    inventory.erase("Forest Blade")
+    materials += 1
+    attack_bonus = 0
+    unlock("first_salvage")
+    return true
+
+func defeat_enemy(is_boss: bool) -> void:
+    score += 100 if is_boss else 20
+    if is_boss:
+        boss_defeated = true
+        unlock("boss_breaker")
+
+func unlock(id: String) -> void:
+    if achievements.has(id):
+        return
+    achievements[id] = true
+    save_progress()
+
+func finish(choice: String) -> void:
+    ending = choice
+    score += 50
+    unlock("finished_game")
+    records.append({"score": score, "ending": choice})
+    records.sort_custom(func(a, b): return a["score"] > b["score"])
+    records = records.slice(0, 5)
+    save_progress()
+
+func save_progress() -> void:
+    var file = FileAccess.open("user://final_save.json", FileAccess.WRITE)
+    if file:
+        file.store_string(JSON.stringify({"achievements": achievements, "records": records}))` },
       {name:'scripts/Pickup.gd',code:`extends Area2D
 
 @export var kind := "coin" # Use "heart" for a healing pickup.
@@ -626,7 +626,7 @@ func join_room(_room_code: String) -> void:
     id:'online',title:'8. Add a two-player online room',modules:'17 Local co-op · 18 Multiplayer',
     summary:'Use the same map and P2 controls. The host runs collisions and rewards; a guest sends P2 input and sees snapshots. The Final Game relay is on this site.',
     steps:[
-      'Replace the placeholder Online.gd with the full script below. The code block fills in this site’s WebSocket URL automatically. If this page uses localhost, replace relay_url with the public HTTPS site URL before running Godot in a cloud workspace; localhost inside the cloud editor points to that server, not your Mac.',
+      'Clear the temporary contents of scripts/Online.gd, then rebuild that same file through the writing tasks below. The shown relay_url uses this page’s WebSocket address. If this page uses localhost, replace it with the public site’s WebSocket URL before running Godot in a cloud workspace; localhost inside the cloud editor points to that server, not your Mac.',
       'Open two independent Godot workspaces or two running copies of the project. Host in one copy; read its six-character room code from the HUD. Enter that code in the second copy and press Join.',
       'On the guest copy, use P1 keyboard controls or the first connected gamepad to control the host’s Player2. The host owns coins, timed item spawns, enemy drops, boss, shop, score, and ending state. The guest receives snapshots of the world; leaderboard records and achievements save in the host’s workspace.',
       'Test a coin pickup, one enemy hit, a purchase, the boss defeat, and the exit while both copies are connected. Use a fresh code after a host disconnects.'

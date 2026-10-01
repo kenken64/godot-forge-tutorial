@@ -32,61 +32,76 @@ try {
     const errors = [];
     page.on('pageerror', error => errors.push(error.stack));
     await page.goto(`${baseUrl}/final-game/#player`);
-    await page.locator('#player .logic-panel').first().waitFor();
-    assert.equal(await page.locator('.logic-panel').count(), 12);
-    assert.equal(await page.locator('.logic-flow li').count(), 33);
-    const detailAudit = await page.evaluate(() => {
+    await page.locator('#player .writing-stepper').waitFor();
+    assert.equal(await page.locator('.writing-stepper').count(), 9);
+    assert.equal(await page.locator('.copy-code').count(), 0);
+    assert.equal(await page.locator('.file-reference').count(), 0);
+
+    const audit = await page.evaluate(() => {
+      const normalize = value => value.split('\n').map(line => line.trim()).filter(Boolean).join('\n');
       const missing = [];
       const invalid = [];
-      for (const section of window.finalGameGuide) for (const file of section.files || []) {
-        const functions = [...file.code.matchAll(/^func\s+(\w+)\s*\(|^static func\s+(\w+)\s*\(/gm)];
-        for (let index = 0; index < functions.length; index++) {
-          const name = functions[index][1] || functions[index][2];
-          const body = file.code.slice(functions[index].index, functions[index + 1]?.index || file.code.length);
-          const steps = window.finalGameFunctionDetails[file.name]?.[name];
-          if (!steps?.length) { missing.push(`${file.name}:${name}`); continue; }
-          for (const [snippet, explanation] of steps) {
-            if (!body.includes(snippet) || !explanation) invalid.push(`${file.name}:${name}: ${snippet}`);
+      const incomplete = [];
+      for (const section of window.finalGameGuide) {
+        const tasks = window.finalGameWriting.makeTasks(section, window.finalGameWalkthrough, window.finalGameFunctionDetails);
+        for (const file of section.files || []) {
+          const actual = tasks.filter(task => task.kind === 'code' && task.fileName === file.name).map(task => task.code).join('\n');
+          if (normalize(actual) !== normalize(window.finalGameWriting.codeToAdd(file))) incomplete.push(file.name);
+          const functions = [...file.code.matchAll(/^func\s+(\w+)\s*\(|^static func\s+(\w+)\s*\(/gm)];
+          for (let index = 0; index < functions.length; index++) {
+            const name = functions[index][1] || functions[index][2];
+            const body = file.code.slice(functions[index].index, functions[index + 1]?.index || file.code.length);
+            const steps = window.finalGameFunctionDetails[file.name]?.[name];
+            if (!steps?.length) { missing.push(`${file.name}:${name}`); continue; }
+            for (const [snippet, explanation] of steps) {
+              if (!body.includes(snippet) || !explanation) invalid.push(`${file.name}:${name}: ${snippet}`);
+            }
           }
         }
       }
-      return { missing, invalid };
+      const online = window.finalGameGuide.flatMap(section => section.files || []).find(file => file.name === 'scripts/Online.gd');
+      return { missing, invalid, incomplete, relayResolved: !window.finalGameWriting.codeToAdd(online).includes('__RELAY_URL__') };
     });
-    assert.deepEqual(detailAudit, { missing: [], invalid: [] });
+    assert.deepEqual(audit, { missing: [], invalid: [], incomplete: [], relayResolved: true });
 
-    const playerCode = page.locator('#player .gdscript code').last();
+    await page.locator('#plan .writing-done').click();
+    assert.match(await page.locator('#plan .writing-count').textContent(), /2 OF 5/);
+    await page.reload();
+    assert.match(await page.locator('#plan .writing-count').textContent(), /2 OF 5/);
+    await page.locator('#plan .writing-done').click();
+    await page.locator('#plan .writing-done').click();
+    assert.match(await page.locator('#plan .step-code').textContent(), /var attack_bonus := 0/);
+    assert.ok((await page.locator('#plan .step-code').textContent()).length < 70);
+
+    for (let index = 0; index < 3; index++) await page.locator('#combat .writing-done').click();
+    assert.equal(await page.locator('#combat .step-code').count(), 0);
+    assert.match(await page.locator('#combat .step-outline').textContent(), /____/);
+    await page.locator('#combat .writing-help').click();
+    assert.ok((await page.locator('#combat .writing-hint').textContent()).length > 20);
+    await page.locator('#combat .writing-reveal').click();
+    assert.ok((await page.locator('#combat .step-code').textContent()).length < 300);
+
+    const playerCount = await page.evaluate(() => window.finalGameWriting.makeTasks(
+      window.finalGameGuide.find(section => section.id === 'player'),
+      window.finalGameWalkthrough, window.finalGameFunctionDetails).length);
+    for (let index = 0; index < playerCount; index++) await page.locator('#player .writing-done').click();
+    assert.equal(await page.locator('#player .file-reference').count(), 2);
+    assert.equal(await page.locator('.copy-code').count(), 0);
+    await page.locator('#player .file-reference').first().locator('summary').click();
+    const playerCode = page.locator('#player .file-reference').first().locator('.gdscript code');
     const rawCode = await playerCode.textContent();
-    await page.locator('#player .gdscript [data-symbol="_physics_process"]').last().click();
-    assert.match(await page.locator('#player .symbol-detail').last().textContent(), /Runs every physics frame/);
-    assert.ok(await page.locator('#player .symbol-detail .function-steps li').last().count());
-    assert.match(await page.locator('#player .symbol-detail').last().textContent(), /host-received movement/);
-    assert.match(await page.locator('#player .symbol-detail').last().textContent(), /collisions/);
-    assert.ok(await page.locator('#player .gdscript .gd-symbol.is-selected').count() >= 1);
-
-    await page.evaluate(() => {
-      const token = document.querySelector('#player .gdscript:last-of-type [data-symbol="remote_roll"]')
-        || [...document.querySelectorAll('#player .gdscript [data-symbol="remote_roll"]')].at(-1);
-      const range = document.createRange();
-      range.selectNodeContents(token);
-      const selection = window.getSelection();
-      selection.removeAllRanges();
-      selection.addRange(range);
-      token.closest('pre').dispatchEvent(new MouseEvent('mouseup', { bubbles: true }));
-    });
-    assert.match(await page.locator('#player .symbol-detail').last().textContent(), /pending online roll press/);
-    assert.equal(await page.locator('#player .symbol-detail .function-steps li').last().count(), 0);
-
-    await page.locator('#player .symbol-picker').last().selectOption('health');
-    assert.match(await page.locator('#player .symbol-detail').last().textContent(), /Current hearts/);
-    await page.locator('#player .copy-code').last().click();
-    assert.equal(await page.evaluate(() => navigator.clipboard.readText()), rawCode);
+    await page.locator('#player .file-reference').first().locator('[data-symbol="_physics_process"]').first().click();
+    assert.match(await page.locator('#player .file-reference').first().locator('.symbol-detail').textContent(), /Runs every physics frame/);
+    assert.match(await page.locator('#player .file-reference').first().locator('.symbol-detail').textContent(), /host-received movement/);
+    assert.ok(await page.locator('#player .file-reference').first().locator('.function-steps li').count() > 4);
 
     await page.click('[data-locale="zh"]');
-    assert.equal(await page.locator('#player .logic-panel h4').last().textContent(), '逻辑流程');
-    assert.equal(await page.locator('#player .gdscript code').last().textContent(), rawCode);
+    await page.locator('#player .file-reference').first().locator('summary').click();
+    assert.equal(await page.locator('#player .logic-panel h4').first().textContent(), '逻辑流程');
+    assert.equal(await page.locator('#player .gdscript code').first().textContent(), rawCode);
     await page.setViewportSize({ width: 390, height: 844 });
     assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);
     assert.deepEqual(errors, []);
-    console.log('PASS all script walkthroughs, symbol click and selection, exact copy, localization, and mobile layout');
+    console.log('PASS small writing steps, full code coverage, hints, saved progress, reference unlock, walkthrough, localization, and mobile layout');
   } finally { await browser.close(); }
 } finally { if (server.exitCode === null) { const exited = once(server, 'exit'); server.kill('SIGTERM'); await exited; } }
