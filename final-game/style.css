@@ -68,7 +68,7 @@ body { background: radial-gradient(circle at 82% 4%, #1e3929, transparent 32%), 
 .final-game-page .file-reference .code-header { margin: 0; border-left: 0; border-right: 0; }
 .final-game-page .file-reference .gdscript { border-left: 0; }
 .final-game-page .file-reference .logic-panel { border-right: 0; }
-.final-game-page .reference-locked { margin: 12px 0 0; padding: 10px 12px; border: 1px dashed var(--line); color: var(--muted); font: 11px/1.55 "DM Mono", monospace; }
+.final-game-page .file-reference .reference-hint { margin: 0; padding: 0 14px 12px; font-size: 12px; }
 .final-game-page .build-steps { padding-left: 1.5em; }
 .final-game-page .build-steps li { padding-left: 5px; margin-bottom: 12px; }
 .final-game-page .code-header { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-top: 22px; padding: 12px 14px; border: 1px solid var(--line); border-bottom: 0; background: var(--panel-2); }

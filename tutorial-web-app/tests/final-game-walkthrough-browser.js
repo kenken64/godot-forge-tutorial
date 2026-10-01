@@ -35,7 +35,14 @@ try {
     await page.locator('#player .writing-stepper').waitFor();
     assert.equal(await page.locator('.writing-stepper').count(), 9);
     assert.equal(await page.locator('.copy-code').count(), 0);
-    assert.equal(await page.locator('.file-reference').count(), 0);
+    assert.ok(await page.locator('.file-reference').count() > 0);
+    const initialHint = page.locator('#player .file-reference').first();
+    assert.match(await initialHint.locator('summary').textContent(), /GDScript hint/);
+    assert.equal(await initialHint.locator('.gdscript').isVisible(), false);
+    await initialHint.locator('summary').click();
+    assert.equal(await initialHint.locator('.gdscript').isVisible(), true);
+    assert.match(await initialHint.locator('.gdscript code').textContent(), /func _physics_process/);
+    await initialHint.locator('summary').click();
 
     const audit = await page.evaluate(() => {
       const normalize = value => value.split('\n').map(line => line.trim()).filter(Boolean).join('\n');
@@ -102,6 +109,6 @@ try {
     await page.setViewportSize({ width: 390, height: 844 });
     assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);
     assert.deepEqual(errors, []);
-    console.log('PASS small writing steps, full code coverage, hints, saved progress, reference unlock, walkthrough, localization, and mobile layout');
+    console.log('PASS small writing steps, full code coverage, optional complete-script hints, saved progress, walkthrough, localization, and mobile layout');
   } finally { await browser.close(); }
 } finally { if (server.exitCode === null) { const exited = once(server, 'exit'); server.kill('SIGTERM'); await exited; } }

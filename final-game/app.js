@@ -79,7 +79,7 @@ Object.assign(copy.ms, {
 
 Object.assign(copy.en, {
   codeLabel: 'Reference script',
-  buildIntro: 'Write one small part in Godot, test it, then continue. The full scripts unlock as references after you finish each file.',
+  buildIntro: 'Write one small part in Godot, test it, then continue. Open a GDScript hint whenever you need to check the complete file.',
   stepThree: 'Work through one task at a time below. Type the code in Godot and run each milestone before moving on.',
   taskOf: (current, total) => `TASK ${current} OF ${total}`,
   taskThink: 'Think first', taskWrite: 'Write in Godot', taskHint: 'Need a hint?', taskReveal: 'Show this step’s code', taskOutline: 'Fill in this outline',
@@ -87,12 +87,12 @@ Object.assign(copy.en, {
   taskFirst: 'Create this script in Godot. Type only the lines for this step.', taskReplace: 'Clear the temporary Online.gd script, then type these lines into the same file.',
   taskPrevious: 'Previous', taskNext: 'Next', taskDone: 'I wrote this step', taskChecked: 'I ran this check',
   taskPrepared: 'I completed this step', taskPracticed: 'I tried this change', taskCompleted: 'Done ✓', taskReady: 'All tasks complete ✓',
-  referenceTitle: 'Complete script reference', referenceLocked: 'Finish this file’s writing and change tasks to unlock its complete reference.',
+  referenceTitle: 'GDScript hint', referenceHint: 'Use the complete script to check a line or function, then return to the current task and type that part in Godot.',
   progressNote: 'This checklist saves your place in this browser. Check the result in Godot before marking a task done.'
 });
 Object.assign(copy.zh, {
   codeLabel: '参考脚本',
-  buildIntro: '在 Godot 中一次编写一小部分，测试后继续。完成每个文件后，才会显示完整脚本供对照。',
+  buildIntro: '在 Godot 中一次编写一小部分，测试后继续。需要帮助时可打开 GDScript 提示查看完整文件。',
   stepThree: '一次完成下方一个任务。在 Godot 中亲自输入代码，并在继续前运行每个阶段。',
   taskOf: (current, total) => `任务 ${current} / ${total}`,
   taskThink: '先思考', taskWrite: '在 Godot 中编写', taskHint: '需要提示？', taskReveal: '显示本步骤代码', taskOutline: '补全此代码框架',
@@ -100,12 +100,12 @@ Object.assign(copy.zh, {
   taskFirst: '在 Godot 中创建此脚本，只输入本步骤的代码。', taskReplace: '清空临时的 Online.gd 脚本，然后在同一文件中输入这些代码。',
   taskPrevious: '上一步', taskNext: '下一步', taskDone: '我已编写此步骤', taskChecked: '我已运行检查',
   taskPrepared: '我已完成此步骤', taskPracticed: '我已尝试修改', taskCompleted: '已完成 ✓', taskReady: '所有任务已完成 ✓',
-  referenceTitle: '完整脚本参考', referenceLocked: '完成此文件的编写和修改任务后可查看完整参考。',
+  referenceTitle: 'GDScript 提示', referenceHint: '用完整脚本核对代码行或函数，然后回到当前任务，亲自在 Godot 中输入这一部分。',
   progressNote: '此清单会在本浏览器中保存进度。完成任务前，请在 Godot 中检查结果。'
 });
 Object.assign(copy.ms, {
   codeLabel: 'Skrip rujukan',
-  buildIntro: 'Tulis satu bahagian kecil dalam Godot, uji, kemudian teruskan. Skrip penuh boleh dirujuk selepas setiap fail disiapkan.',
+  buildIntro: 'Tulis satu bahagian kecil dalam Godot, uji, kemudian teruskan. Buka petunjuk GDScript bila-bila masa untuk menyemak fail lengkap.',
   stepThree: 'Selesaikan satu tugasan pada satu masa. Taip kod dalam Godot dan jalankan setiap peringkat sebelum meneruskan.',
   taskOf: (current, total) => `TUGASAN ${current} DARIPADA ${total}`,
   taskThink: 'Fikir dahulu', taskWrite: 'Tulis dalam Godot', taskHint: 'Perlu petunjuk?', taskReveal: 'Tunjuk kod langkah ini', taskOutline: 'Lengkapkan rangka kod ini',
@@ -113,7 +113,7 @@ Object.assign(copy.ms, {
   taskFirst: 'Cipta skrip ini dalam Godot. Taip hanya baris untuk langkah ini.', taskReplace: 'Kosongkan skrip Online.gd sementara, kemudian taip baris ini dalam fail yang sama.',
   taskPrevious: 'Sebelumnya', taskNext: 'Seterusnya', taskDone: 'Saya sudah menulis langkah ini', taskChecked: 'Saya sudah menjalankan semakan',
   taskPrepared: 'Saya sudah menyelesaikan langkah ini', taskPracticed: 'Saya sudah mencuba perubahan', taskCompleted: 'Selesai ✓', taskReady: 'Semua tugasan selesai ✓',
-  referenceTitle: 'Rujukan skrip lengkap', referenceLocked: 'Siapkan tugasan menulis dan mengubah fail ini untuk membuka rujukan lengkap.',
+  referenceTitle: 'Petunjuk GDScript', referenceHint: 'Gunakan skrip lengkap untuk menyemak satu baris atau fungsi, kemudian kembali ke tugasan semasa dan taip bahagian itu dalam Godot.',
   progressNote: 'Senarai ini menyimpan tempat anda dalam pelayar ini. Semak hasilnya dalam Godot sebelum menandakan tugasan selesai.'
 });
 
@@ -132,6 +132,7 @@ function readWritingProgress() {
 const writingProgress = readWritingProgress();
 const hintsShown = new Set();
 const codeShown = new Set();
+const openReferences = new Set();
 const tasksBySection = new Map(guide.map(section => [section.id, writing.makeTasks(section, walkthroughs, functionDetails)]));
 function saveWritingProgress() {
   localStorage.setItem(writingProgressKey, JSON.stringify({ completed: [...writingProgress.completed], positions: writingProgress.positions }));
@@ -473,15 +474,15 @@ function renderGuide(focusSection = '', focusSelector = '') {
       card.append(tree);
     }
     writing.buildFiles(section).forEach(file => {
-      const fileTasks = tasks.filter(task => task.fileName === file.name);
-      const ready = fileTasks.every(task => writingProgress.completed.has(task.id));
-      if (!ready) {
-        const locked = element('p', 'reference-locked', `${file.name}: ${words.referenceLocked}`);
-        card.append(locked);
-        return;
-      }
       const reference = element('details', 'file-reference');
+      const referenceId = `${section.id}:${file.name}`;
+      reference.open = openReferences.has(referenceId);
+      reference.addEventListener('toggle', () => {
+        if (reference.open) openReferences.add(referenceId);
+        else openReferences.delete(referenceId);
+      });
       reference.append(element('summary', '', `${words.referenceTitle} · ${file.name}`));
+      reference.append(element('p', 'reference-hint', words.referenceHint));
       const header = element('div', 'code-header');
       header.append(element('h3', '', `${words.codeLabel}: ${file.name}`));
       const code = file.code.replace('__RELAY_URL__', `${location.protocol === 'https:' ? 'wss:' : 'ws:'}//${location.host}/ws/final-game`);
