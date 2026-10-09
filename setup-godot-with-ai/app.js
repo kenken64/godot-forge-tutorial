@@ -1,6 +1,7 @@
 const copy = {
   en: {
     back: '← Learning path', chapter: 'CHAPTER 20 / GODOT WEB EDITOR', title: 'Learn Godot Web Editor.',
+    language: 'Language', homeAria: 'Godot Forge home', walkthroughAria: 'Godot Web Editor walkthrough',
     intro: 'Open the starter project in your browser, explore the 2D editor, make one change, run it, and save your work.',
     downloadKit: 'Download starter ZIP · 83 MiB', openEditor: 'Open Godot Web Editor ↗', stepsLabel: 'Walkthrough steps',
     step1Title: 'Download the starter project',
@@ -36,6 +37,7 @@ const copy = {
   },
   zh: {
     back: '← 学习路径', chapter: '第 20 章 / GODOT 网页编辑器', title: '学习 Godot 网页编辑器。',
+    language: '语言', homeAria: 'Godot Forge 首页', walkthroughAria: 'Godot 网页编辑器操作指南',
     intro: '在浏览器中打开入门项目，探索 2D 编辑器，做一处修改，运行场景并保存作品。',
     downloadKit: '下载入门 ZIP · 83 MiB', openEditor: '打开 Godot 网页编辑器 ↗', stepsLabel: '操作步骤',
     step1Title: '下载入门项目',
@@ -71,6 +73,7 @@ const copy = {
   },
   ms: {
     back: '← Laluan pembelajaran', chapter: 'BAB 20 / GODOT WEB EDITOR', title: 'Pelajari Godot Web Editor.',
+    language: 'Bahasa', homeAria: 'Laman utama Godot Forge', walkthroughAria: 'Panduan Godot Web Editor',
     intro: 'Buka projek permulaan dalam pelayar, terokai editor 2D, buat satu perubahan, jalankan dan simpan kerja anda.',
     downloadKit: 'Muat turun ZIP permulaan · 83 MiB', openEditor: 'Buka Godot Web Editor ↗', stepsLabel: 'Langkah panduan',
     step1Title: 'Muat turun projek permulaan',

@@ -43,6 +43,7 @@
     const t = messages[locale];
     document.documentElement.lang = locale === 'zh' ? 'zh-CN' : locale;
     document.querySelectorAll('[data-market]').forEach(el => { const key = el.dataset.market; if (t[key]) el.textContent = t[key]; });
+    document.getElementById('languages').setAttribute('aria-label', ({en:'Language',zh:'语言',ms:'Bahasa'})[locale]);
     document.querySelector('.gear-tabs').setAttribute('aria-label', ({en:'Gear category',zh:'装备类别',ms:'Kategori kelengkapan'})[locale]);
     document.querySelector('.grade-tabs').setAttribute('aria-label', ({en:'Item grade',zh:'物品品质',ms:'Gred item'})[locale]);
     document.querySelectorAll('[data-category]').forEach(button => button.setAttribute('aria-selected', String(button.dataset.category === category)));

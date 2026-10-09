@@ -4,7 +4,7 @@ let learnerId = localStorage.getItem(learnerKey);
 if (!learnerId) { learnerId = crypto.randomUUID().replace(/-/g, ''); localStorage.setItem(learnerKey, learnerId); }
 const copy = {
   en: {
-    back: '← GODOT FORGE / LEARNING PATH', chapter: 'CHAPTER 04 / STORYLINE ENGINE', introEyebrow: 'STORY DESIGN / PLAYABLE EXAMPLE',
+    back: '← GODOT FORGE / LEARNING PATH', chapter: 'CHAPTER 04 / STORYLINE ENGINE', homeAria: 'Godot Forge home', introEyebrow: 'STORY DESIGN / PLAYABLE EXAMPLE',
     title: 'Make the story happen in play.', intro: 'Watch five storytelling ingredients become a six-beat adventure. Make choices, then see the world and ending change.',
     attributesEyebrow: 'THE FIVE INGREDIENTS', attributesTitle: 'What makes this a game story?', example: 'Example',
     attributes: [
@@ -73,7 +73,7 @@ const copy = {
     replay: 'REPLAY STORY', complete: 'COMPLETE MODULE', completed: 'MODULE COMPLETE ✓', saved: 'Story progress saved.', saveError: 'Could not save progress. Please try again.',
   },
   zh: {
-    back: '← GODOT FORGE / 学习路径', chapter: '第 04 章 / 故事线引擎', introEyebrow: '故事设计 / 可玩示例',
+    back: '← GODOT FORGE / 学习路径', chapter: '第 04 章 / 故事线引擎', homeAria: 'Godot Forge 首页', introEyebrow: '故事设计 / 可玩示例',
     title: '让故事在游玩中发生。', intro: '看看五种叙事元素如何变成六个故事节点。做出选择，观察世界和结局如何变化。',
     attributesEyebrow: '五种叙事元素', attributesTitle: '什么让它成为游戏故事？', example: '例如',
     attributes: [
@@ -142,7 +142,7 @@ const copy = {
     replay: '重玩故事', complete: '完成模块', completed: '模块已完成 ✓', saved: '故事进度已保存。', saveError: '无法保存进度，请重试。',
   },
   ms: {
-    back: '← GODOT FORGE / LALUAN PEMBELAJARAN', chapter: 'BAB 04 / ENJIN JALAN CERITA', introEyebrow: 'REKA CERITA / CONTOH BOLEH MAIN',
+    back: '← GODOT FORGE / LALUAN PEMBELAJARAN', chapter: 'BAB 04 / ENJIN JALAN CERITA', homeAria: 'Laman utama Godot Forge', introEyebrow: 'REKA CERITA / CONTOH BOLEH MAIN',
     title: 'Biarkan cerita berlaku semasa bermain.', intro: 'Lihat lima unsur cerita menjadi pengembaraan enam babak. Buat pilihan, kemudian lihat dunia dan pengakhiran berubah.',
     attributesEyebrow: 'LIMA UNSUR CERITA', attributesTitle: 'Apa yang menjadikannya cerita permainan?', example: 'Contoh',
     attributes: [
@@ -437,6 +437,7 @@ function render() {
   $('#prompts-eyebrow').textContent = t.promptsEyebrow; $('#prompts-title').textContent = t.promptsTitle;
   $('#prompts-intro').textContent = t.promptsIntro; $('#prompt-model').textContent = t.promptsModel;
   $('#languages').setAttribute('aria-label', locale === 'zh' ? '语言' : locale === 'ms' ? 'Bahasa' : 'Language');
+  $('.home-mark').setAttribute('aria-label', t.homeAria);
   document.querySelectorAll('#languages button').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.locale === locale)));
   for (const type of ['character', 'boss']) $('#'+(type === 'character' ? 'hero' : 'boss')+'-picker option[value=""]').textContent = t.spriteFallback;
   previewScene?.renderStory();
